@@ -20,7 +20,25 @@ const { title } = Astro.props;
 
 <style>
 main {
+    --content-col: min(var(--content-width), 100%);
+    --wide-content-col: minmax(0, var(--content-width-diff));
+
     flex-grow: 1;
+
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-template-columns:
+        [fullwidth-start]
+        1fr
+        [wide-content-start] var(--wide-content-col)
+        [content-start] var(--content-col) [content-end]
+        var(--wide-content-col) [wide-content-end]
+        1fr
+        [fullwidth-end];
+}
+
+:global(main > *) {
+    grid-column: content;
 }
 </style>
 
