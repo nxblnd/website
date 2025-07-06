@@ -1,0 +1,61 @@
+---
+interface ContactEntry {
+    value: string,
+    label: string,
+    icon?: string,
+    hint?: string,
+    link?: string,
+}
+
+const contactInfo: Array<ContactEntry> = [
+    {
+        label: 'location',
+        value: 'Санкт-Петербург, Россия',
+        hint: 'Местоположение',
+    },
+    {
+        label: 'language',
+        value: 'русский, английский',
+        hint: 'Язык',
+    },
+    {
+        label: 'remoteWork',
+        value: 'Любой формат работы, предпочтительно удалённо/гибрид',
+        hint: 'Формат работы',
+    },
+    {
+        label: 'email',
+        value: 'hireme@pavelegorov.xyz',
+        link: 'mailto:hireme@pavelegorov.xyz',
+        hint: 'Email',
+    },
+    {
+        label: 'phone',
+        value: '+xxxxxxxxxxx',
+        link: 'tel:+xxxxxxxxxxx',
+        hint: 'Телефон',
+    },
+    {
+        label: 'telegram',
+        value: 'nxblnd',
+        link: 'https://t.me/nxblnd',
+        hint: 'Telegram',
+    },
+    {
+        label: 'github',
+        value: 'nxblnd',
+        link: 'https://github.com/nxblnd',
+        hint: 'Github',
+    },
+];
+---
+
+<h2>Контактная информация</h2>
+
+<div>
+    {contactInfo.map((entry) => <div>{
+        entry.link
+            ? <a href={ entry.link }>{ entry.value }</a>
+            : entry.value
+    }</div>)}
+</div>
