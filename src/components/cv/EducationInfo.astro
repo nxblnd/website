@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+
+const educationCollection = (await getCollection('education'))
+    .sort((a, b) => b.data.start.localeCompare(a.data.start));
+---
+
+<h2>Образование</h2>
+
+<ul>
+    {educationCollection.map((education) => {
+        return (
+            <li>
+                <header>
+                    <h3>{ education.data.place }</h3>
+                </header>
+                <p>{ education.data.specialization } { education.data.degree }</p>
+                <p>{ education.data.start } to { education.data.end }</p>
+            </li>
+        )
+    })}
+</ul>
+

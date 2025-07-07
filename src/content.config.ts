@@ -11,9 +11,20 @@ const jobs = defineCollection({
         stack: z.string(),
     }),
 });
-const education = defineCollection({});
+
+const education = defineCollection({
+    loader: glob({ pattern: "**/*.md", base: "./src/content/cv/education" }),
+    schema: z.object({
+        place: z.string(),
+        specialization: z.string(),
+        degree: z.string(),
+        start: z.string(),
+        end: z.string(),
+    }),
+});
 
 export const collections = {
     jobs,
     education,
 };
+
