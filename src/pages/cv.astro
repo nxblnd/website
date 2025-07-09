@@ -36,3 +36,46 @@ import EducationInfo from "@/components/cv/EducationInfo.astro";
         <p>Инструменты: Git, ESlint, Webpack, Vite, Docker, Nginx</p>
     </main>
 </BaseLayout>
+
+<style>
+main {
+    max-width: 45em;
+}
+
+header {
+    text-align: center;
+    line-height: 1.25;
+    padding: 1em;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+header > p {
+    font-size: 1.5em;
+}
+
+:global(h2) {
+    font-size: 1em;
+    text-transform: uppercase;
+    padding-top: 1em;
+
+    display: flex;
+    gap: 0.5em;
+    align-items: baseline;
+}
+
+:global(h2)::after {
+    content: "";
+
+    display: block;
+    flex: 1;
+
+    width: 100%;
+    height: 1px;
+
+    background-color: black;
+}
+</style>
