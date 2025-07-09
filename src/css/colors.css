@@ -1,6 +1,7 @@
 :root {
     --bg-color: white;
     --text-color: black;
+    --text-secondary: grey;
 
     --primary-color: red;
     --secondary-color: blue;

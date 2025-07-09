@@ -33,3 +33,31 @@ const dateOptions: Intl.DateTimeFormatOptions = {
     })}
 </ul>
 
+<style>
+header {
+    display: flex;
+    gap: 0.5em;
+}
+
+h3 {
+    font-size: 1em;
+}
+
+h3::after {
+    content: ",";
+}
+
+.period {
+    color: var(--text-secondary);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.75em;
+}
+</style>
+
