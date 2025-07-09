@@ -6,9 +6,8 @@ const jobs = defineCollection({
     schema: z.object({
         place: z.string(),
         position: z.string(),
-        start: z.string(),
-        end: z.string(),
-        stack: z.string(),
+        start: z.date(),
+        end: z.date(),
     }),
 });
 

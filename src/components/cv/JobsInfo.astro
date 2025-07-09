@@ -3,8 +3,12 @@ import { getCollection, render } from "astro:content";
 
 const jobsCollection = await getCollection('jobs');
 const jobs = await Promise.all(jobsCollection
-    .sort((a, b) => b.data.start.localeCompare(a.data.start))
-    .map(async (job) => ({ frontmatter: job.data, content: await render(job) })))
+    .sort((a, b) => b.data.start.getTime() - a.data.start.getTime())
+    .map(async (job) => ({ frontmatter: job.data, content: await render(job) })));
+const dateOptions: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+};
 ---
 
 <h2>Опыт работы</h2>
@@ -17,9 +21,12 @@ const jobs = await Promise.all(jobsCollection
                 <header>
                     <h3>{ job.frontmatter.place }</h3>
                     <p>{ job.frontmatter.position }</p>
-                    <p>{ job.frontmatter.start } to { job.frontmatter.end }</p>
+                    <p class="period">
+                        { job.frontmatter.start.toLocaleDateString('ru-RU', dateOptions) }
+                        &mdash;
+                        { job.frontmatter.end.toLocaleDateString('ru-RU', dateOptions) }
+                    </p>
                 </header>
-                <p>{ job.frontmatter.stack }</p>
                 <Content />
             </li>
         )
