@@ -16,13 +16,19 @@ const dateOptions: Intl.DateTimeFormatOptions = {
 <ul>
     {jobs.map((job) => {
         const Content = job.content.Content;
+        const dateStart = job.frontmatter.start
+            .toLocaleDateString('ru-RU', dateOptions)
+            .replace(/ г\./, '');
+        const dateEnd = job.frontmatter.end
+            .toLocaleDateString('ru-RU', dateOptions)
+            .replace(/ г\./, '');
         return (
             <li>
                 <header>
                     <h3>{ job.frontmatter.place }</h3>
                     <p>{ job.frontmatter.position }</p>
                     <p class="period">
-                        { job.frontmatter.start.toLocaleDateString('ru-RU', dateOptions) }&ndash;{ job.frontmatter.end.toLocaleDateString('ru-RU', dateOptions) }
+                        { dateStart }&ndash;{ dateEnd }
                     </p>
                 </header>
                 <Content />
