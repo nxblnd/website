@@ -1,8 +1,8 @@
 ---
 place: МТС Диджитал
 position: Frontend developer
-start: 2022-07
-end: 2025-01
+start: 2022-07-19
+end: 2025-01-09
 stack: VueJS 2 (Vuex), VueJS 3 (Composition API, Typescript, Pinia); Quasar, inner source UI библиотека на основе Headless UI
 ---
 
