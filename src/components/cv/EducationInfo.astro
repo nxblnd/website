@@ -17,7 +17,7 @@ const dateOptions: Intl.DateTimeFormatOptions = {
                 <header>
                     <h3>{ education.data.place }</h3>
                 </header>
-                <p>{ education.data.specialization } { education.data.degree }</p>
+                <p>{ education.data.specialization }, { education.data.degree }</p>
                 <p class="period">
                     { education.data.start.toLocaleDateString('ru-RU', dateOptions) }&ndash;{ education.data.end.toLocaleDateString('ru-RU', dateOptions) }
                 </p>
@@ -25,4 +25,31 @@ const dateOptions: Intl.DateTimeFormatOptions = {
         )
     })}
 </ul>
+
+<style>
+header {
+    flex: 0 0 100%;
+}
+
+h3 {
+    font-size: 1em;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.75em;
+
+    display: flex;
+    column-gap: 0.5em;
+    flex-wrap: wrap;
+}
+
+.period {
+    color: var(--text-secondary);
+}
+</style>
 
