@@ -19,9 +19,7 @@ const dateOptions: Intl.DateTimeFormatOptions = {
                 </header>
                 <p>{ education.data.specialization } { education.data.degree }</p>
                 <p class="period">
-                    { education.data.start.toLocaleDateString('ru-RU', dateOptions) }
-                    &mdash;
-                    {education.data.end.toLocaleDateString('ru-RU', dateOptions) }
+                    { education.data.start.toLocaleDateString('ru-RU', dateOptions) }&ndash;{ education.data.end.toLocaleDateString('ru-RU', dateOptions) }
                 </p>
             </li>
         )

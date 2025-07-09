@@ -22,9 +22,7 @@ const dateOptions: Intl.DateTimeFormatOptions = {
                     <h3>{ job.frontmatter.place }</h3>
                     <p>{ job.frontmatter.position }</p>
                     <p class="period">
-                        { job.frontmatter.start.toLocaleDateString('ru-RU', dateOptions) }
-                        &mdash;
-                        { job.frontmatter.end.toLocaleDateString('ru-RU', dateOptions) }
+                        { job.frontmatter.start.toLocaleDateString('ru-RU', dateOptions) }&ndash;{ job.frontmatter.end.toLocaleDateString('ru-RU', dateOptions) }
                     </p>
                 </header>
                 <Content />
