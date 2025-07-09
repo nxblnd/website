@@ -2,7 +2,10 @@
 import { getCollection } from "astro:content";
 
 const educationCollection = (await getCollection('education'))
-    .sort((a, b) => b.data.start.localeCompare(a.data.start));
+    .sort((a, b) => b.data.start.getTime() - a.data.start.getTime());
+const dateOptions: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+};
 ---
 
 <h2>Образование</h2>
@@ -15,7 +18,11 @@ const educationCollection = (await getCollection('education'))
                     <h3>{ education.data.place }</h3>
                 </header>
                 <p>{ education.data.specialization } { education.data.degree }</p>
-                <p>{ education.data.start } to { education.data.end }</p>
+                <p class="period">
+                    { education.data.start.toLocaleDateString('ru-RU', dateOptions) }
+                    &mdash;
+                    {education.data.end.toLocaleDateString('ru-RU', dateOptions) }
+                </p>
             </li>
         )
     })}

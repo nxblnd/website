@@ -17,8 +17,8 @@ const education = defineCollection({
         place: z.string(),
         specialization: z.string(),
         degree: z.string(),
-        start: z.string(),
-        end: z.string(),
+        start: z.date(),
+        end: z.date(),
     }),
 });
 
