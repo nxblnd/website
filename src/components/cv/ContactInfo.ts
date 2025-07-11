@@ -5,6 +5,7 @@ export interface ContactEntry {
     hint?: string,
     link?: string,
     hidden?: boolean,
+    important?: boolean,
 }
 
 export const contactInfo: Array<ContactEntry> = [
@@ -13,18 +14,21 @@ export const contactInfo: Array<ContactEntry> = [
         value: 'Санкт-Петербург, Россия',
         hint: 'Местоположение',
         icon: 'mdi:location',
+        important: true,
     },
     {
         label: 'language',
         value: 'русский, английский',
         hint: 'Язык',
         icon: 'mdi:spoken-language',
+        important: true,
     },
     {
         label: 'remoteWork',
         value: 'Любой формат работы, предпочтительно удалённо/гибрид',
         hint: 'Формат работы',
         icon: 'mdi:office-building',
+        important: true,
     },
     {
         label: 'email',

@@ -5,12 +5,12 @@ import { contactInfo } from './ContactInfo.ts';
 
 <h2>Контактная информация</h2>
 
-<div>
+<div class='contact-info'>
     {
         contactInfo
             .filter((entry) => !entry.hidden)
             .map((entry) =>
-                <div class='entry'>
+    <div class:list={['entry', { important: entry.important }]}>
                     { entry.icon && <Icon name={ entry.icon } desc={ entry.hint }></Icon> }
                     { entry.link
                         ? <a href={ entry.link }>{ entry.value }</a>
@@ -20,14 +20,31 @@ import { contactInfo } from './ContactInfo.ts';
 </div>
 
 <style>
+.contact-info {
+    display: grid;
+
+    @media (width > 40em) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    column-gap: 1em;
+}
+
 .entry {
     display: flex;
     align-items: center;
     column-gap: 0.5em;
 }
 
+.important {
+    grid-column: 1 / -1;
+}
+
 [data-icon] {
     font-size: 1.2em;
     color: var(--text-secondary);
+
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
 }
 </style>
