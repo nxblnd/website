@@ -7,6 +7,7 @@ interface ContactEntry {
     icon?: string,
     hint?: string,
     link?: string,
+    hidden?: boolean,
 }
 
 const contactInfo: Array<ContactEntry> = [
@@ -56,19 +57,30 @@ const contactInfo: Array<ContactEntry> = [
         hint: 'Github',
         icon: 'mdi:github',
     },
+    {
+        label: 'linkedin',
+        value: 'Pavel Egorov',
+        link: 'https://www.linkedin.com/in/pavel-e-b1409a225/',
+        hint: 'LinkedIn',
+        icon: 'mdi:linkedin',
+        hidden: true,
+    },
 ];
 ---
 
 <h2>Контактная информация</h2>
 
 <div>
-    { contactInfo.map((entry) =>
-    <div class='entry'>
-        { entry.icon && <Icon name={ entry.icon } desc={ entry.hint }></Icon> }
-            { entry.link
-                ? <a href={ entry.link }>{ entry.value }</a>
-                : entry.value }
-        </div>
+    {
+        contactInfo
+            .filter((entry) => !entry.hidden)
+            .map((entry) =>
+                <div class='entry'>
+                    { entry.icon && <Icon name={ entry.icon } desc={ entry.hint }></Icon> }
+                    { entry.link
+                        ? <a href={ entry.link }>{ entry.value }</a>
+                        : entry.value }
+                </div>
     )}
 </div>
 
