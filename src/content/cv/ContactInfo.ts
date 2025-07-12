@@ -59,6 +59,13 @@ export const contactInfo: Array<ContactEntry> = [
         icon: 'mdi:github',
     },
     {
+        label: 'site',
+        value: 'pavelegorov.xyz',
+        link: 'https://pavelegorov.xyz',
+        hint: 'Сайт',
+        icon: 'mdi:web',
+    },
+    {
         label: 'linkedin',
         value: 'Pavel Egorov',
         link: 'https://www.linkedin.com/in/pavel-e-b1409a225/',
