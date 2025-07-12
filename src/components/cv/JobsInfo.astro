@@ -25,7 +25,7 @@ const dateOptions: Intl.DateTimeFormatOptions = {
         return (
             <li>
                 <header>
-                    <h3>{ job.frontmatter.place }</h3>
+                    <h3>{ job.frontmatter.place },</h3>
                     <p>{ job.frontmatter.position }</p>
                     <p class="period">
                         { dateStart }&ndash;{ dateEnd }
@@ -38,31 +38,12 @@ const dateOptions: Intl.DateTimeFormatOptions = {
 </ul>
 
 <style>
+@import 'places.css';
+
 header {
     display: flex;
     flex-wrap: wrap;
     column-gap: 0.5em;
-}
-
-h3 {
-    font-size: 1em;
-}
-
-h3::after {
-    content: ",";
-}
-
-.period {
-    color: var(--text-secondary);
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 0.75em;
 }
 </style>
 

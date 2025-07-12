@@ -1,0 +1,21 @@
+h3 {
+    font-size: 1em;
+    font-variant: small-caps;
+    letter-spacing: 0.04em;
+    font-feature-settings: "kern";
+    text-rendering: optimizeLegibility;
+}
+
+.period {
+    color: var(--text-secondary);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.75em;
+}
+
