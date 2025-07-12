@@ -11,17 +11,20 @@ export default defineConfig({
             {
                 provider: fontProviders.fontsource(),
                 name: 'Alegreya',
-                cssVariable: '--font-alegreya',
+                cssVariable: '--font-serif',
+                fallbacks: ['Palatino', 'Cambria', 'serif'],
             },
             {
                 provider: fontProviders.fontsource(),
                 name: 'Alegreya Sans',
-                cssVariable: '--font-alegreya-sans',
+                cssVariable: '--font-sans-serif',
+                fallbacks: ['Verdana', 'Geneva', 'sans-serif'],
             },
             {
                 provider: fontProviders.fontsource(),
                 name: 'JetBrains Mono',
-                cssVariable: '--font-jetbrains-mono',
+                cssVariable: '--font-monospace',
+                fallbacks: ['Consolas', 'monospace'],
             },
         ],
     },
