@@ -10,7 +10,7 @@ import { contactInfo } from '@/content/cv/ContactInfo.ts';
         contactInfo
             .filter((entry) => !entry.hidden)
             .map((entry) =>
-    <div class:list={['entry', { important: entry.important }]}>
+                <div class:list={['entry', { important: entry.important }]}>
                     { entry.icon && <Icon name={ entry.icon } desc={ entry.hint }></Icon> }
                     { entry.link
                         ? <a href={ entry.link }>{ entry.value }</a>
@@ -34,6 +34,8 @@ import { contactInfo } from '@/content/cv/ContactInfo.ts';
     display: flex;
     align-items: center;
     column-gap: 0.5em;
+
+    font-variant: lining-nums;
 }
 
 .important {
