@@ -11,7 +11,7 @@ export interface ContactEntry {
 export const contactInfo: Array<ContactEntry> = [
     {
         label: 'location',
-        value: 'Санкт-Петербург, Россия',
+        value: 'Санкт-Петербург, Россия; готов к релокации',
         hint: 'Местоположение',
         icon: 'mdi:location',
         important: true,
@@ -43,6 +43,7 @@ export const contactInfo: Array<ContactEntry> = [
         link: 'tel:+xxxxxxxxxxx',
         hint: 'Телефон',
         icon: 'mdi:phone',
+        hidden: true,
     },
     {
         label: 'telegram',
