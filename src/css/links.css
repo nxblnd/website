@@ -1,0 +1,26 @@
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: var(--link-color);
+}
+
+a:visited {
+    color: oklch(from var(--link-color) calc(l - 0.1) c calc(h + 50))
+}
+
+a:focus {
+    color: oklch(from var(--link-color) calc(l + 0.1) calc(c - 0.03) h);
+    outline: 1px solid;
+    border-radius: 0.1em;
+}
+
+a:hover {
+    color: oklch(from var(--link-color) calc(l + 0.1) calc(c - 0.03) h);
+}
+
+a:active {
+    color: oklch(from var(--link-color) l c calc(h + 100))
+}
+

@@ -1,4 +1,10 @@
-@import 'reset.css';
+/* Variables */
 @import 'colors.css';
 @import 'sizes.css';
+
+/* Reset defaults */
+@import 'reset.css';
+
+/* Global styles */
+@import 'links.css';
 
