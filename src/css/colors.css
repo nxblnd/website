@@ -1,8 +1,35 @@
 :root {
-    --bg-color: white;
-    --text-color: black;
-    --text-secondary: grey;
+    --bg-color: oklch(0.28 0.01 285);
 
-    --primary-color: red;
-    --secondary-color: blue;
+    --text-color: oklch(1 0 0);
+    --text-secondary: oklch(from var(--text-color) calc(l * 0.7) c h);
+    --text-accent: oklch(0.7 0.1337 285);
+
+    --link-color: oklch(0.8 0.095 230);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: var(--link-color);
+}
+
+a:visited {
+    color: oklch(from var(--link-color) calc(l - 0.1) c calc(h + 50))
+}
+
+a:focus {
+    color: oklch(from var(--link-color) calc(l + 0.1) calc(c - 0.03) h);
+    outline: 1px solid;
+    border-radius: 0.1em;
+}
+
+a:hover {
+    color: oklch(from var(--link-color) calc(l + 0.1) calc(c - 0.03) h);
+}
+
+a:active {
+    color: oklch(from var(--link-color) l c calc(h + 100))
 }
