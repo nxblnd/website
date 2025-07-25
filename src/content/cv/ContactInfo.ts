@@ -11,7 +11,7 @@ export interface ContactEntry {
 export const contactInfo: Array<ContactEntry> = [
     {
         label: 'location',
-        value: 'Санкт-Петербург, Россия; готов к релокации',
+        value: 'Санкт-Петербург, Россия; готов к релокации',
         hint: 'Местоположение',
         icon: 'mdi:location',
         important: true,
@@ -32,8 +32,8 @@ export const contactInfo: Array<ContactEntry> = [
     },
     {
         label: 'email',
-        value: 'hireme@pavelegorov.xyz',
-        link: 'mailto:hireme@pavelegorov.xyz',
+        value: 'hire_me@pavelegorov.xyz',
+        link: 'mailto:hire_me@pavelegorov.xyz',
         hint: 'Email',
         icon: 'mdi:email',
     },
