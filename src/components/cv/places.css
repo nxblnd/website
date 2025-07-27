@@ -8,6 +8,10 @@ h3 {
 
 .period {
     color: var(--text-secondary);
+
+    @media screen {
+        flex-basis: 100%;
+    }
 }
 
 ul {
