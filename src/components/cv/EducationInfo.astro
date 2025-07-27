@@ -12,6 +12,8 @@ const dateOptions: Intl.DateTimeFormatOptions = {
 
 <ul>
     {educationCollection.map((education) => {
+        const dateStart = education.data.start.toLocaleDateString('ru-RU', dateOptions);
+        const dateEnd = education.data.end.toLocaleDateString('ru-RU', dateOptions);
         return (
             <li>
                 <header>
@@ -19,7 +21,7 @@ const dateOptions: Intl.DateTimeFormatOptions = {
                 </header>
                 <p>{ education.data.specialization }, { education.data.degree }</p>
                 <p class="period">
-                    { education.data.start.toLocaleDateString('ru-RU', dateOptions) }&ndash;{ education.data.end.toLocaleDateString('ru-RU', dateOptions) }
+                    { dateStart }&hairsp;&ndash;&hairsp;{ dateEnd }
                 </p>
             </li>
         )
