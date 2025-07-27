@@ -7,17 +7,17 @@ a:link {
 }
 
 a:visited {
-    color: oklch(from var(--link-color) calc(l - 0.1) c calc(h + 50))
+    color: oklch(from var(--link-color) 80% c calc(h + 50))
 }
 
 a:focus {
-    color: oklch(from var(--link-color) calc(l + 0.1) calc(c - 0.03) h);
+    color: oklch(from var(--link-color) 110% c h);
     outline: 1px solid;
     border-radius: 0.1em;
 }
 
 a:hover {
-    color: oklch(from var(--link-color) calc(l + 0.1) calc(c - 0.03) h);
+    color: oklch(from var(--link-color) 110% c h);
 }
 
 a:active {
