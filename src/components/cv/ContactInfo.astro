@@ -11,10 +11,15 @@ import { contactInfo } from '@/content/cv/ContactInfo.ts';
             .filter((entry) => !entry.hidden)
             .map((entry) =>
                 <div class:list={['entry', { important: entry.important }]}>
-                    { entry.icon && <Icon name={ entry.icon } desc={ entry.hint }></Icon> }
-                    { entry.link
-                        ? <a href={ entry.link }>{ entry.value }</a>
-                        : entry.value }
+                    { entry.icon && <Icon name={ entry.icon } /> }
+                    <span>
+                        <span style="color: var(--text-secondary)">
+                            { entry.title }:
+                        </span>
+                        { entry.link
+                            ? <a href={ entry.link }>{ entry.value }</a>
+                            : entry.value }
+                    </span>
                 </div>
     )}
 </div>
