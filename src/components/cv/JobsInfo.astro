@@ -45,5 +45,17 @@ header {
     flex-wrap: wrap;
     column-gap: 0.5em;
 }
+
+ul {
+    :global(ul) {
+        list-style: disc;
+        padding-left: 2em;
+
+        :global(ul) {
+            list-style: "▷ ";
+            padding-left: 2em;
+        }
+    }
+}
 </style>
 
