@@ -1,0 +1,24 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="toolbox">
+    <button class="theme">
+        <Icon name="mdi:theme-light-dark" />
+    </button>
+    <button class="download">
+        <Icon name="mdi:download" />
+    </button>
+</div>
+
+<style>
+.toolbox {
+    position: fixed;
+    inset: auto 3em 3em auto;
+
+    background-color: var(--text-accent);
+
+    display: flex;
+    flex-direction: column;
+}
+</style>

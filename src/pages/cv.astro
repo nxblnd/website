@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactInfo from "@/components/cv/ContactInfo.astro";
 import JobsInfo from "@/components/cv/JobsInfo.astro";
 import EducationInfo from "@/components/cv/EducationInfo.astro";
+import ToolBox from "@/components/cv/ToolBox.astro";
 ---
 
 <BaseLayout title='Резюме'>
@@ -35,6 +36,8 @@ import EducationInfo from "@/components/cv/EducationInfo.astro";
         <p>Фреймворки и библиотеки: VueJS, Vuex, Pinia, React, Module Federation, NodeJS</p>
         <p>Инструменты: Git, ESlint, Webpack, Vite, Docker, Nginx</p>
     </main>
+    
+    <ToolBox />
 </BaseLayout>
 
 <style>
