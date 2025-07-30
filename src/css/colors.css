@@ -6,5 +6,23 @@
     --accent-color: oklch(0.7 0.1337 285);
 
     --link-color: oklch(0.8 0.095 230);
+    --link-visited-color: oklch(from var(--link-color) 80% c calc(h + 50));
+    --link-focus-color: oklch(from var(--link-color) 110% c h);
+    --link-active-color: oklch(from var(--link-color) l c calc(h + 100));
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: oklch(0.95 0.01 285);
+
+        --primary-color: oklch(0.15 0 0);
+        --secondary-color: oklch(from var(--primary-color) 50% c h);
+        --accent-color: oklch(0.6 0.2 285);
+
+        --link-color: oklch(0.52 0.21 260);
+        --link-visited-color: oklch(from var(--link-color) l c calc(h + 50));
+        --link-focus-color: oklch(from var(--link-color) 40% c h);
+        --link-active-color: oklch(from var(--link-color) l c calc(h + 100));
+    }
 }
 
