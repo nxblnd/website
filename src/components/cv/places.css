@@ -7,7 +7,7 @@ h3 {
 }
 
 .period {
-    color: var(--text-secondary);
+    color: var(--secondary-color);
 
     @media screen {
         flex-basis: 100%;

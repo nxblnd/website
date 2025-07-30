@@ -13,7 +13,7 @@ import { contactInfo } from '@/content/cv/ContactInfo.ts';
                 <div class:list={['entry', { important: entry.important }]}>
                     { entry.icon && <Icon name={ entry.icon } /> }
                     <span>
-                        <span style="color: var(--text-secondary)">
+                        <span style="color: var(--secondary-color)">
                             { entry.title }:
                         </span>
                         { entry.link
@@ -49,7 +49,7 @@ import { contactInfo } from '@/content/cv/ContactInfo.ts';
 
 [data-icon] {
     font-size: 1.2em;
-    color: var(--text-secondary);
+    color: var(--secondary-color);
 
     flex: 0 0 auto;
     flex-wrap: nowrap;
