@@ -4,12 +4,27 @@ import { Icon } from 'astro-icon/components';
 
 <div class="toolbox">
     <button class="theme">
-        <Icon name="mdi:theme-light-dark" />
+        <Icon name="mdi:theme-light-dark" @click="toggleTheme($refs.html)" />
     </button>
     <button class="download">
         <Icon name="mdi:download" />
     </button>
 </div>
+
+<script is:inline>
+function getPreferredTheme() {
+    window.matchMedia('(prefers-color-scheme: dark)');
+    return e.matches ? 'dark' : 'light';
+}
+
+function toggleTheme(root) {
+    const ls = window.localStorage;
+    const currentTheme = (ls.getItem('theme') ?? getPreferredTheme()) === 'light' ? 'dark' : 'light';
+
+    ls.setItem('theme', currentTheme);
+    root.setAttribute('data-theme', currentTheme);
+}
+</script>
 
 <style>
 .toolbox {
