@@ -18,10 +18,9 @@ function getPreferredTheme() {
 }
 
 function toggleTheme(root) {
-    const ls = window.localStorage;
-    const currentTheme = (ls.getItem('theme') ?? getPreferredTheme()) === 'light' ? 'dark' : 'light';
+    const currentTheme = (localStorage.getItem('theme') ?? getPreferredTheme()) === 'light' ? 'dark' : 'light';
 
-    ls.setItem('theme', currentTheme);
+    localStorage.setItem('theme', currentTheme);
     root.setAttribute('data-theme', currentTheme);
 }
 </script>

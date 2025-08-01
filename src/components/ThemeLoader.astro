@@ -1,6 +1,5 @@
 <script is:inline>
 const root = document.documentElement;
-const ls = window.localStorage;
-const currentTheme = ls.getItem('theme') ?? 'auto';
+const currentTheme = localStorage.getItem('theme') ?? 'auto';
 root.setAttribute('data-theme', currentTheme);
 </script>
