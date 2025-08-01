@@ -1,28 +1,74 @@
 :root {
-    --bg-color: oklch(0.28 0.01 285);
+    /* Dark theme */
+    --dark-bg-color: oklch(0.28 0.01 285);
 
-    --primary-color: oklch(0.95 0 0);
-    --secondary-color: oklch(from var(--primary-color) 70% c h);
-    --accent-color: oklch(0.7 0.1337 285);
+    --dark-primary-color: oklch(0.95 0 0);
+    --dark-secondary-color: oklch(from var(--dark-primary-color) 70% c h);
+    --dark-accent-color: oklch(0.7 0.1337 285);
 
-    --link-color: oklch(0.8 0.095 230);
-    --link-visited-color: oklch(from var(--link-color) 80% c calc(h + 50));
-    --link-focus-color: oklch(from var(--link-color) 110% c h);
-    --link-active-color: oklch(from var(--link-color) l c calc(h + 100));
+    --dark-link-color: oklch(0.8 0.095 230);
+    --dark-link-visited-color: oklch(from var(--dark-link-color) 80% c calc(h + 50));
+    --dark-link-focus-color: oklch(from var(--dark-link-color) 110% c h);
+    --dark-link-active-color: oklch(from var(--dark-link-color) l c calc(h + 100));
+
+    /* Light theme */
+    --light-bg-color: oklch(0.95 0.01 285);
+
+    --light-primary-color: oklch(0.15 0 0);
+    --light-secondary-color: oklch(from var(--light-primary-color) 50% c h);
+    --light-accent-color: oklch(from var(--dark-accent-color) calc(l - 0.1) 0.2 h);
+
+    --light-link-color: oklch(0.52 0.21 260);
+    --light-link-visited-color: oklch(from var(--light-link-color) l c calc(h + 50));
+    --light-link-focus-color: oklch(from var(--light-link-color) 40% c h);
+    --light-link-active-color: oklch(from var(--light-link-color) l c calc(h + 100));
+}
+
+:root,
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --bg-color: var(--dark-bg-color);
+
+    --primary-color: var(--dark-primary-color);
+    --secondary-color: var(--dark-secondary-color);
+    --accent-color: var(--dark-accent-color);
+
+    --link-color: var(--dark-link-color);
+    --link-visited-color: var(--dark-link-visited-color);
+    --link-focus-color: var(--dark-link-focus-color);
+    --link-active-color: var(--dark-link-active-color);
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+
+    --bg-color: var(--light-bg-color);
+
+    --primary-color: var(--light-primary-color);
+    --secondary-color: var(--light-secondary-color);
+    --accent-color: var(--light-accent-color);
+
+    --link-color: var(--light-link-color);
+    --link-visited-color: var(--light-link-visited-color);
+    --link-focus-color: var(--light-link-focus-color);
+    --link-active-color: var(--light-link-active-color);
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        --bg-color: oklch(0.95 0.01 285);
+        color-scheme: light;
 
-        --primary-color: oklch(0.15 0 0);
-        --secondary-color: oklch(from var(--primary-color) 50% c h);
-        --accent-color: oklch(0.6 0.2 285);
+        --bg-color: var(--light-bg-color);
 
-        --link-color: oklch(0.52 0.21 260);
-        --link-visited-color: oklch(from var(--link-color) l c calc(h + 50));
-        --link-focus-color: oklch(from var(--link-color) 40% c h);
-        --link-active-color: oklch(from var(--link-color) l c calc(h + 100));
+        --primary-color: var(--light-primary-color);
+        --secondary-color: var(--light-secondary-color);
+        --accent-color: var(--light-accent-color);
+
+        --link-color: var(--light-link-color);
+        --link-visited-color: var(--light-link-visited-color);
+        --link-focus-color: var(--light-link-focus-color);
+        --link-active-color: var(--light-link-active-color);
     }
 }
 
