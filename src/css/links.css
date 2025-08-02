@@ -24,3 +24,9 @@ a:active {
     color: var(--link-active-color);
 }
 
+@media print {
+    a[href^=http]::after {
+        content: " (" attr(href) ")";
+        font-style: italic;
+    }
+}

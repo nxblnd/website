@@ -107,20 +107,6 @@ header > p {
         border: none;
     }
 
-    :global(a) {
-        text-decoration: underline;
-    }
-
-    :global(a):link,
-    :global(a):visited {
-        color: var(--primary-color);
-    }
-
-    :global(a)[href^=http]::after {
-        content: " (" attr(href) ")";
-        font-style: italic;
-    }
-
     h1 {
         font-size: 1.5em;
     }
