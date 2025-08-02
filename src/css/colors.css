@@ -72,3 +72,20 @@
     }
 }
 
+@media print {
+    :root {
+        color-scheme: light;
+
+        --bg-color: none;
+
+        --primary-color: black;
+        --secondary-color: oklch(0.4 0 0);
+        --accent-color: black;
+
+        --link-color: black;
+        --link-visited-color: black;
+        --link-focus-color: black;
+        --link-active-color: black;
+    }
+}
+
