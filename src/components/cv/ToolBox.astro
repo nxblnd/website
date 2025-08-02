@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon/components';
 ---
 
-<div class="toolbox" x-data>
+<div class="toolbox no-print" x-data>
     <button class="theme">
         <Icon name="mdi:theme-light-dark" @click="toggleTheme()" />
     </button>
@@ -39,12 +39,6 @@ button {
 
 [data-icon] {
     font-size: 2em;
-}
-
-@media print {
-    .toolbox {
-        display: none;
-    }
 }
 </style>
 
