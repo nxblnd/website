@@ -2,12 +2,15 @@
 import { Icon } from 'astro-icon/components';
 ---
 
-<div class="toolbox">
+<div class="toolbox" x-data>
     <button class="theme">
-        <Icon name="mdi:theme-light-dark" x-data @click="toggleTheme" />
+        <Icon name="mdi:theme-light-dark" @click="toggleTheme()" />
     </button>
     <button class="download">
         <Icon name="mdi:download" />
+    </button>
+    <button class="print" @click="window.print()">
+        <Icon name="mdi:printer" />
     </button>
 </div>
 
