@@ -88,5 +88,54 @@ header > p {
 
     background-color: var(--secondary-color);
 }
+
+@media print {
+    @page {
+        size: A4;
+        margin: 1cm;
+    }
+
+    :root {
+        --bg-color: none;
+        --primary-color: black;
+    }
+
+    main {
+
+        padding: 0;
+        font-size: 12pt;
+        border: none;
+    }
+
+    :global(a) {
+        text-decoration: underline;
+    }
+
+    :global(a):link,
+    :global(a):visited {
+        color: var(--primary-color);
+    }
+
+    :global(a)[href^=http]::after {
+        content: " (" attr(href) ")";
+        font-style: italic;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    header > p {
+        font-size: 1.2em;
+    }
+
+    :global(h2) {
+        font-size: 1em;
+    }
+
+    :global(h2)::after {
+        print-color-adjust: exact;
+    }
+}
 </style>
 
