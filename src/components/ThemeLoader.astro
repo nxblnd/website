@@ -1,16 +1,15 @@
 <script is:inline>
 const root = document.documentElement;
 const preferDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
-let themeOverrideEnabled = Boolean(localStorage.getItem('theme'));
 
 root.setAttribute('data-theme', getCurrentTheme());
 
 function getCurrentTheme() {
-    return themeOverrideEnabled ? localStorage.getItem('theme') : 'auto'
+    return localStorage.getItem('theme') ?? 'auto';
 }
 
-function getPreferredColorScheme(darkThemeMatcher) {
-    return darkThemeMatcher.matches ? 'dark' : 'light';
+function getPreferredColorScheme() {
+    return preferDarkTheme.matches ? 'dark' : 'light';
 }
 
 function setTheme(theme) {
@@ -20,7 +19,7 @@ function setTheme(theme) {
 
 function toggleTheme() {
     const currentTheme = getCurrentTheme();
-    const theme = currentTheme === 'auto' ? getPreferredColorScheme(preferDarkTheme) : currentTheme;
+    const theme = currentTheme === 'auto' ? getPreferredColorScheme() : currentTheme;
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(nextTheme);
 }
