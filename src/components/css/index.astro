@@ -1,0 +1,32 @@
+---
+import Colors from "./colors.astro";
+import Reset from "./reset.astro";
+import Links from "./links.astro";
+import Headers from "./headers.astro";
+---
+
+<Colors />
+<Reset />
+<Links />
+<Headers />
+
+<style is:global>
+html, body {
+    height: 100%;
+}
+
+body {
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+
+    font-family: var(--font-sans-serif);
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 1cm;
+    }
+}
+</style>
+

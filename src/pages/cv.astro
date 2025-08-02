@@ -47,7 +47,6 @@ main {
     padding: clamp(0.3em, 3vw, 2.5em);
     border: 1px solid black;
 
-    font-family: var(--font-sans-serif);
     font-size: 13pt;
 }
 
@@ -77,14 +76,8 @@ header {
 }
 
 @media print {
-    @page {
-        size: A4;
-        margin: 1cm;
-    }
-
     main {
         padding: 0;
-        font-size: 12pt;
         border: none;
     }
 
