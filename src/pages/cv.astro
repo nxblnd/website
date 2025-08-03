@@ -42,7 +42,12 @@ import ToolBox from "@/components/cv/ToolBox.astro";
 header {
     text-align: center;
     line-height: 1.25;
-    margin: 1em;
+
+    margin-block: 5em 1em;
+    @media print {
+        margin-block: 1em;
+    }
+
     text-decoration: none;
 }
 
@@ -62,15 +67,7 @@ header {
     height: 1px;
 
     background-color: var(--secondary-color);
-}
-
-@media print {
-    main {
-        padding: 0;
-        border: none;
-    }
-
-    :global(h2)::after {
+    @media print {
         print-color-adjust: exact;
     }
 }
