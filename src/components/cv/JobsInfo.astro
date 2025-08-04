@@ -55,16 +55,12 @@ ul {
             /* TODO: Find another way to set spacing for this bullet */
             list-style: "-  ";
             padding-left: 1em;
-
-            @media print {
-                line-height: 1.3;
-            }
         }
     }
 
     @media print {
-        li {
-            margin: 0;
+        ul {
+            line-height: 1.3;
         }
     }
 }
