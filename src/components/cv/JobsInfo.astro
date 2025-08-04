@@ -28,9 +28,9 @@ const dateOptions: Intl.DateTimeFormatOptions = {
                     <h3>{ job.frontmatter.place },</h3>
                     <p>{ job.frontmatter.position }</p>
                     <p class="period">
-                        <time datetime={ job.frontmatter.start.toDateString() }>
+                        <time datetime={ job.frontmatter.start.toLocaleDateString('ru-RU') }>
                             { dateStart }
-                        </time>&hairsp;&ndash;&hairsp;<time datetime={ job.frontmatter.end.toDateString() }>
+                        </time>&hairsp;&ndash;&hairsp;<time datetime={ job.frontmatter.end.toLocaleDateString('ru-RU') }>
                             { dateEnd }
                         </time>
                     </p>
