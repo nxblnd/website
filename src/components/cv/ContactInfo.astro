@@ -5,7 +5,7 @@ import { contactInfo } from '@/content/cv/ContactInfo.ts';
 
 <h2 class="no-print">Контактная информация</h2>
 
-<div class='contact-info'>
+<address>
     {
         contactInfo
             .filter((entry) => !entry.hidden)
@@ -22,10 +22,12 @@ import { contactInfo } from '@/content/cv/ContactInfo.ts';
                     </span>
                 </div>
     )}
-</div>
+</address>
 
 <style>
-.contact-info {
+address {
+    font-style: normal;
+
     display: grid;
 
     @media (width > 40em) {

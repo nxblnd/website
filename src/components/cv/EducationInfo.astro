@@ -21,7 +21,11 @@ const dateOptions: Intl.DateTimeFormatOptions = {
                 </header>
                 <p>{ education.data.specialization }, { education.data.degree }</p>
                 <p class="period">
-                    { dateStart }&hairsp;&ndash;&hairsp;{ dateEnd }
+                    <time datetime={ dateStart }>
+                        { dateStart }
+                    </time>&hairsp;&ndash;&hairsp;<time datetime={ dateEnd }>
+                        { dateEnd }
+                    </time>
                 </p>
             </li>
         )
