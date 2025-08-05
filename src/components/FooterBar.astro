@@ -1,15 +1,57 @@
+---
+import { execSync } from 'child_process';
+import { version } from 'package.json';
+
+const gitlog = execSync('git log -1 --format=%ci').toString();
+const lastCommitTimestamp = new Date(gitlog);
+---
+
 <footer class="no-print">
     <address>
-        Contact info here
+        <a href="mailto:contact@pavelegorov.xyz">contact@pavelegorov.xyz</a>
     </address>
+    <p class="update">
+        <span>
+            Последнее обновление:
+            <time datetime={ lastCommitTimestamp.toString() }>
+                { lastCommitTimestamp.toLocaleDateString('ru-RU', {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                }) }
+            </time>
+        </span>
+        <span>v{ version }</span>
+    </p>
 </footer>
 
 <style>
 footer {
+    --max-footer-size: calc(var(--content-width) + var(--content-width-diff) * 2);
+    width: min(100%, var(--max-footer-size));
+
+    padding: 1em;
+
     flex-grow: 0;
     flex-shrink: 0;
 
     border-top: 1px solid var(--secondary-color);
+
+    display: flex;
+}
+
+address {
+    font-style: normal;
+    margin-right: auto;
+}
+
+.update {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+
+    span {
+        margin-left: 1em;
+    }
 }
 </style>
 
