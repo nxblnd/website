@@ -20,27 +20,24 @@ const { title } = Astro.props;
 
 <style>
 main {
-    --content-col: min(var(--content-width), 100%);
-    --wide-content-col: minmax(0, var(--content-width-diff));
-
-    flex-grow: 1;
-
     display: grid;
     grid-auto-rows: min-content;
-    grid-template-columns:
-        [fullwidth-start]
-        1fr
-        [wide-content-start] var(--wide-content-col)
-        [content-start] var(--content-col) [content-end]
-        var(--wide-content-col) [wide-content-end]
-        1fr
-        [fullwidth-end];
+    grid-template-columns: var(--grid-template-columns);
+    column-gap: var(--grid-column-gap);
 
     margin-block: var(--main-content-block-margin);
 }
 
 :global(main > *) {
     grid-column: content;
+}
+
+:global(main > .wide-content) {
+    grid-column: wide-content;
+}
+
+:global(main > .fullwidth) {
+    grid-column: fullwidth;
 }
 </style>
 

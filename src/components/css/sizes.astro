@@ -2,10 +2,39 @@
 :root {
     --content-width: 40em;
     --content-width-diff: 5em;
-
     --main-content-block-margin: 5em;
+    --content-padding-inline: 0.5em;
 
     --font-size: 18px;
+
+    --content-col: min(var(--content-width), 100%);
+    --wide-content-col: minmax(0, var(--content-width-diff));
+
+    --grid-template-columns:
+        [fullwidth-start]
+        1fr
+        [wide-content-start] var(--wide-content-col)
+        [content-start]
+        var(--content-col)
+        [content-end]
+        var(--wide-content-col) [wide-content-end]
+        1fr
+        [fullwidth-end];
+
+    --grid-column-gap: 0;
+
+    @media screen and (width < 60em) {
+        --grid-template-columns:
+            [fullwidth-start]
+            1fr
+            [wide-content-start content-start]
+            var(--content-col)
+            [content-end wide-content-end]
+            1fr
+            [fullwidth-end];
+
+        --grid-column-gap: clamp(1ch, 3vw, 2em);
+    }
 }
 
 @media print {
