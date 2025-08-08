@@ -1,12 +1,17 @@
 ---
-
+import { Icon } from 'astro-icon/components';
+import { meta } from '@/content/meta.ts';
 ---
 
 <nav>
     <ul>
-        <li><a href="blog">Blog</a></li>
-        <li><a href="cv">CV</a></li>
-        <li><a href="about">About</a></li>
+        { meta.menu.map((menuItem) =>
+        <li>
+            <a href={ menuItem.path }>
+                { menuItem.icon && <Icon name={ menuItem.icon }/> }
+                { menuItem.value }
+            </a>
+        </li>) }
     </ul>
 </nav>
 
@@ -17,5 +22,15 @@ ul {
     display: flex;
     flex-direction: row;
     gap: 1em;
+}
+
+a {
+    font-weight: bold;
+    color: var(--primary-color);
+
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    column-gap: 0.5em;
 }
 </style>
