@@ -1,0 +1,20 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="toolbox" x-data>
+    <button id="theme">
+        <Icon name="mdi:theme-light-dark" @click="toggleTheme()">
+    </button>
+    <button id="language" disabled>
+        <Icon name="mdi:language" />
+    </button>
+</div>
+
+<style>
+.toolbox {
+    display: flex;
+    column-gap: 0.5rem;
+}
+</style>
+
