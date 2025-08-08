@@ -1,9 +1,14 @@
 ---
 import NavBar from "./NavBar.astro";
+import type { Meta } from '@/content/meta.ts';
+import { meta } from '@/content/meta.ts';
 ---
 
 <header class="no-print">
-    <p>title</p>
+    <div class="identity">
+        <!-- <div class="logo"></div> -->
+        <p>{ meta.title }</p>
+    </div>
     <NavBar />
 </header>
 
