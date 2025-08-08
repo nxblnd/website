@@ -4,13 +4,13 @@ import HeaderBar from '@/components/HeaderBar.astro'
 import FooterBar from "@/components/FooterBar.astro"
 
 interface Props {
-    title: string,
+    pageTitle: string,
 }
 
-const { title } = Astro.props;
+const { pageTitle } = Astro.props;
 ---
 
-<BaseLayout title={ title }>
+<BaseLayout pageTitle={ pageTitle }>
     <HeaderBar />
     <main>
         <slot />
