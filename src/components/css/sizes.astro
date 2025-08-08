@@ -1,11 +1,11 @@
 <style is:global>
 :root {
-    --content-width: 40em;
-    --content-width-diff: 5em;
-    --main-content-block-margin: 5em;
-    --content-padding-inline: 0.5em;
-
     --font-size: 18px;
+
+    --content-width: 40rem;
+    --content-width-diff: 5rem;
+    --main-content-block-margin: 5rem;
+    --content-padding-inline: 0.5rem;
 
     --content-col: min(var(--content-width), 100%);
     --wide-content-col: minmax(0, var(--content-width-diff));
@@ -35,6 +35,12 @@
 
         --grid-column-gap: clamp(1ch, 3vw, 2em);
     }
+
+    --header-footer-max-size: calc(
+        var(--content-width) +
+        var(--content-width-diff) * 2);
+    --header-footer-size: min(100%, var(--header-footer-max-size));
+    --header-footer-padding: 1em;
 }
 
 @media print {
