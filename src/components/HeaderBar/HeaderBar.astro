@@ -1,14 +1,11 @@
 ---
+import HomeLink from "./HomeLink.astro";
 import NavBar from "./NavBar.astro";
 import ToolBox from "./ToolBox.astro";
-import { meta } from '@/content/meta.ts';
 ---
 
 <header class="no-print">
-    <div class="identity">
-        <!-- <div class="logo"></div> -->
-        <p>{ meta.title }</p>
-    </div>
+    <HomeLink />
     <NavBar />
     <ToolBox />
 </header>
