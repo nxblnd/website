@@ -12,6 +12,14 @@
     --dark-link-focus-color: oklch(from var(--dark-link-color) 110% c h);
     --dark-link-active-color: oklch(from var(--dark-link-color) l c calc(h + 100));
 
+    --dark-button-color: oklch(from var(--dark-accent-color) l c h);
+    --dark-button-focus-color: oklch(from var(--dark-button-color) calc(l * 1.1) c h);
+    --dark-button-active-color: oklch(from var(--dark-button-color) calc(l * 0.9) c h);
+
+    --dark-button-secondary-color: oklch(from var(--dark-bg-color) l c h);
+    --dark-button-secondary-focus-color: oklch(from var(--dark-bg-color) calc(l + 0.1) c h);
+    --dark-button-secondary-active-color: oklch(from var(--dark-bg-color) calc(l + 0.3) c h);
+
     /* Light theme */
     --light-bg-color: oklch(0.95 0.01 285);
 
@@ -23,6 +31,14 @@
     --light-link-visited-color: oklch(from var(--light-link-color) l c calc(h + 50));
     --light-link-focus-color: oklch(from var(--light-link-color) 40% c h);
     --light-link-active-color: oklch(from var(--light-link-color) l c calc(h + 100));
+
+    --light-button-secondary-color: oklch(from var(--dark-bg-color) l c h);
+    --light-button-secondary-focus-color: oklch(from var(--dark-bg-color) calc(l + 0.1) c h);
+    --light-button-secondary-active-color: oklch(from var(--dark-bg-color) calc(l + 0.3) c h);
+
+    --light-button-secondary-color: ;
+    --light-button-secondary-focus-color: ;
+    --light-button-secondary-active-color: ;
 }
 
 :root,
@@ -39,6 +55,14 @@
     --link-visited-color: var(--dark-link-visited-color);
     --link-focus-color: var(--dark-link-focus-color);
     --link-active-color: var(--dark-link-active-color);
+
+    --button-color: var(--dark-button-color);
+    --button-focus-color: var(--dark-button-focus-color);
+    --button-active-color: var(--dark-button-active-color);
+
+    --button-secondary-color: var(--dark-button-secondary-color);
+    --button-secondary-focus-color: var(--dark-button-secondary-focus-color);
+    --button-secondary-active-color: var(--dark-button-secondary-active-color);
 }
 
 :root[data-theme="light"] {
@@ -54,6 +78,14 @@
     --link-visited-color: var(--light-link-visited-color);
     --link-focus-color: var(--light-link-focus-color);
     --link-active-color: var(--light-link-active-color);
+
+    --button-color: var(--light-button-color);
+    --button-focus-color: var(--light-button-focus-color);
+    --button-active-color: var(--light-button-active-color);
+
+    --button-secondary-color: var(--light-button-secondary-color);
+    --button-secondary-focus-color: var(--light-button-secondary-color);
+    --button-secondary-active-color: var(--light-button-secondary-active-color);
 }
 
 @media (prefers-color-scheme: light) {
@@ -70,6 +102,14 @@
         --link-visited-color: var(--light-link-visited-color);
         --link-focus-color: var(--light-link-focus-color);
         --link-active-color: var(--light-link-active-color);
+
+        --button-color: var(--light-button-color);
+        --button-focus-color: var(--light-button-focus-color);
+        --button-active-color: var(--light-button-active-color);
+
+        --button-secondary-color: var(--light-button-secondary-color);
+        --button-secondary-focus-color: var(--light-button-secondary-color);
+        --button-secondary-active-color: var(--light-button-secondary-active-color);
     }
 }
 
