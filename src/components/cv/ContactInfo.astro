@@ -12,7 +12,7 @@ import { contactInfo } from '@/content/cv/ContactInfo.ts';
             .map((entry) =>
                 <div class:list={['entry', { important: entry.important }]}>
                     <span class='title'>
-                        { entry.icon && <Icon name={ entry.icon } /> }
+                        { entry.icon && <Icon name={ entry.icon } aria-hidden="true" /> }
                         { entry.title }:
                     </span>
                     <span class='value'>

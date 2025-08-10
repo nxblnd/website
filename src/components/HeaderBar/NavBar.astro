@@ -8,7 +8,7 @@ import { meta } from '@/content/meta.ts';
         { meta.menu.map((menuItem) =>
         <li>
             <a href={ menuItem.path }>
-                { menuItem.icon && <Icon name={ menuItem.icon }/> }
+                { menuItem.icon && <Icon name={ menuItem.icon } aria-hidden="true" /> }
                 { menuItem.value }
             </a>
         </li>) }

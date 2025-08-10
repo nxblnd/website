@@ -6,7 +6,7 @@ import Button from '@/components/Button.astro';
 <div class="toolbox no-print">
     <a href="/cv.pdf" download>
         <Button class="button">
-            <Icon name="mdi:download" />
+            <Icon name="mdi:download" aria-hidden="true" />
             Скачать
         </Button>
     </a>
@@ -14,11 +14,11 @@ import Button from '@/components/Button.astro';
         class="button"
         onclick="window.print()"
     >
-        <Icon name="mdi:printer" />
+        <Icon name="mdi:printer" aria-hidden="true" />
         Печатать
     </Button>
     <Button>
-        <Icon name="mdi:share" />
+        <Icon name="mdi:share" aria-hidden="true" />
         Поделиться
     </Button>
 </div>
