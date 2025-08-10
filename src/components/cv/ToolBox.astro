@@ -1,40 +1,36 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Button from '@/components/Button.astro';
 ---
 
-<div class="toolbox no-print" x-data>
-    <button class="theme">
-        <Icon name="mdi:theme-light-dark" @click="toggleTheme()" />
-    </button>
-    <button class="download">
+<div class="toolbox no-print">
+    <Button class="button">
         <Icon name="mdi:download" />
-    </button>
-    <button class="print" @click="window.print()">
+        Скачать
+    </Button>
+    <Button
+        class="button"
+        onclick="window.print()"
+    >
         <Icon name="mdi:printer" />
-    </button>
+        Печатать
+    </Button>
+    <Button>
+        <Icon name="mdi:share" />
+        Поделиться
+    </Button>
 </div>
 
 <style>
 .toolbox {
-    position: fixed;
-    inset: auto 3em 3em auto;
-
-    background-color: var(--accent-color);
+    padding-block: 1em;
 
     display: flex;
-    flex-direction: column;
+    gap: 0.5em;
 }
 
-button {
-    width: 3em;
-    height: 3em;
-
-    border: none;
-    border-radius: 50%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.button {
+    padding-block: 1em;
 }
 
 [data-icon] {
