@@ -12,13 +12,15 @@
     --dark-link-focus-color: oklch(from var(--dark-link-color) 110% c h);
     --dark-link-active-color: oklch(from var(--dark-link-color) l c calc(h + 100));
 
-    --dark-button-color: oklch(from var(--dark-accent-color) l c h);
+    --dark-button-color: oklch(from var(--dark-accent-color) calc(l * 0.74) c h);
     --dark-button-focus-color: oklch(from var(--dark-button-color) calc(l * 1.1) c h);
     --dark-button-active-color: oklch(from var(--dark-button-color) calc(l * 0.9) c h);
+    --dark-button-text-color: oklch(from var(--dark-primary-color) calc(l * 1.2) c h);
 
     --dark-button-secondary-color: oklch(from var(--dark-bg-color) l c h);
-    --dark-button-secondary-focus-color: oklch(from var(--dark-bg-color) calc(l + 0.1) c h);
-    --dark-button-secondary-active-color: oklch(from var(--dark-bg-color) calc(l + 0.3) c h);
+    --dark-button-secondary-focus-color: oklch(from var(--dark-button-secondary-color) calc(l + 0.1) c h);
+    --dark-button-secondary-active-color: oklch(from var(--dark-button-secondary-color) calc(l + 0.2) c h);
+    --dark-button-secondary-text-color: oklch(from var(--dark-primary-color) l c h);
 
     /* Light theme */
     --light-bg-color: oklch(0.95 0.01 285);
@@ -32,13 +34,15 @@
     --light-link-focus-color: oklch(from var(--light-link-color) 40% c h);
     --light-link-active-color: oklch(from var(--light-link-color) l c calc(h + 100));
 
-    --light-button-secondary-color: oklch(from var(--dark-bg-color) l c h);
-    --light-button-secondary-focus-color: oklch(from var(--dark-bg-color) calc(l + 0.1) c h);
-    --light-button-secondary-active-color: oklch(from var(--dark-bg-color) calc(l + 0.3) c h);
+    --light-button-color: oklch(from var(--dark-button-color) calc(l * 1) c h);
+    --light-button-focus-color: oklch(from var(--light-button-color) calc(l * 1.1) c h);
+    --light-button-active-color: oklch(from var(--light-button-color) calc(l * 0.9) c h);
+    --light-button-text-color: oklch(from var(--dark-primary-color) calc(l * 2) c h);
 
-    --light-button-secondary-color: ;
-    --light-button-secondary-focus-color: ;
-    --light-button-secondary-active-color: ;
+    --light-button-secondary-color: oklch(from var(--light-bg-color) l c h);
+    --light-button-secondary-focus-color: oklch(from var(--light-button-secondary-color) calc(l - 0.1) c h);
+    --light-button-secondary-active-color: oklch(from var(--light-button-secondary-color) calc(l + 0.009) c h);
+    --light-button-secondary-text-color: oklch(from var(--light-primary-color) l c h);
 }
 
 :root,
@@ -59,10 +63,12 @@
     --button-color: var(--dark-button-color);
     --button-focus-color: var(--dark-button-focus-color);
     --button-active-color: var(--dark-button-active-color);
+    --button-text-color: var(--dark-button-text-color);
 
     --button-secondary-color: var(--dark-button-secondary-color);
     --button-secondary-focus-color: var(--dark-button-secondary-focus-color);
     --button-secondary-active-color: var(--dark-button-secondary-active-color);
+    --button-secondary-text-color: var(--dark-button-secondary-text-color);
 }
 
 :root[data-theme="light"] {
@@ -82,10 +88,12 @@
     --button-color: var(--light-button-color);
     --button-focus-color: var(--light-button-focus-color);
     --button-active-color: var(--light-button-active-color);
+    --button-text-color: var(--light-button-text-color);
 
     --button-secondary-color: var(--light-button-secondary-color);
-    --button-secondary-focus-color: var(--light-button-secondary-color);
+    --button-secondary-focus-color: var(--light-button-secondary-focus-color);
     --button-secondary-active-color: var(--light-button-secondary-active-color);
+    --button-secondary-text-color: var(--light-button-secondary-text-color);
 }
 
 @media (prefers-color-scheme: light) {
@@ -106,10 +114,12 @@
         --button-color: var(--light-button-color);
         --button-focus-color: var(--light-button-focus-color);
         --button-active-color: var(--light-button-active-color);
+        --button-text-color: var(--light-button-text-color);
 
         --button-secondary-color: var(--light-button-secondary-color);
-        --button-secondary-focus-color: var(--light-button-secondary-color);
+        --button-secondary-focus-color: var(--light-button-secondary-focus-color);
         --button-secondary-active-color: var(--light-button-secondary-active-color);
+        --button-secondary-text-color: var(--light-button-secondary-text-color);
     }
 }
 
