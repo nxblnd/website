@@ -4,12 +4,15 @@ import Button from '@/components/Button.astro';
 ---
 
 <div class="toolbox no-print">
-    <Button class="button">
-        <Icon name="mdi:download" />
-        Скачать
-    </Button>
+    <a href="/cv.pdf" download>
+        <Button class="button">
+            <Icon name="mdi:download" />
+            Скачать
+        </Button>
+    </a>
     <Button
         class="button"
+        type="button"
         onclick="window.print()"
     >
         <Icon name="mdi:printer" />
@@ -27,6 +30,11 @@ import Button from '@/components/Button.astro';
 
     display: flex;
     gap: 0.5em;
+}
+
+a {
+    display: flex;
+    flex: 1;
 }
 
 .button {
