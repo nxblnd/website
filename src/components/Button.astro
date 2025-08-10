@@ -1,5 +1,7 @@
 ---
-interface Props {
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<"button"> {
     class?: string,
     secondary?: boolean,
     wide?: boolean,
@@ -8,12 +10,13 @@ interface Props {
 const { class: className, secondary = false, wide = false, ...rest } = Astro.props;
 ---
 
-<button class:list={ [className, { secondary, wide }] } { ...rest }>
+<button class:list={ [className, { secondary, wide }] } { ...rest } type="button">
     <slot />
 </button>
 
 <style>
 button {
+    color: var(--button-text-color);
     background-color: var(--button-color);
 
     padding-inline: 0.5em;
@@ -29,8 +32,6 @@ button {
     align-items: center;
     justify-content: center;
     gap: 0.25em;
-
-    
 }
 
 button:hover,
