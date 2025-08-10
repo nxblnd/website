@@ -1,20 +1,29 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Button from '@/components/Button.astro';
 ---
 
-<div class="toolbox" x-data>
-    <button id="theme">
-        <Icon name="mdi:theme-light-dark" @click="toggleTheme()">
-    </button>
-    <button id="language" disabled>
+<div class="toolbox">
+    <Button
+        type="button"
+        secondary
+        onclick="toggleTheme()"
+    >
+        <Icon name="mdi:theme-light-dark" />
+        <span>Тема</span>
+    </Button>
+    <Button id="language" disabled secondary>
         <Icon name="mdi:language" />
-    </button>
+        <span>Язык</span>
+    </Button>
 </div>
 
 <style>
 .toolbox {
+    font-size: medium;
+
     display: flex;
-    column-gap: 0.5rem;
+    column-gap: 0.5em;
 }
 </style>
 
