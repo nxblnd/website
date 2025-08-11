@@ -1,10 +1,12 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Button from '@/components/Button.astro';
+
+const cvDownloadPath = "/cv.pdf";
 ---
 
 <div class="toolbox no-print">
-    <a href="/cv.pdf" download>
+    <a href={ cvDownloadPath } download>
         <Button>
             <Icon name="mdi:download" aria-hidden="true" />
             Скачать
@@ -14,11 +16,24 @@ import Button from '@/components/Button.astro';
         <Icon name="mdi:printer" aria-hidden="true" />
         Печатать
     </Button>
-    <Button>
+    <Button id="share">
         <Icon name="mdi:share" aria-hidden="true" />
         Поделиться
     </Button>
 </div>
+
+<script define:vars={{ cvDownloadPath }}>
+const shareButton = document.querySelector("#share");
+shareButton.addEventListener("click", share);
+
+function share() {
+    navigator.share({
+        url: cvDownloadPath,
+        title: 'Резюме',
+        text: 'Егоров Павел, frontend разработчик',
+    });
+}
+</script>
 
 <style>
 .toolbox {
