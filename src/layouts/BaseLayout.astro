@@ -29,10 +29,17 @@ const { pageTitle } = Astro.props;
 </html>
 
 <style>
+html {
+    @media (prefers-reduced-motion: no-preference) {
+        scroll-behavior: smooth;
+    }
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 </style>
 

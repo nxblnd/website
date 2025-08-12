@@ -5,6 +5,9 @@ import Controls from "./Controls.astro";
 ---
 
 <header class="no-print">
+    <a class="skip-to-content" href="#main">
+        Skip to content
+    </a>
     <HomeLink />
     <NavBar />
     <Controls />
@@ -26,6 +29,35 @@ header {
 
     background-color: var(--bg-color);
     border-bottom: 1px solid var(--secondary-color);
+}
+
+.skip-to-content {
+    --skip-link-padding: 0.5em;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    padding: var(--skip-link-padding);
+
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+
+    --border-width: 1px;
+    --border-style: var(--border-width) solid var(--primary-color);
+    border-right: var(--border-style);
+    border-bottom: var(--border-style);
+    border-radius: 0 0 0.25em 0;
+
+    transform: translateY(0);
+    
+    @media (prefers-reduced-motion: no-preference) {
+        transition: transform 250ms;
+    }
+}
+
+.skip-to-content:not(:focus) {
+    transform: translateY(calc((var(--skip-link-padding) * 2 + 1lh + var(--border-width)) * -1));
 }
 </style>
 

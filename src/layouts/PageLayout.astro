@@ -12,7 +12,7 @@ const { pageTitle } = Astro.props;
 
 <BaseLayout pageTitle={ pageTitle }>
     <HeaderBar />
-    <main>
+    <main id="main">
         <slot />
     </main>
     <FooterBar />
@@ -26,6 +26,7 @@ main {
     column-gap: var(--grid-column-gap);
 
     margin-block: var(--main-content-block-margin);
+    scroll-margin-top: var(--main-content-block-margin);
 }
 
 :global(main > *) {
