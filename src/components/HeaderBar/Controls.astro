@@ -1,18 +1,16 @@
 ---
-import { Icon } from 'astro-icon/components';
 import Button from '@/components/Button.astro';
 ---
 
 <div class="controls">
     <Button
+        icon="mdi:theme-light-dark"
         secondary
         onclick="toggleTheme()"
     >
-        <Icon name="mdi:theme-light-dark" aria-hidden="true" />
         Тема
     </Button>
-    <Button id="language" disabled secondary>
-        <Icon name="mdi:language" aria-hidden="true" />
+    <Button id="language" icon="mdi:language" disabled secondary>
         Язык
     </Button>
 </div>

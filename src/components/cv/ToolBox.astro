@@ -1,5 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components';
 import Button from '@/components/Button.astro';
 
 const cvDownloadPath = "/cv.pdf";
@@ -7,17 +6,14 @@ const cvDownloadPath = "/cv.pdf";
 
 <div class="toolbox no-print">
     <a href={ cvDownloadPath } download>
-        <Button>
-            <Icon name="mdi:download" aria-hidden="true" />
+        <Button icon='mdi:download' large>
             Скачать
         </Button>
     </a>
-    <Button onclick="window.print()">
-        <Icon name="mdi:printer" aria-hidden="true" />
+    <Button icon='mdi:printer' large onclick="window.print()">
         Печатать
     </Button>
-    <Button id="share">
-        <Icon name="mdi:share" aria-hidden="true" />
+    <Button id="share" icon='mdi:share' large>
         Поделиться
     </Button>
 </div>
@@ -38,8 +34,6 @@ function share() {
 <style>
 .toolbox {
     padding-block: 1em;
-
-    height: 5em;
 
     display: flex;
     gap: 0.5em;
