@@ -1,16 +1,27 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { Icon } from 'astro-icon/components';
 
 interface Props extends HTMLAttributes<"button"> {
     class?: string,
     secondary?: boolean,
+    icon?: string,
     wide?: boolean,
+    large?: boolean,
 }
 
-const { class: className, secondary = false, wide = false, ...rest } = Astro.props;
+const {
+    class: className,
+    secondary,
+    wide,
+    large,
+    icon,
+    ...rest
+} = Astro.props;
 ---
 
-<button class:list={ [className, { secondary, wide }] } { ...rest } type="button">
+<button class:list={ [className, { secondary, wide, large }] } { ...rest } type="button">
+    { icon && <Icon name={ icon } aria-hidden="true" /> }
     <slot />
 </button>
 
@@ -61,6 +72,15 @@ button[disabled] {
 
 .wide {
     padding-inline: 2em;
+}
+
+.large {
+    font-size: 1.2em;
+    padding-block: 0.5em;
+
+    [data-icon] {
+        font-size: 2em;
+    }
 }
 
 .secondary {
