@@ -1,15 +1,11 @@
 ---
 import Button from '@/components/Button.astro';
-
-const cvDownloadPath = "/cv.pdf";
 ---
 
 <div class="toolbox no-print">
-    <a href={ cvDownloadPath } download>
-        <Button icon='mdi:download' large>
-            Скачать
-        </Button>
-    </a>
+    <Button id="download" icon='mdi:download' large>
+        Скачать
+    </Button>
     <Button icon='mdi:printer' large onclick="window.print()">
         Печатать
     </Button>
@@ -18,17 +14,21 @@ const cvDownloadPath = "/cv.pdf";
     </Button>
 </div>
 
-<script define:vars={{ cvDownloadPath }}>
-const shareButton = document.querySelector("#share");
-shareButton.addEventListener("click", share);
+<script>
+import download from '@/utils/download';
 
-function share() {
-    navigator.share({
-        url: cvDownloadPath,
+document
+    .querySelector("#share")
+    ?.addEventListener("click", () => navigator.share({
+        url: '',
         title: 'Резюме',
         text: 'Егоров Павел, frontend разработчик',
-    });
-}
+    })
+);
+
+document
+    .querySelector("#download")
+    ?.addEventListener("click", () => download("cv.pdf"));
 </script>
 
 <style>
@@ -36,16 +36,14 @@ function share() {
     padding-block: 1em;
 
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5em;
 }
 
 a {
     display: flex;
     flex: 1;
-}
-
-[data-icon] {
-    font-size: 2em;
+    min-width: fit-content;
 }
 </style>
 
