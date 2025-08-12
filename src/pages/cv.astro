@@ -1,8 +1,10 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
 import ContactInfo from "@/components/cv/ContactInfo.astro";
+import { Content as AboutContent } from "@/content/cv/about.md";
 import JobsInfo from "@/components/cv/JobsInfo.astro";
 import EducationInfo from "@/components/cv/EducationInfo.astro";
+import { Content as SkillsContent } from "@/content/cv/skills.md";
 import ToolBox from "@/components/cv/ToolBox.astro";
 ---
 
@@ -16,14 +18,7 @@ import ToolBox from "@/components/cv/ToolBox.astro";
 
     <h2>Кратко обо мне</h2>
 
-    <p>
-        Суммарный опыт работы больше 3 лет.
-        По рабочим задачам использовал VueJS, изучал React вне работы.
-        Разбираюсь в Python и могу поднять фронтенд в Docker контейнере с Nginx.
-        Работал как единственным фронтендером в команде, так и с коллегами.
-        Периодически участвую в соревнованиях по информационной безопасности формата CTF.
-        В свободное время администрирую homelab сервер через Ansible.
-    </p>
+    <AboutContent />
 
     <JobsInfo />
 
@@ -31,9 +26,7 @@ import ToolBox from "@/components/cv/ToolBox.astro";
 
     <h2>Навыки</h2>
 
-    <p>Языки программирования и разметки: JavaScript/Typescript, Python, HTML, CSS/SCSS, немного Java и Go</p>
-    <p>Фреймворки и библиотеки: VueJS, Vuex, Pinia, React, Module Federation, NodeJS</p>
-    <p>Инструменты: Git, ESlint, Webpack, Vite, Docker, Nginx</p>
+    <SkillsContent />
     
     <ToolBox />
 </PageLayout>
