@@ -1,6 +1,6 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
-import { meta } from "@/content/meta.ts";
+import { personalInfo } from "@/content/cv/info.ts";
 import ContactInfo from "@/components/cv/ContactInfo.astro";
 import { Content as AboutContent } from "@/content/cv/about.md";
 import JobsInfo from "@/components/cv/JobsInfo.astro";
@@ -11,8 +11,8 @@ import ToolBox from "@/components/cv/ToolBox.astro";
 
 <PageLayout pageTitle='Резюме'>
     <hgroup>
-        <h1>{ meta.cvName }</h1>
-        <p>{ meta.cvPosition }</p>
+        <h1>{ personalInfo.name.lastName } { personalInfo.name.firstName } { personalInfo.name.patronym }</h1>
+        <p>{ personalInfo.position }</p>
     </hgroup>
 
     <ContactInfo />

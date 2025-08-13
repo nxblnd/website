@@ -16,15 +16,11 @@ import Button from '@/components/Button.astro';
 
 <script>
 import download from '@/utils/download';
+import { cvShareInfo } from '@/content/cv/info.ts';
 
 document
     .querySelector("#share")
-    ?.addEventListener("click", () => navigator.share({
-        url: '',
-        title: 'Резюме',
-        text: 'Егоров Павел, frontend разработчик',
-    })
-);
+    ?.addEventListener("click", () => navigator.share(cvShareInfo));
 
 document
     .querySelector("#download")

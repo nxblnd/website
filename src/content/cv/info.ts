@@ -1,4 +1,15 @@
-export interface ContactEntry {
+interface Name {
+    firstName: string,
+    lastName: string,
+    patronym?: string,
+}
+
+interface PersonalInfo {
+    name: Name,
+    position: string,
+}
+
+interface ContactEntry {
     value: string,
     label: string,
     icon?: string,
@@ -8,7 +19,25 @@ export interface ContactEntry {
     important?: boolean,
 }
 
-export const contactInfo: Array<ContactEntry> = [
+type ContactInfo = Array<ContactEntry>;
+
+interface CvShareInfo {
+    url?: string,
+    title?: string,
+    text?: string,
+    files?: Array<File>,
+}
+
+export const personalInfo: PersonalInfo = {
+    name: {
+        firstName: "Павел",
+        lastName: "Егоров",
+        patronym: "Владимирович",
+    },
+    position: "Frontend разработчик",
+}
+
+export const contactInfo: ContactInfo = [
     {
         label: 'location',
         value: 'Санкт-Петербург, Россия; готов к релокации',
@@ -75,4 +104,9 @@ export const contactInfo: Array<ContactEntry> = [
         hidden: true,
     },
 ];
+
+export const cvShareInfo: CvShareInfo = {
+    title: "Резюме",
+    text: `${personalInfo.name.lastName} ${personalInfo.name.firstName}, ${personalInfo.position}`,
+}
 
