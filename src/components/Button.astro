@@ -7,6 +7,7 @@ interface Props extends HTMLAttributes<"button"> {
     secondary?: boolean,
     icon?: string,
     wide?: boolean,
+    small?: boolean,
     large?: boolean,
 }
 
@@ -14,13 +15,18 @@ const {
     class: className,
     secondary,
     wide,
+    small,
     large,
     icon,
     ...rest
 } = Astro.props;
 ---
 
-<button class:list={ [className, { secondary, wide, large }] } { ...rest } type="button">
+<button
+    class:list={ [className, { secondary, wide, small, large }] }
+    type="button"
+    { ...rest }
+>
     { icon && <Icon name={ icon } aria-hidden="true" /> }
     <slot />
 </button>
@@ -72,6 +78,10 @@ button[disabled] {
 
 .wide {
     padding-inline: 2em;
+}
+
+.small {
+    font-size: smaller;
 }
 
 .large {
