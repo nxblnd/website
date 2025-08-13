@@ -7,7 +7,9 @@
     --main-content-block-margin: 5rem;
     --content-padding-inline: 0.5rem;
 
-    --content-col: min(var(--content-width), 100%);
+    --content-col: min(
+        var(--content-width),
+        calc(100% - var(--grid-column-gap) * 2));
     --wide-content-col: minmax(0, var(--content-width-diff));
 
     --grid-template-columns:
@@ -23,7 +25,7 @@
             1fr
         [fullwidth-end];
 
-    --grid-column-gap: 0;
+    --grid-column-gap: 0em; /* unit is required for correct width calculations */
 
     @media screen and (width < 60em) {
         --grid-template-columns:
