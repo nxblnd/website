@@ -1,6 +1,10 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { meta } from '@/content/meta.ts';
+
+interface Props {
+    showIcons?: boolean,
+}
 ---
 
 <nav>
@@ -8,7 +12,7 @@ import { meta } from '@/content/meta.ts';
         { meta.menu.map((menuItem) =>
         <li>
             <a href={ menuItem.path }>
-                { menuItem.icon && <Icon name={ menuItem.icon } aria-hidden="true" /> }
+                { Astro.props.showIcons && menuItem.icon && <Icon name={ menuItem.icon } aria-hidden="true" /> }
                 { menuItem.value }
             </a>
         </li>) }
