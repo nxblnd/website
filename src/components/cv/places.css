@@ -1,10 +1,17 @@
 h3 {
     font-family: var(--font-sans-serif);
     font-size: 1em;
-    font-variant: small-caps;
-    letter-spacing: 0.04em;
-    font-feature-settings: "kern";
-    text-rendering: optimizeLegibility;
+
+    @media screen {
+        font-variant: small-caps;
+        letter-spacing: 0.04em;
+        font-feature-settings: "kern";
+        text-rendering: optimizeLegibility;
+    }
+
+    @media print {
+        font-weight: bold;
+    }
 }
 
 .period {
