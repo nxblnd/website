@@ -3,8 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "pdfgen": "playwright test pdfGen.spec.ts",
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run pdfgen && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -15,5 +16,9 @@
     "alpinejs": "^3.14.9",
     "astro": "^5.10.1",
     "astro-icon": "^1.1.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^24.2.1"
   }
 }

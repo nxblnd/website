@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# Files that should be in output and are generated at build-time not by Astro
+public/generated/
+
 # generated types
 .astro/
 
