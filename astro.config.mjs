@@ -7,6 +7,7 @@ import alpinejs from '@astrojs/alpinejs';
 
 // https://astro.build/config
 export default defineConfig({
+    site: 'https://example.com',
     integrations: [icon(), alpinejs()],
     experimental: {
         fonts: [

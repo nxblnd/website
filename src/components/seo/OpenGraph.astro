@@ -1,0 +1,53 @@
+---
+// https://ogp.me/
+
+export interface Props {
+    title: string,
+    type?: string,
+    image: string,
+
+    imageAlt: string,
+    imageType?: string,
+    imageWidth?: number,
+    imageHeight?: number,
+
+    url: string,
+    audio?: string,
+    description?: string,
+    determiner?: string,
+    locale?: string,
+    localeAlternate?: Array<string>,
+    siteName?: string,
+    video?: string,
+
+    publishedTime?: string,
+    modifiedTime?: string,
+    author?: string,
+}
+
+const props = Astro.props;
+---
+
+<meta property="og:title" content={ props.title } />
+<meta property="og:type" content={ props.type ?? 'website' } />
+
+<meta property="og:image" content={ props.image } />
+<meta property="og:image:alt" content={ props.imageAlt } />
+{ props.imageType && <meta property="og:image:type" content={ props.imageType } /> }
+{ props.imageWidth && <meta property="og:image:width" content={ props.imageWidth.toString() } /> }
+{ props.imageHeight && <meta property="og:image:height" content={ props.imageHeight.toString() } /> }
+
+<meta property="og:url" content={ props.url } />
+{ props.audio && <meta property="og:audio" content={ props.audio } /> }
+{ props.description && <meta property="og:description" content={ props.description } /> }
+{ props.determiner && <meta property="og:determiner" content={ props.determiner } /> }
+{ props.locale && <meta property="og:locale" content={ props.locale } /> }
+{ props.localeAlternate && props.localeAlternate.map((localeAlternate) =>
+    <meta property="og:locale:alternate" content={ localeAlternate } />)
+}
+{ props.siteName && <meta property="og:site_name" content={ props.siteName } /> }
+{ props.video && <meta property="og:video" content={ props.video } /> }
+
+{ props.publishedTime && <meta property="article:publushed_time" content={ props.publishedTime } /> }
+{ props.modifiedTime && <meta property="article:modified_time" content={ props.modifiedTime } /> }
+{ props.author && <meta property="article:author" content={ props.author } /> }

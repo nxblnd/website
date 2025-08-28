@@ -2,16 +2,20 @@
 import { Font } from 'astro:assets';
 import ThemeLoader from '@/components/ThemeLoader.astro';
 import Css from '@/components/css/index.astro';
+import Seo from '@/components/seo/index.astro';
+import type { Props as OpenGraphProps } from '@/components/seo/OpenGraph.astro';
 
 interface Props {
-    pageTitle: string,
-}
+    title: string,
+    description: string,
+    openGraph: OpenGraphProps,
+};
 
-const { pageTitle } = Astro.props;
+const props = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" data-theme="auto">
+<html lang="en" data-theme="auto" prefix="og: https://ogp.me/ns#">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
@@ -19,9 +23,9 @@ const { pageTitle } = Astro.props;
         <Font cssVariable='--font-serif' preload />
         <Font cssVariable='--font-sans-serif' preload />
         <Font cssVariable='--font-monospace' />
-        <title>{ pageTitle }</title>
         <ThemeLoader />
         <Css />
+        <Seo { ...props } />
     </head>
     <body>
         <slot />
