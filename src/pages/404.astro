@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<BaseLayout>
+    <main>
+        <h1>Page not found</h1>
+        <p>Nothing here... Return <a href="/">home</a></p>
+        <Icon name="noto-v1:weary-cat" />
+    </main>
+</BaseLayout>
+
+<style>
+main {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+[data-icon] {
+    font-size: 5em;
+}
+</style>
+
