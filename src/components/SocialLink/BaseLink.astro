@@ -1,0 +1,29 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+    icon: string,
+    label: string,
+    url: string,
+}
+
+const { icon, label, url } = Astro.props;
+---
+
+<a href={ url } aria-label={ label }>
+    <Icon name={ icon } aria-label='hidden' />
+</a>
+
+<style>
+a {
+    color: var(--secondary-color);
+    font-size: 1.5em;
+    display: block;
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--primary-color);
+}
+</style>
+

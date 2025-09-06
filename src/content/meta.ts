@@ -5,10 +5,18 @@ interface MenuItem {
     icon?: string,
 }
 
+interface Social {
+    name: string,
+    icon: string,
+    link: string,
+    label: string,
+}
+
 export interface Meta {
     title: string,
     author: string,
     menu: Array<MenuItem>,
+    social: Array<Social>,
 }
 
 export const meta: Meta = {
@@ -26,6 +34,20 @@ export const meta: Meta = {
             value: 'About',
             path: 'about',
             icon: 'mdi:about',
+        },
+    ],
+    social: [
+        {
+            name: 'email',
+            icon: 'mdi:email',
+            link: 'mailto:contact@pavelegorov.xyz',
+            label: 'Contact me by email',
+        },
+        {
+            name: 'github',
+            icon: 'mdi:github',
+            link: 'https://github.com/nxblnd',
+            label: 'My Github account',
         },
     ],
 }
