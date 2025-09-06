@@ -1,19 +1,15 @@
 ---
 import { getCollection } from "astro:content";
+import DateSpan from '@/components/DateSpan.astro';
 
 const educationCollection = (await getCollection('education'))
     .sort((a, b) => b.data.start.getTime() - a.data.start.getTime());
-const dateOptions: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-};
 ---
 
 <h2>Образование</h2>
 
 <ul>
     {educationCollection.map((education) => {
-        const dateStart = education.data.start.toLocaleDateString('ru-RU', dateOptions);
-        const dateEnd = education.data.end.toLocaleDateString('ru-RU', dateOptions);
         return (
             <li>
                 <header>
@@ -21,11 +17,14 @@ const dateOptions: Intl.DateTimeFormatOptions = {
                 </header>
                 <p>{ education.data.specialization }, { education.data.degree }</p>
                 <p class="period">
-                    <time datetime={ dateStart }>
-                        { dateStart }
-                    </time>&hairsp;&ndash;&hairsp;<time datetime={ dateEnd }>
-                        { dateEnd }
-                    </time>
+                    <DateSpan
+                        start={ education.data.start }
+                        end={ education.data.end }
+                        locale="ru-RU"
+                        dateOptions={{
+                            year: 'numeric',
+                        }}
+                    />
                 </p>
             </li>
         )

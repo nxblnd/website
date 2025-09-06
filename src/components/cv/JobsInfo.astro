@@ -1,14 +1,11 @@
 ---
 import { getCollection, render } from "astro:content";
+import DateSpan from '@/components/DateSpan.astro';
 
 const jobsCollection = await getCollection('jobs');
 const jobs = await Promise.all(jobsCollection
     .sort((a, b) => b.data.start.getTime() - a.data.start.getTime())
     .map(async (job) => ({ frontmatter: job.data, content: await render(job) })));
-const dateOptions: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-};
 ---
 
 <h2>Опыт работы</h2>
@@ -16,23 +13,21 @@ const dateOptions: Intl.DateTimeFormatOptions = {
 <ul>
     {jobs.map((job) => {
         const Content = job.content.Content;
-        const dateStart = job.frontmatter.start
-            .toLocaleDateString('ru-RU', dateOptions)
-            .replace(/ г\./, '');
-        const dateEnd = job.frontmatter.end
-            .toLocaleDateString('ru-RU', dateOptions)
-            .replace(/ г\./, '');
         return (
             <li>
                 <header>
                     <h3>{ job.frontmatter.place },</h3>
                     <p>{ job.frontmatter.position }</p>
                     <p class="period">
-                        <time datetime={ job.frontmatter.start.toLocaleDateString('ru-RU') }>
-                            { dateStart }
-                        </time>&hairsp;&ndash;&hairsp;<time datetime={ job.frontmatter.end.toLocaleDateString('ru-RU') }>
-                            { dateEnd }
-                        </time>
+                        <DateSpan
+                            start={ job.frontmatter.start }
+                            end={ job.frontmatter.end }
+                            locale='ru-RU'
+                            dateOptions={{
+                                year: 'numeric',
+                                month: 'long',
+                            }}
+                        />
                     </p>
                 </header>
                 <Content />
