@@ -4,6 +4,10 @@ dist/
 # Files that should be in output and are generated at build-time not by Astro
 public/generated/
 
+# Favicons should be generated from SVG using favicon.sh script
+public/favicon
+public/apple-touch-icon.png
+
 # generated types
 .astro/
 
