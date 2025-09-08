@@ -26,6 +26,11 @@ a:active {
     color: var(--link-active-color);
 }
 
+.primary-link:link,
+.primary-link:visited {
+    color: var(--primary-color);
+}
+
 @media print {
     a[href^=http]::after {
         content: " (" attr(href) ")";

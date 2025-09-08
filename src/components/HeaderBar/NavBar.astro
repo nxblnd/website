@@ -11,7 +11,7 @@ interface Props {
     <ul>
         { meta.menu.map((menuItem) =>
         <li>
-            <a href={ menuItem.path }>
+            <a class='primary-link' href={ menuItem.path }>
                 { Astro.props.showIcons && menuItem.icon && <Icon name={ menuItem.icon } aria-hidden="true" /> }
                 { menuItem.value }
             </a>
@@ -35,8 +35,6 @@ ul {
 }
 
 a {
-    color: var(--primary-color);
-
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
