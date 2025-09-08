@@ -26,13 +26,13 @@ export const meta: Meta = {
         {
             name: 'cv',
             value: 'Резюме',
-            path: 'cv',
+            path: '/cv',
             icon: 'mdi:resume',
         },
         {
             name: 'about',
             value: 'About',
-            path: 'about',
+            path: '/about',
             icon: 'mdi:about',
         },
     ],
