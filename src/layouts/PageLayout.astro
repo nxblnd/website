@@ -2,15 +2,18 @@
 import BaseLayout from "./BaseLayout.astro"
 import HeaderBar from '@/components/HeaderBar/HeaderBar.astro'
 import FooterBar from "@/components/FooterBar.astro"
+import type { Props as OpenGraphProps } from '@/components/seo/OpenGraph.astro';
 
 interface Props {
-    pageTitle: string,
+    title: string,
+    description: string,
+    openGraph?: OpenGraphProps,
 }
 
-const { pageTitle } = Astro.props;
+const props = Astro.props;
 ---
 
-<BaseLayout pageTitle={ pageTitle }>
+<BaseLayout { ...props }>
     <HeaderBar />
     <main id="main">
         <slot />
