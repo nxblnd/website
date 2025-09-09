@@ -1,65 +1,61 @@
 ---
-import LinkCluster from '@/components/SocialLink/LinkCluster.astro';
-import DateSpan from '@/components/DateSpan.astro';
-import { execSync } from 'child_process';
-import { toRoman } from '@/utils/roman.ts';
+import LinkCluster from "@/components/SocialLink/LinkCluster.astro";
+import DateSpan from "@/components/DateSpan.astro";
+import { execSync } from "child_process";
+import { toRoman } from "@/utils/roman.ts";
 
-const gitlog = execSync('git log --format="%cI %h"').toString().trim().split('\n');
-const firstCommitTimestamp = new Date(gitlog.at(-1)?.split(' ')[0].toString() ?? 0);
-const lastCommitTimestamp = new Date(gitlog.at(0)?.split(' ')[0].toString() ?? 0);
+const gitlog = execSync('git log --format="%cI %h"').toString().trim().split("\n");
+const firstCommitTimestamp = new Date(gitlog.at(-1)?.split(" ")[0].toString() ?? 0);
+const lastCommitTimestamp = new Date(gitlog.at(0)?.split(" ")[0].toString() ?? 0);
 ---
 
 <footer class="no-print">
     <LinkCluster />
     <p>
-        <span>
-            Pavel Egorov
-        </span>&emsp;<DateSpan
-            start={ firstCommitTimestamp }
-            end={ lastCommitTimestamp }
-            locale='ru-RU'
+        <span> Pavel Egorov </span>&emsp;<DateSpan
+            start={firstCommitTimestamp}
+            end={lastCommitTimestamp}
+            locale="ru-RU"
             dateOptions={{
-                year: 'numeric',
+                year: "numeric",
             }}
         />&emsp;<span>
-            { gitlog.at(0)?.split(' ')[1] }
+            {gitlog.at(0)?.split(" ")[1]}
         </span>
     </p>
-    <p class='roman'>
-        { toRoman(firstCommitTimestamp.getFullYear()) }
+    <p class="roman">
+        {toRoman(firstCommitTimestamp.getFullYear())}
     </p>
 </footer>
 
 <style>
-footer {
-    width: var(--header-footer-size);
+    footer {
+        width: var(--header-footer-size);
 
-    margin-top: auto;
-    padding-block: var(--header-footer-padding);
+        margin-top: auto;
+        padding-block: var(--header-footer-padding);
 
-    background:
-        linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
-        var(--lingradient) border-box;
-    border-top: 3px solid transparent;
+        background:
+            linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+            var(--lingradient) border-box;
+        border-top: 3px solid transparent;
 
-    display: grid;
-    grid-auto-rows: min-content;
-    grid-template-columns: var(--grid-template-columns);
-    column-gap: var(--grid-column-gap);
-}
+        display: grid;
+        grid-auto-rows: min-content;
+        grid-template-columns: var(--grid-template-columns);
+        column-gap: var(--grid-column-gap);
+    }
 
-:global(footer > *) {
-    grid-column: content;
+    :global(footer > *) {
+        grid-column: content;
 
-    text-align: center;
-}
+        text-align: center;
+    }
 
-.roman {
-    color: var(--secondary-color);
-    font: ultra-condensed 100 small-caps 1em var(--font-serif);
-    transform: scaleY(1.25);
-    padding-block: 1em;
-
-}
+    .roman {
+        color: var(--secondary-color);
+        font: ultra-condensed 100 small-caps 1em var(--font-serif);
+        transform: scaleY(1.25);
+        padding-block: 1em;
+    }
 </style>
-

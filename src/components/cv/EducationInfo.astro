@@ -1,47 +1,51 @@
 ---
 import { getCollection } from "astro:content";
-import DateSpan from '@/components/DateSpan.astro';
+import DateSpan from "@/components/DateSpan.astro";
 
-const educationCollection = (await getCollection('education'))
-    .sort((a, b) => b.data.start.getTime() - a.data.start.getTime());
+const educationCollection = (await getCollection("education")).sort(
+    (a, b) => b.data.start.getTime() - a.data.start.getTime(),
+);
 ---
 
 <h2>Образование</h2>
 
 <ul>
-    {educationCollection.map((education) => {
-        return (
-            <li>
-                <header>
-                    <h3>{ education.data.place }</h3>
-                </header>
-                <p>{ education.data.specialization }, { education.data.degree }</p>
-                <p class="period">
-                    <DateSpan
-                        start={ education.data.start }
-                        end={ education.data.end }
-                        locale="ru-RU"
-                        dateOptions={{
-                            year: 'numeric',
-                        }}
-                    />
-                </p>
-            </li>
-        )
-    })}
+    {
+        educationCollection.map((education) => {
+            return (
+                <li>
+                    <header>
+                        <h3>{education.data.place}</h3>
+                    </header>
+                    <p>
+                        {education.data.specialization}, {education.data.degree}
+                    </p>
+                    <p class="period">
+                        <DateSpan
+                            start={education.data.start}
+                            end={education.data.end}
+                            locale="ru-RU"
+                            dateOptions={{
+                                year: "numeric",
+                            }}
+                        />
+                    </p>
+                </li>
+            );
+        })
+    }
 </ul>
 
 <style>
-@import 'places.css';
+    @import "places.css";
 
-header {
-    flex: 0 0 100%;
-}
+    header {
+        flex: 0 0 100%;
+    }
 
-li {
-    display: flex;
-    column-gap: 0.5em;
-    flex-wrap: wrap;
-}
+    li {
+        display: flex;
+        column-gap: 0.5em;
+        flex-wrap: wrap;
+    }
 </style>
-

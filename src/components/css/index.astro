@@ -13,32 +13,30 @@ import Headers from "./headers.astro";
 <Headers />
 
 <style is:global>
-body {
-    height: fit-content;
+    body {
+        height: fit-content;
 
-    color: var(--primary-color);
-    background-color: var(--bg-color);
+        color: var(--primary-color);
+        background-color: var(--bg-color);
 
-    font-family: var(--font-sans-serif);
-    font-size: clamp(calc(var(--font-size) - 3px), 3vw, var(--font-size));
+        font-family: var(--font-sans-serif);
+        font-size: clamp(calc(var(--font-size) - 3px), 3vw, var(--font-size));
 
-    line-height: 1.45;
-}
-
-@media print {
-    @page {
-        size: A4;
-        margin: 1.5cm;
+        line-height: 1.45;
     }
 
-    .no-print {
-        display: none !important;
+    @media print {
+        @page {
+            size: A4;
+            margin: 1.5cm;
+        }
+
+        .no-print {
+            display: none !important;
+        }
+
+        font-size: var(--font-size);
+
+        line-height: 1.25;
     }
-
-    font-size: var(--font-size);
-
-    line-height: 1.25;
-}
-
 </style>
-

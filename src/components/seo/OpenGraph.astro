@@ -1,62 +1,68 @@
 ---
 // https://ogp.me/
 
-import type { Entries } from 'type-fest';
+import type { Entries } from "type-fest";
 
 const openGraphProperties: Record<keyof OpenGraph, string> = {
-    title: 'og:title',
-    type: 'og:type',
-    image: 'og:image',
-    imageAlt: 'og:image:alt',
-    imageType: 'og:image:type',
-    imageWidth: 'og:image:width',
-    imageHeight: 'og:image:height',
-    url: 'og:url',
-    audio: 'og:audio',
-    description: 'og:description',
-    determiner: 'og:determiner',
-    locale: 'og:locale',
-    localeAlternate: 'og:locale:alternate',
-    siteName: 'og:site_name',
-    video: 'og:video',
-    publishedTime: 'article:published_time',
-    modifiedTime: 'article:modified_time',
-    author: 'article:author',
-
-}
+    title: "og:title",
+    type: "og:type",
+    image: "og:image",
+    imageAlt: "og:image:alt",
+    imageType: "og:image:type",
+    imageWidth: "og:image:width",
+    imageHeight: "og:image:height",
+    url: "og:url",
+    audio: "og:audio",
+    description: "og:description",
+    determiner: "og:determiner",
+    locale: "og:locale",
+    localeAlternate: "og:locale:alternate",
+    siteName: "og:site_name",
+    video: "og:video",
+    publishedTime: "article:published_time",
+    modifiedTime: "article:modified_time",
+    author: "article:author",
+};
 
 interface OpenGraph {
-    title: string,
-    type: string,
-    image: string,
+    title: string;
+    type: string;
+    image: string;
 
-    imageAlt: string,
-    imageType: string,
-    imageWidth: number,
-    imageHeight: number,
+    imageAlt: string;
+    imageType: string;
+    imageWidth: number;
+    imageHeight: number;
 
-    url: string,
-    audio: string,
-    description: string,
-    determiner: string,
-    locale: string,
-    localeAlternate: Array<string>,
-    siteName: string,
-    video: string,
+    url: string;
+    audio: string;
+    description: string;
+    determiner: string;
+    locale: string;
+    localeAlternate: Array<string>;
+    siteName: string;
+    video: string;
 
-    publishedTime: string,
-    modifiedTime: string,
-    author: string,
+    publishedTime: string;
+    modifiedTime: string;
+    author: string;
 }
 
-export interface Props extends Partial<OpenGraph> {};
+export interface Props extends Partial<OpenGraph> {}
 
 const props = Astro.props;
+
+const propsEntries = Object.entries(props) as Entries<Props>;
 ---
 
-{ (Object.entries(props) as Entries< Props>).map(([prop, value]) =>
-    Array.isArray(value)
-        ? value.map((arrayValue) => <meta property={ openGraphProperties[prop] } content={ arrayValue }/>)
-        : <meta property={ openGraphProperties[prop] } content={ value?.toString() } />
-) }
-
+{
+    propsEntries.map(([prop, value]) =>
+        Array.isArray(value) ? (
+            value.map((arrayValue) => (
+                <meta property={openGraphProperties[prop]} content={arrayValue} />
+            ))
+        ) : (
+            <meta property={openGraphProperties[prop]} content={value?.toString()} />
+        ),
+    )
+}

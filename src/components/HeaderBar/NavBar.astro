@@ -1,54 +1,59 @@
 ---
-import { Icon } from 'astro-icon/components';
-import { meta } from '@/content/meta.ts';
+import { Icon } from "astro-icon/components";
+import { meta } from "@/content/meta.ts";
 
 interface Props {
-    showIcons?: boolean,
+    showIcons?: boolean;
 }
 ---
 
 <nav>
     <ul>
-        { meta.menu.map((menuItem) =>
-        <li>
-            <a class='primary-link' href={ menuItem.path }>
-                { Astro.props.showIcons && menuItem.icon && <Icon name={ menuItem.icon } aria-hidden="true" /> }
-                { menuItem.value }
-            </a>
-        </li>) }
+        {
+            meta.menu.map((menuItem) => (
+                <li>
+                    <a class="primary-link" href={menuItem.path}>
+                        {Astro.props.showIcons && menuItem.icon && (
+                            <Icon name={menuItem.icon} aria-hidden="true" />
+                        )}
+                        {menuItem.value}
+                    </a>
+                </li>
+            ))
+        }
     </ul>
 </nav>
 
 <style>
-nav {
-    /* margin-left: auto; */
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    flex-wrap: wrap;
-}
-
-a {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    column-gap: 0.5em;
-}
-
-@media (width < 30rem) {
     nav {
-        width: 100%;
+        /* margin-left: auto; */
     }
 
     ul {
-        flex-direction: column;
-        width: 100%;
+        list-style: none;
+        padding: 0;
+
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        flex-wrap: wrap;
     }
-}
+
+    a {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        column-gap: 0.5em;
+    }
+
+    @media (width < 30rem) {
+        nav {
+            width: 100%;
+        }
+
+        ul {
+            flex-direction: column;
+            width: 100%;
+        }
+    }
 </style>

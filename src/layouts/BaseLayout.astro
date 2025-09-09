@@ -1,38 +1,33 @@
 ---
-import { Font } from 'astro:assets';
-import ThemeLoader from '@/components/ThemeLoader.astro';
-import Css from '@/components/css/index.astro';
-import Seo from '@/components/seo/index.astro';
-import Favicon from '@/components/Favicon.astro';
-import type { Props as OpenGraphProps } from '@/components/seo/OpenGraph.astro';
+import { Font } from "astro:assets";
+import ThemeLoader from "@/components/ThemeLoader.astro";
+import Css from "@/components/css/index.astro";
+import Seo from "@/components/seo/index.astro";
+import Favicon from "@/components/Favicon.astro";
+import type { Props as OpenGraphProps } from "@/components/seo/OpenGraph.astro";
 
 interface Props {
-    title: string,
-    description: string,
-    openGraph?: OpenGraphProps,
-};
+    title: string;
+    description: string;
+    openGraph?: OpenGraphProps;
+}
 
 const props = Astro.props;
 ---
 
 <!doctype html>
-<html
-    lang="ru"
-    dir="ltr"
-    data-theme="auto"
-    prefix="og: https://ogp.me/ns#"
->
+<html lang="ru" dir="ltr" data-theme="auto" prefix="og: https://ogp.me/ns#">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         <meta name="color-scheme" content="dark light" />
-        <Font cssVariable='--font-serif' />
-        <Font cssVariable='--font-sans-serif' preload />
-        <Font cssVariable='--font-monospace' />
+        <Font cssVariable="--font-serif" />
+        <Font cssVariable="--font-sans-serif" preload />
+        <Font cssVariable="--font-monospace" />
         <Css />
         <Favicon />
         <ThemeLoader />
-        <Seo { ...props } />
+        <Seo {...props} />
     </head>
     <body>
         <slot />
@@ -40,17 +35,16 @@ const props = Astro.props;
 </html>
 
 <style>
-html {
-    @media (prefers-reduced-motion: no-preference) {
-        scroll-behavior: smooth;
+    html {
+        @media (prefers-reduced-motion: no-preference) {
+            scroll-behavior: smooth;
+        }
     }
-}
 
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 </style>
-

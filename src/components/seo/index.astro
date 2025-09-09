@@ -1,13 +1,13 @@
 ---
-import OpenGraph from './OpenGraph.astro';
-import type { Props as OpenGraphProps } from './OpenGraph.astro';
-import Twitter from './Twitter.astro';
+import OpenGraph from "./OpenGraph.astro";
+import type { Props as OpenGraphProps } from "./OpenGraph.astro";
+import Twitter from "./Twitter.astro";
 
 export interface Props {
-    title: string,
-    description: string,
-    openGraph?: OpenGraphProps,
-};
+    title: string;
+    description: string;
+    openGraph?: OpenGraphProps;
+}
 
 const props = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
@@ -20,10 +20,10 @@ const defaultOpenGraph: Partial<OpenGraphProps> = {
 const openGraph: OpenGraphProps = { ...defaultOpenGraph, ...props.openGraph };
 ---
 
-<link rel="canonical" href={ canonicalUrl } />
+<link rel="canonical" href={canonicalUrl} />
 
-<title>{ props.title }</title>
-<meta name="description" content={ props.description } />
+<title>{props.title}</title>
+<meta name="description" content={props.description} />
 
-<OpenGraph { ...openGraph } />
+<OpenGraph {...openGraph} />
 <Twitter />

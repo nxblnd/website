@@ -1,45 +1,36 @@
 ---
-import Button from '@/components/Button.astro';
+import Button from "@/components/Button.astro";
 ---
 
 <div class="toolbox no-print">
-    <Button id="download" icon='mdi:download' large>
-        Скачать
-    </Button>
-    <Button icon='mdi:printer' large onclick="window.print()">
-        Напечатать
-    </Button>
-    <Button id="share" icon='mdi:share' large>
-        Поделиться
-    </Button>
+    <Button id="download" icon="mdi:download" large> Скачать </Button>
+    <Button icon="mdi:printer" large onclick="window.print()"> Напечатать </Button>
+    <Button id="share" icon="mdi:share" large> Поделиться </Button>
 </div>
 
 <script>
-import download from '@/utils/download';
-import { cvShareInfo } from '@/content/cv/info.ts';
+    import download from "@/utils/download";
+    import { cvShareInfo } from "@/content/cv/info.ts";
 
-document
-    .querySelector("#share")
-    ?.addEventListener("click", () => navigator.share(cvShareInfo));
+    document.querySelector("#share")?.addEventListener("click", () => navigator.share(cvShareInfo));
 
-document
-    .querySelector("#download")
-    ?.addEventListener("click", () => download("/generated/cv.pdf"));
+    document
+        .querySelector("#download")
+        ?.addEventListener("click", () => download("/generated/cv.pdf"));
 </script>
 
 <style>
-.toolbox {
-    padding-block: 1em;
+    .toolbox {
+        padding-block: 1em;
 
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
-}
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+    }
 
-a {
-    display: flex;
-    flex: 1;
-    min-width: fit-content;
-}
+    a {
+        display: flex;
+        flex: 1;
+        min-width: fit-content;
+    }
 </style>
-

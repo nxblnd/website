@@ -1,37 +1,36 @@
 h3 {
-    font-family: var(--font-sans-serif);
-    font-size: 1em;
+  font-family: var(--font-sans-serif);
+  font-size: 1em;
 
-    @media screen {
-        font-variant: small-caps;
-        letter-spacing: 0.04em;
-        font-feature-settings: "kern";
-        text-rendering: optimizeLegibility;
-    }
+  @media screen {
+    font-variant: small-caps;
+    letter-spacing: 0.04em;
+    font-feature-settings: "kern";
+    text-rendering: optimizeLegibility;
+  }
 
-    @media print {
-        font-weight: bold;
-    }
+  @media print {
+    font-weight: bold;
+  }
 }
 
 .period {
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 
-    @media screen {
-        flex-basis: 100%;
-    }
+  @media screen {
+    flex-basis: 100%;
+  }
 }
 
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 li {
-    margin-bottom: 0.75em;
+  margin-bottom: 0.75em;
 }
 
 li:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
-

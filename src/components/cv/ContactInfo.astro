@@ -1,6 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components';
-import { contactInfo } from '@/content/cv/info.ts';
+import { Icon } from "astro-icon/components";
+import { contactInfo } from "@/content/cv/info.ts";
 ---
 
 <h2 class="no-print">Контактная информация</h2>
@@ -9,54 +9,51 @@ import { contactInfo } from '@/content/cv/info.ts';
     {
         contactInfo
             .filter((entry) => !entry.hidden)
-            .map((entry) =>
-                <div class:list={['entry', { important: entry.important }]}>
-                    <span class='title'>
-                        { entry.icon && <Icon name={ entry.icon } aria-hidden="true" /> }
-                        { entry.title }:
+            .map((entry) => (
+                <div class:list={["entry", { important: entry.important }]}>
+                    <span class="title">
+                        {entry.icon && <Icon name={entry.icon} aria-hidden="true" />}
+                        {entry.title}:
                     </span>
-                    <span class='value'>
-                        { entry.link
-                            ? <a href={ entry.link }>{ entry.value }</a>
-                            : entry.value }
+                    <span class="value">
+                        {entry.link ? <a href={entry.link}>{entry.value}</a> : entry.value}
                     </span>
                 </div>
-    )}
+            ))
+    }
 </address>
 
 <style>
-address {
-    font-style: normal;
+    address {
+        font-style: normal;
 
-    display: grid;
+        display: grid;
 
-    @media (width > 40em) {
-        grid-template-columns: repeat(2, 1fr);
+        @media (width > 40em) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        column-gap: 1em;
     }
 
-    column-gap: 1em;
-}
+    .important {
+        grid-column: 1 / -1;
+    }
 
-.important {
-    grid-column: 1 / -1;
-}
+    .title {
+        color: var(--secondary-color);
 
-.title {
-    color: var(--secondary-color);
+        display: inline-flex;
+        align-items: baseline;
+        column-gap: 0.5em;
+    }
 
-    display: inline-flex;
-    align-items: baseline;
-    column-gap: 0.5em;
-}
+    [data-icon] {
+        font-size: 1.2em;
+        align-self: center;
+    }
 
-[data-icon] {
-    font-size: 1.2em;
-    align-self: center;
-}
-
-.value {
-    font-variant: lining-nums;
-}
-
+    .value {
+        font-variant: lining-nums;
+    }
 </style>
-

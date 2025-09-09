@@ -1,67 +1,70 @@
 ---
 import { getCollection, render } from "astro:content";
-import DateSpan from '@/components/DateSpan.astro';
+import DateSpan from "@/components/DateSpan.astro";
 
-const jobsCollection = await getCollection('jobs');
-const jobs = await Promise.all(jobsCollection
-    .sort((a, b) => b.data.start.getTime() - a.data.start.getTime())
-    .map(async (job) => ({ frontmatter: job.data, content: await render(job) })));
+const jobsCollection = await getCollection("jobs");
+const jobs = await Promise.all(
+    jobsCollection
+        .sort((a, b) => b.data.start.getTime() - a.data.start.getTime())
+        .map(async (job) => ({ frontmatter: job.data, content: await render(job) })),
+);
 ---
 
 <h2>Опыт работы</h2>
 
 <ul>
-    {jobs.map((job) => {
-        const Content = job.content.Content;
-        return (
-            <li>
-                <header>
-                    <h3>{ job.frontmatter.place },</h3>
-                    <p>{ job.frontmatter.position }</p>
-                    <p class="period">
-                        <DateSpan
-                            start={ job.frontmatter.start }
-                            end={ job.frontmatter.end }
-                            locale='ru-RU'
-                            dateOptions={{
-                                year: 'numeric',
-                                month: 'long',
-                            }}
-                        />
-                    </p>
-                </header>
-                <Content />
-            </li>
-        )
-    })}
+    {
+        jobs.map((job) => {
+            const Content = job.content.Content;
+            return (
+                <li>
+                    <header>
+                        <h3>{job.frontmatter.place},</h3>
+                        <p>{job.frontmatter.position}</p>
+                        <p class="period">
+                            <DateSpan
+                                start={job.frontmatter.start}
+                                end={job.frontmatter.end}
+                                locale="ru-RU"
+                                dateOptions={{
+                                    year: "numeric",
+                                    month: "long",
+                                }}
+                            />
+                        </p>
+                    </header>
+                    <Content />
+                </li>
+            );
+        })
+    }
 </ul>
 
 <style>
-@import 'places.css';
+    @import "places.css";
 
-header {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 0.5em;
-}
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 0.5em;
+    }
 
-ul {
     ul {
-        list-style: disc;
-        padding-left: 2em;
-
         ul {
-            /* TODO: Find another way to set spacing for this bullet */
-            list-style: "-  ";
-            padding-left: 1em;
+            list-style: disc;
+            padding-left: 2em;
+
+            ul {
+                /* TODO: Find another way to set spacing for this bullet */
+                list-style: "-  ";
+                padding-left: 1em;
+            }
+        }
+
+        @media print {
+            ul {
+                line-height: 1.3;
+            }
         }
     }
-
-    @media print {
-        ul {
-            line-height: 1.3;
-        }
-    }
-}
 </style>
-

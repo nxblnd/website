@@ -1,59 +1,39 @@
 <style is:global>
-:root {
-    --font-size: 18px;
-
-    --content-width: 40rem;
-    --content-width-diff: 10rem;
-    --main-content-block-margin: 5rem;
-    --content-padding-inline: 0.5rem;
-
-    --content-col: min(
-        var(--content-width),
-        calc(100% - var(--grid-column-gap) * 2));
-    --wide-content-col: minmax(0, var(--content-width-diff));
-
-    --grid-template-columns:
-        [fullwidth-start]
-            1fr
-            [wide-content-start]
-                var(--wide-content-col)
-                [content-start]
-                    var(--content-col)
-                [content-end]
-                var(--wide-content-col)
-            [wide-content-end]
-            1fr
-        [fullwidth-end];
-
-    --grid-column-gap: 0em; /* unit is required for correct width calculations */
-
-    @media screen and (width < 60em) {
-        --grid-template-columns:
-            [fullwidth-start]
-                1fr
-                [wide-content-start content-start]
-                    var(--content-col)
-                [content-end wide-content-end]
-                1fr
-            [fullwidth-end];
-
-        --grid-column-gap: clamp(1ch, 3vw, 2em);
-    }
-
-    --header-footer-max-size: calc(
-        var(--content-width) +
-        var(--content-width-diff) * 2);
-    --header-footer-size: min(100%, var(--header-footer-max-size));
-    --header-footer-padding: 1em;
-}
-
-@media print {
     :root {
-        --content-width: 100%;
-        --main-content-block-margin: 0;
+        --font-size: 18px;
 
-        --font-size: 11pt;
+        --content-width: 40rem;
+        --content-width-diff: 10rem;
+        --main-content-block-margin: 5rem;
+        --content-padding-inline: 0.5rem;
+
+        --content-col: min(var(--content-width), calc(100% - var(--grid-column-gap) * 2));
+        --wide-content-col: minmax(0, var(--content-width-diff));
+
+        --grid-template-columns: [fullwidth-start] 1fr [wide-content-start] var(--wide-content-col)
+            [content-start] var(--content-col) [content-end] var(--wide-content-col)
+            [wide-content-end] 1fr [fullwidth-end];
+
+        --grid-column-gap: 0em; /* unit is required for correct width calculations */
+
+        @media screen and (width < 60em) {
+            --grid-template-columns: [fullwidth-start] 1fr [wide-content-start content-start]
+                var(--content-col) [content-end wide-content-end] 1fr [fullwidth-end];
+
+            --grid-column-gap: clamp(1ch, 3vw, 2em);
+        }
+
+        --header-footer-max-size: calc(var(--content-width) + var(--content-width-diff) * 2);
+        --header-footer-size: min(100%, var(--header-footer-max-size));
+        --header-footer-padding: 1em;
     }
-}
-</style>
 
+    @media print {
+        :root {
+            --content-width: 100%;
+            --main-content-block-margin: 0;
+
+            --font-size: 11pt;
+        }
+    }
+</style>

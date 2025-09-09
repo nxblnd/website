@@ -1,16 +1,16 @@
 ---
 interface Props {
-    start: Date | string,
-    end?: Date | string,
-    locale?: string,
-    dateOptions?: Intl.DateTimeFormatOptions,
+    start: Date | string;
+    end?: Date | string;
+    locale?: string;
+    dateOptions?: Intl.DateTimeFormatOptions;
 }
 
 const defaultDateOptions: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-}
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+};
 
 let { start, end, locale, dateOptions = defaultDateOptions } = Astro.props;
 
@@ -22,20 +22,17 @@ if (!(end instanceof Date)) {
     end = new Date(end ?? start);
 }
 
-const startDateString = start.toLocaleDateString(locale, dateOptions).replace(/ г\./, '');
-const endDateString = end.toLocaleDateString(locale, dateOptions).replace(/ г\./, '');
+const startDateString = start.toLocaleDateString(locale, dateOptions).replace(/ г\./, "");
+const endDateString = end.toLocaleDateString(locale, dateOptions).replace(/ г\./, "");
 ---
 
 {
-    startDateString === endDateString &&
-    <time datetime={ startDateString }>{ startDateString }</time>
+    startDateString === endDateString ? (
+        <time datetime={startDateString}>{startDateString}</time>
+    ) : (
+        // prettier-ignore
+        <>
+            <time datetime={startDateString}>{startDateString}</time>&hairsp;&ndash;&hairsp;<time datetime={endDateString}>{endDateString}</time>
+        </>
+    )
 }
-{
-    startDateString !== endDateString &&
-    <time datetime={ startDateString }>
-        { startDateString }
-    </time><span>&hairsp;&ndash;&hairsp;</span><time datetime={ endDateString }>
-        { endDateString }
-    </time>
-}
-

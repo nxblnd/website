@@ -1,115 +1,102 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
-import { Icon } from 'astro-icon/components';
+import type { HTMLAttributes } from "astro/types";
+import { Icon } from "astro-icon/components";
 
 interface Props extends HTMLAttributes<"button"> {
-    class?: string,
-    secondary?: boolean,
-    icon?: string,
-    wide?: boolean,
-    small?: boolean,
-    large?: boolean,
+    class?: string;
+    secondary?: boolean;
+    icon?: string;
+    wide?: boolean;
+    small?: boolean;
+    large?: boolean;
 }
 
-const {
-    class: className,
-    secondary,
-    wide,
-    small,
-    large,
-    icon,
-    ...rest
-} = Astro.props;
+const { class: className, secondary, wide, small, large, icon, ...rest } = Astro.props;
 ---
 
-<button
-    class:list={ [className, { secondary, wide, small, large }] }
-    type="button"
-    { ...rest }
->
-    { icon && <Icon name={ icon } aria-hidden="true" /> }
+<button class:list={[className, { secondary, wide, small, large }]} type="button" {...rest}>
+    {icon && <Icon name={icon} aria-hidden="true" />}
     <slot />
 </button>
 
 <style>
-button {
-    color: var(--button-text-color);
-    background-color: var(--button-color);
-
-    padding-inline: 0.5em;
-
-    border: none;
-    border-radius: 0.25em;
-
-    cursor: pointer;
-
-    display: flex;
-    flex: 1;
-    min-width: fit-content;
-    align-items: center;
-    justify-content: center;
-    gap: 0.25em;
-}
-
-button:hover,
-button:focus-visible {
-    background-color: var(--button-focus-color);
-}
-
-button:active {
-    background-color: var(--button-active-color);
-}
-
-button[disabled] {
-    color: oklch(from var(--button-text-color) calc(l * 0.9) c h);
-    background-color: oklch(from var(--button-color) calc(l * 0.8) c h);
-
-    cursor: not-allowed;
-}
-
-@media print {
     button {
-        color: var(--primary-color) !important;
-        background-color: var(--bg-color) !important;
+        color: var(--button-text-color);
+        background-color: var(--button-color);
 
-        border: 1px solid var(--primary-color);
+        padding-inline: 0.5em;
+
+        border: none;
+        border-radius: 0.25em;
+
+        cursor: pointer;
+
+        display: flex;
+        flex: 1;
+        min-width: fit-content;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25em;
     }
-}
 
-.wide {
-    padding-inline: 2em;
-}
-
-.small {
-    font-size: smaller;
-}
-
-.large {
-    font-size: 1.2em;
-    padding-block: 0.5em;
-
-    [data-icon] {
-        font-size: 2em;
+    button:hover,
+    button:focus-visible {
+        background-color: var(--button-focus-color);
     }
-}
 
-.secondary {
-    color: var(--button-secondary-text-color);
-    background-color: var(--button-secondary-color);
-}
+    button:active {
+        background-color: var(--button-active-color);
+    }
 
-.secondary:hover,
-.secondary:focus-visible {
-    background-color: var(--button-secondary-focus-color);
-}
+    button[disabled] {
+        color: oklch(from var(--button-text-color) calc(l * 0.9) c h);
+        background-color: oklch(from var(--button-color) calc(l * 0.8) c h);
 
-.secondary:active {
-    background-color: var(--button-secondary-active-color);
-}
+        cursor: not-allowed;
+    }
 
-.secondary[disabled] {
-    color: oklch(from var(--button-secondary-text-color) calc(l * 0.7) c h);
-    background-color: oklch(from var(--button-secondary-color) calc(l * 0.9) c h);
-}
+    @media print {
+        button {
+            color: var(--primary-color) !important;
+            background-color: var(--bg-color) !important;
+
+            border: 1px solid var(--primary-color);
+        }
+    }
+
+    .wide {
+        padding-inline: 2em;
+    }
+
+    .small {
+        font-size: smaller;
+    }
+
+    .large {
+        font-size: 1.2em;
+        padding-block: 0.5em;
+
+        [data-icon] {
+            font-size: 2em;
+        }
+    }
+
+    .secondary {
+        color: var(--button-secondary-text-color);
+        background-color: var(--button-secondary-color);
+    }
+
+    .secondary:hover,
+    .secondary:focus-visible {
+        background-color: var(--button-secondary-focus-color);
+    }
+
+    .secondary:active {
+        background-color: var(--button-secondary-active-color);
+    }
+
+    .secondary[disabled] {
+        color: oklch(from var(--button-secondary-text-color) calc(l * 0.7) c h);
+        background-color: oklch(from var(--button-secondary-color) calc(l * 0.9) c h);
+    }
 </style>
-

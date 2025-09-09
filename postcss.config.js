@@ -6,9 +6,11 @@ export default {
     plugins: [
         autoprefixer(),
         postcssPresetEnv({ stage: 1 }),
-        cssnano({ preset: [
-            'default',
-            { calc : false }, // Throws errors
-        ]}),
+        cssnano({
+            preset: [
+                "default",
+                { calc: false }, // Throws errors
+            ],
+        }),
     ],
-}
+};

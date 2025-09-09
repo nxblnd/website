@@ -1,111 +1,95 @@
 <style is:global>
-:root {
-    /* Dark theme */
-    --dark-bg-color: oklch(0.28 0.01 285);
+    :root {
+        /* Dark theme */
+        --dark-bg-color: oklch(0.28 0.01 285);
 
-    --dark-primary-color: oklch(0.95 0 0);
-    --dark-secondary-color: oklch(from var(--dark-primary-color) 70% c h);
-    --dark-accent-color: oklch(0.7 0.1337 285);
+        --dark-primary-color: oklch(0.95 0 0);
+        --dark-secondary-color: oklch(from var(--dark-primary-color) 70% c h);
+        --dark-accent-color: oklch(0.7 0.1337 285);
 
-    --dark-link-color: oklch(0.8 0.095 230);
-    --dark-link-visited-color: oklch(from var(--dark-link-color) 80% c calc(h + 50));
-    --dark-link-focus-color: oklch(from var(--dark-link-color) 110% c h);
-    --dark-link-active-color: oklch(from var(--dark-link-color) l c calc(h + 100));
+        --dark-link-color: oklch(0.8 0.095 230);
+        --dark-link-visited-color: oklch(from var(--dark-link-color) 80% c calc(h + 50));
+        --dark-link-focus-color: oklch(from var(--dark-link-color) 110% c h);
+        --dark-link-active-color: oklch(from var(--dark-link-color) l c calc(h + 100));
 
-    --dark-button-color: oklch(from var(--dark-accent-color) calc(l * 0.74) c h);
-    --dark-button-focus-color: oklch(from var(--dark-button-color) calc(l * 1.1) c h);
-    --dark-button-active-color: oklch(from var(--dark-button-color) calc(l * 0.9) c h);
-    --dark-button-text-color: oklch(from var(--dark-primary-color) calc(l * 1.2) c h);
+        --dark-button-color: oklch(from var(--dark-accent-color) calc(l * 0.74) c h);
+        --dark-button-focus-color: oklch(from var(--dark-button-color) calc(l * 1.1) c h);
+        --dark-button-active-color: oklch(from var(--dark-button-color) calc(l * 0.9) c h);
+        --dark-button-text-color: oklch(from var(--dark-primary-color) calc(l * 1.2) c h);
 
-    --dark-button-secondary-color: oklch(from var(--dark-bg-color) l c h);
-    --dark-button-secondary-focus-color: oklch(from var(--dark-button-secondary-color) calc(l + 0.1) c h);
-    --dark-button-secondary-active-color: oklch(from var(--dark-button-secondary-color) calc(l + 0.2) c h);
-    --dark-button-secondary-text-color: oklch(from var(--dark-primary-color) l c h);
+        --dark-button-secondary-color: oklch(from var(--dark-bg-color) l c h);
+        --dark-button-secondary-focus-color: oklch(
+            from var(--dark-button-secondary-color) calc(l + 0.1) c h
+        );
+        --dark-button-secondary-active-color: oklch(
+            from var(--dark-button-secondary-color) calc(l + 0.2) c h
+        );
+        --dark-button-secondary-text-color: oklch(from var(--dark-primary-color) l c h);
 
-    --gradient-1: oklch(0.85 0.07 230);
-    --gradient-2: oklch(0.85 0.07 330);
-    --gradient-3: oklch(0.85 0.07 430);
-    --lingradient: linear-gradient(to right in oklab,
+        --gradient-1: oklch(0.85 0.07 230);
+        --gradient-2: oklch(0.85 0.07 330);
+        --gradient-3: oklch(0.85 0.07 430);
+        --lingradient: linear-gradient(
+            to right in oklab,
             var(--gradient-1),
             var(--gradient-2),
-            var(--gradient-3));
+            var(--gradient-3)
+        );
 
-    /* Light theme */
-    --light-bg-color: oklch(0.95 0.01 285);
+        /* Light theme */
+        --light-bg-color: oklch(0.95 0.01 285);
 
-    --light-primary-color: oklch(0.15 0 0);
-    --light-secondary-color: oklch(from var(--light-primary-color) 50% c h);
-    --light-accent-color: oklch(from var(--dark-accent-color) calc(l - 0.1) 0.2 h);
+        --light-primary-color: oklch(0.15 0 0);
+        --light-secondary-color: oklch(from var(--light-primary-color) 50% c h);
+        --light-accent-color: oklch(from var(--dark-accent-color) calc(l - 0.1) 0.2 h);
 
-    --light-link-color: oklch(0.52 0.21 260);
-    --light-link-visited-color: oklch(from var(--light-link-color) l c calc(h + 50));
-    --light-link-focus-color: oklch(from var(--light-link-color) 40% c h);
-    --light-link-active-color: oklch(from var(--light-link-color) l c calc(h + 100));
+        --light-link-color: oklch(0.52 0.21 260);
+        --light-link-visited-color: oklch(from var(--light-link-color) l c calc(h + 50));
+        --light-link-focus-color: oklch(from var(--light-link-color) 40% c h);
+        --light-link-active-color: oklch(from var(--light-link-color) l c calc(h + 100));
 
-    --light-button-color: oklch(from var(--dark-button-color) calc(l * 1) c h);
-    --light-button-focus-color: oklch(from var(--light-button-color) calc(l * 1.1) c h);
-    --light-button-active-color: oklch(from var(--light-button-color) calc(l * 0.9) c h);
-    --light-button-text-color: oklch(from var(--dark-primary-color) calc(l * 2) c h);
+        --light-button-color: oklch(from var(--dark-button-color) calc(l * 1) c h);
+        --light-button-focus-color: oklch(from var(--light-button-color) calc(l * 1.1) c h);
+        --light-button-active-color: oklch(from var(--light-button-color) calc(l * 0.9) c h);
+        --light-button-text-color: oklch(from var(--dark-primary-color) calc(l * 2) c h);
 
-    --light-button-secondary-color: oklch(from var(--light-bg-color) l c h);
-    --light-button-secondary-focus-color: oklch(from var(--light-button-secondary-color) calc(l - 0.1) c h);
-    --light-button-secondary-active-color: oklch(from var(--light-button-secondary-color) calc(l + 0.009) c h);
-    --light-button-secondary-text-color: oklch(from var(--light-primary-color) l c h);
-}
+        --light-button-secondary-color: oklch(from var(--light-bg-color) l c h);
+        --light-button-secondary-focus-color: oklch(
+            from var(--light-button-secondary-color) calc(l - 0.1) c h
+        );
+        --light-button-secondary-active-color: oklch(
+            from var(--light-button-secondary-color) calc(l + 0.009) c h
+        );
+        --light-button-secondary-text-color: oklch(from var(--light-primary-color) l c h);
+    }
 
-:root,
-:root[data-theme="dark"] {
-    color-scheme: dark;
+    :root,
+    :root[data-theme="dark"] {
+        color-scheme: dark;
 
-    --bg-color: var(--dark-bg-color);
+        --bg-color: var(--dark-bg-color);
 
-    --primary-color: var(--dark-primary-color);
-    --secondary-color: var(--dark-secondary-color);
-    --accent-color: var(--dark-accent-color);
+        --primary-color: var(--dark-primary-color);
+        --secondary-color: var(--dark-secondary-color);
+        --accent-color: var(--dark-accent-color);
 
-    --link-color: var(--dark-link-color);
-    --link-visited-color: var(--dark-link-visited-color);
-    --link-focus-color: var(--dark-link-focus-color);
-    --link-active-color: var(--dark-link-active-color);
+        --link-color: var(--dark-link-color);
+        --link-visited-color: var(--dark-link-visited-color);
+        --link-focus-color: var(--dark-link-focus-color);
+        --link-active-color: var(--dark-link-active-color);
 
-    --button-color: var(--dark-button-color);
-    --button-focus-color: var(--dark-button-focus-color);
-    --button-active-color: var(--dark-button-active-color);
-    --button-text-color: var(--dark-button-text-color);
+        --button-color: var(--dark-button-color);
+        --button-focus-color: var(--dark-button-focus-color);
+        --button-active-color: var(--dark-button-active-color);
+        --button-text-color: var(--dark-button-text-color);
 
-    --button-secondary-color: var(--dark-button-secondary-color);
-    --button-secondary-focus-color: var(--dark-button-secondary-focus-color);
-    --button-secondary-active-color: var(--dark-button-secondary-active-color);
-    --button-secondary-text-color: var(--dark-button-secondary-text-color);
-}
+        --button-secondary-color: var(--dark-button-secondary-color);
+        --button-secondary-focus-color: var(--dark-button-secondary-focus-color);
+        --button-secondary-active-color: var(--dark-button-secondary-active-color);
+        --button-secondary-text-color: var(--dark-button-secondary-text-color);
+    }
 
-:root[data-theme="light"] {
-    color-scheme: light;
-
-    --bg-color: var(--light-bg-color);
-
-    --primary-color: var(--light-primary-color);
-    --secondary-color: var(--light-secondary-color);
-    --accent-color: var(--light-accent-color);
-
-    --link-color: var(--light-link-color);
-    --link-visited-color: var(--light-link-visited-color);
-    --link-focus-color: var(--light-link-focus-color);
-    --link-active-color: var(--light-link-active-color);
-
-    --button-color: var(--light-button-color);
-    --button-focus-color: var(--light-button-focus-color);
-    --button-active-color: var(--light-button-active-color);
-    --button-text-color: var(--light-button-text-color);
-
-    --button-secondary-color: var(--light-button-secondary-color);
-    --button-secondary-focus-color: var(--light-button-secondary-focus-color);
-    --button-secondary-active-color: var(--light-button-secondary-active-color);
-    --button-secondary-text-color: var(--light-button-secondary-text-color);
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
+    :root[data-theme="light"] {
         color-scheme: light;
 
         --bg-color: var(--light-bg-color);
@@ -129,23 +113,48 @@
         --button-secondary-active-color: var(--light-button-secondary-active-color);
         --button-secondary-text-color: var(--light-button-secondary-text-color);
     }
-}
 
-@media print {
-    :root[data-theme] {
-        color-scheme: light;
+    @media (prefers-color-scheme: light) {
+        :root {
+            color-scheme: light;
 
-        --bg-color: none;
+            --bg-color: var(--light-bg-color);
 
-        --primary-color: black;
-        --secondary-color: oklch(0.5 0 0);
-        --accent-color: black;
+            --primary-color: var(--light-primary-color);
+            --secondary-color: var(--light-secondary-color);
+            --accent-color: var(--light-accent-color);
 
-        --link-color: black;
-        --link-visited-color: black;
-        --link-focus-color: black;
-        --link-active-color: black;
+            --link-color: var(--light-link-color);
+            --link-visited-color: var(--light-link-visited-color);
+            --link-focus-color: var(--light-link-focus-color);
+            --link-active-color: var(--light-link-active-color);
+
+            --button-color: var(--light-button-color);
+            --button-focus-color: var(--light-button-focus-color);
+            --button-active-color: var(--light-button-active-color);
+            --button-text-color: var(--light-button-text-color);
+
+            --button-secondary-color: var(--light-button-secondary-color);
+            --button-secondary-focus-color: var(--light-button-secondary-focus-color);
+            --button-secondary-active-color: var(--light-button-secondary-active-color);
+            --button-secondary-text-color: var(--light-button-secondary-text-color);
+        }
     }
-}
-</style>
 
+    @media print {
+        :root[data-theme] {
+            color-scheme: light;
+
+            --bg-color: none;
+
+            --primary-color: black;
+            --secondary-color: oklch(0.5 0 0);
+            --accent-color: black;
+
+            --link-color: black;
+            --link-visited-color: black;
+            --link-focus-color: black;
+            --link-active-color: black;
+        }
+    }
+</style>

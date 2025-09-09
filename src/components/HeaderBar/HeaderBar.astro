@@ -5,68 +5,67 @@ import Controls from "./Controls.astro";
 ---
 
 <header class="no-print">
-    <a class="skip-to-content" href="#main">
-        Skip to content
-    </a>
+    <a class="skip-to-content" href="#main"> Skip to content </a>
     <HomeLink />
     <Controls />
     <NavBar />
 </header>
 
 <style>
-header {
-    width: var(--header-footer-size);
-
-    padding: 1rem;
-
-    position: sticky;
-    top: 0;
-
-    font-size: 1.3em;
-
-    display: flex;
-    gap: 1em;
-    flex-wrap: wrap;
-
-    background:
-        linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
-        var(--lingradient) border-box;
-    border-bottom: 3px solid transparent;
-}
-
-@media (width < 30rem) {
     header {
-        position: initial;
+        width: var(--header-footer-size);
+
+        padding: 1rem;
+
+        position: sticky;
+        top: 0;
+
+        font-size: 1.3em;
+
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+
+        background:
+            linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+            var(--lingradient) border-box;
+        border-bottom: 3px solid transparent;
     }
-}
 
-.skip-to-content {
-    --skip-link-padding: 0.5em;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    padding: var(--skip-link-padding);
-
-    color: var(--primary-color);
-    background-color: var(--bg-color);
-
-    --border-width: 1px;
-    --border-style: var(--border-width) solid var(--primary-color);
-    border-right: var(--border-style);
-    border-bottom: var(--border-style);
-    border-radius: 0 0 0.25em 0;
-
-    transform: translateY(0);
-    
-    @media (prefers-reduced-motion: no-preference) {
-        transition: transform 250ms;
+    @media (width < 30rem) {
+        header {
+            position: initial;
+        }
     }
-}
 
-.skip-to-content:not(:focus) {
-    transform: translateY(calc((var(--skip-link-padding) * 2 + 1lh + var(--border-width)) * -1));
-}
+    .skip-to-content {
+        --skip-link-padding: 0.5em;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        padding: var(--skip-link-padding);
+
+        color: var(--primary-color);
+        background-color: var(--bg-color);
+
+        --border-width: 1px;
+        --border-style: var(--border-width) solid var(--primary-color);
+        border-right: var(--border-style);
+        border-bottom: var(--border-style);
+        border-radius: 0 0 0.25em 0;
+
+        transform: translateY(0);
+
+        @media (prefers-reduced-motion: no-preference) {
+            transition: transform 250ms;
+        }
+    }
+
+    .skip-to-content:not(:focus) {
+        transform: translateY(
+            calc((var(--skip-link-padding) * 2 + 1lh + var(--border-width)) * -1)
+        );
+    }
 </style>
-

@@ -1,41 +1,40 @@
 <style is:global>
-a {
-    text-decoration: none;
-}
-
-a:link {
-    color: var(--link-color);
-}
-
-a:visited {
-    color: var(--link-visited-color);
-}
-
-a:focus-visible {
-    color: var(--link-focus-color);
-    outline: 1px solid;
-    outline-offset: 0.1em;
-    border-radius: 0.1em;
-}
-
-a:hover {
-    color: var(--link-focus-color);
-}
-
-a:active {
-    color: var(--link-active-color);
-}
-
-.primary-link:link,
-.primary-link:visited {
-    color: var(--primary-color);
-}
-
-@media print {
-    a[href^=http]::after {
-        content: " (" attr(href) ")";
-        font-style: italic;
+    a {
+        text-decoration: none;
     }
-}
-</style>
 
+    a:link {
+        color: var(--link-color);
+    }
+
+    a:visited {
+        color: var(--link-visited-color);
+    }
+
+    a:focus-visible {
+        color: var(--link-focus-color);
+        outline: 1px solid;
+        outline-offset: 0.1em;
+        border-radius: 0.1em;
+    }
+
+    a:hover {
+        color: var(--link-focus-color);
+    }
+
+    a:active {
+        color: var(--link-active-color);
+    }
+
+    .primary-link:link,
+    .primary-link:visited {
+        color: var(--primary-color);
+    }
+
+    @media print {
+        a[href^="http"]::after {
+            content: " (" attr(href) ")";
+            font-style: italic;
+        }
+    }
+</style>

@@ -1,27 +1,25 @@
 ---
-import BaseLink from './BaseLink.astro';
-import { meta } from '@/content/meta.ts';
+import BaseLink from "./BaseLink.astro";
+import { meta } from "@/content/meta.ts";
 ---
 
 <ul>
-    { meta.social.map((social) =>
-        <li>
-            <BaseLink
-                icon={ social.icon }
-                url={ social.link }
-                label={ social.label }
-            />
-        </li>)
+    {
+        meta.social.map((social) => (
+            <li>
+                <BaseLink icon={social.icon} url={social.link} label={social.label} />
+            </li>
+        ))
     }
 </ul>
 
 <style>
-ul {
-    list-style: none;
-    display: flex;
-    gap: 0.5em;
-    justify-content: center;
-    margin: 0.5em;
-    padding: 0;
-}
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 0.5em;
+        justify-content: center;
+        margin: 0.5em;
+        padding: 0;
+    }
 </style>
