@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "prettier": "prettier ."
+    "prettier": "prettier --write .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -20,6 +21,7 @@
     "astro-icon": "^1.1.5",
     "autoprefixer": "^10.4.21",
     "cssnano": "^7.1.1",
+    "husky": "^9.1.7",
     "postcss-preset-env": "^10.3.1",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
