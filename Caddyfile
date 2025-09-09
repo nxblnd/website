@@ -1,4 +1,12 @@
 :80 {
+    @static path *.css *.js
+    @image path *.ico *.gif *.jpg *.jpeg *.png *.svg
+    @font path *.ttf *.otf *.woff *.woff2
+
+    header @static Cache-Control "public, max-age=604800"
+    header @image Cache-Control "public, max-age=604800"
+    header @font Cache-Control "public, max-age=31536000, immutable"
+
     file_server {
         precompressed
         disable_canonical_uris
