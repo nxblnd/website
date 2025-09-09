@@ -7,10 +7,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.8",
+    "@astrojs/check": "^0.9.4",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/noto-v1": "^1.2.5",
     "@types/alpinejs": "^3.13.11",
@@ -19,7 +21,8 @@
     "astro-compressor": "^1.1.2",
     "astro-icon": "^1.1.5",
     "autoprefixer": "^10.4.21",
-    "type-fest": "^4.41.0"
+    "type-fest": "^4.41.0",
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.2",
