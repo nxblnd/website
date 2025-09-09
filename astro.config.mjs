@@ -3,7 +3,6 @@ import { defineConfig, fontProviders } from 'astro/config';
 import icon from 'astro-icon';
 import alpinejs from '@astrojs/alpinejs';
 import compressor from 'astro-compressor';
-import autoprefixer from 'autoprefixer';
 
 // https://astro.build/config
 export default defineConfig({
@@ -34,13 +33,6 @@ export default defineConfig({
     vite: {
         build: {
             minify: 'esbuild',
-        },
-        css: {
-            postcss: {
-                plugins: [
-                    autoprefixer({}),
-                ],
-            },
         },
     },
 });
