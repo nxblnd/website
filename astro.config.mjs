@@ -1,14 +1,14 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
-
 import icon from 'astro-icon';
-
 import alpinejs from '@astrojs/alpinejs';
+
+import compressor from 'astro-compressor';
 
 // https://astro.build/config
 export default defineConfig({
     site: 'https://example.com',
-    integrations: [icon(), alpinejs()],
+    integrations: [icon(), alpinejs(), compressor()],
     experimental: {
         fonts: [
             {
