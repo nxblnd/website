@@ -3,11 +3,17 @@ import Button from "@/components/Button.astro";
 ---
 
 <div class="controls">
-    <Button icon="mdi:theme-light-dark" secondary onclick="toggleTheme()"> Тема </Button>
+    <Button id="toggle-theme" icon="mdi:theme-light-dark" secondary> Тема </Button>
     <!-- <Button id="language" icon="mdi:language" disabled secondary> -->
     <!--     Язык -->
     <!-- </Button> -->
 </div>
+
+<script>
+    import { toggleTheme } from "@/utils/theme.ts";
+
+    document.getElementById("toggle-theme")?.addEventListener("click", toggleTheme);
+</script>
 
 <style>
     .controls {
