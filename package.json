@@ -5,7 +5,8 @@
   "scripts": {
     "prepare": "husky",
     "dev": "npm run astro:dev",
-    "check": "npm run astro:check && npm run prettier:check && npm run eslint:check",
+    "check": "npm run astro:check && npm run prettier:check && npm run eslint:check && npm run stylelint:check",
+    "fix": "npm run prettier:write && npm run eslint:fix && npm run stylelint:fix",
     "test": "echo 'no tests'",
     "build": "npm run check && npm run test && npm run astro:build",
     "astro": "astro",
@@ -17,6 +18,8 @@
     "eslint:fix": "eslint . --fix",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
+    "stylelint:check": "stylelint \"**/*.{css,astro}\" --ignore-path .gitignore",
+    "stylelint:fix": "stylelint \"**/*.{css,astro}\" --ignore-path .gitignore --fix",
     "playwright:pdfgen": "playwright test pdfGen.spec.ts"
   },
   "dependencies": {
@@ -33,9 +36,15 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.5.4",
     "husky": "^9.1.7",
+    "postcss-html": "^1.8.0",
     "postcss-preset-env": "^10.3.1",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
+    "stylelint": "^16.24.0",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-idiomatic-order": "^10.0.0",
+    "stylelint-config-standard": "^39.0.0",
+    "stylelint-order": "^7.0.0",
     "type-fest": "^4.41.0",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.43.0"
