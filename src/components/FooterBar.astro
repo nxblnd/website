@@ -30,32 +30,28 @@ const lastCommitTimestamp = new Date(gitlog.at(0)?.split(" ")[0].toString() ?? 0
 
 <style>
     footer {
+        display: grid;
         width: var(--header-footer-size);
-
+        border-top: 3px solid transparent;
         margin-top: auto;
-        padding-block: var(--header-footer-padding);
-
         background:
             linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
             var(--lingradient) border-box;
-        border-top: 3px solid transparent;
-
-        display: grid;
+        column-gap: var(--grid-column-gap);
         grid-auto-rows: min-content;
         grid-template-columns: var(--grid-template-columns);
-        column-gap: var(--grid-column-gap);
+        padding-block: var(--header-footer-padding);
     }
 
     :global(footer > *) {
         grid-column: content;
-
         text-align: center;
     }
 
     .roman {
         color: var(--secondary-color);
         font: ultra-condensed 100 small-caps 1em var(--font-serif);
-        transform: scaleY(1.25);
         padding-block: 1em;
+        transform: scaleY(1.25);
     }
 </style>

@@ -5,4 +5,7 @@ export default {
         "stylelint-config-idiomatic-order",
     ],
     plugins: ["stylelint-order"],
+    rules: {
+        "selector-pseudo-class-no-unknown": [true, { ignorePseudoClasses: ["global"] }],
+    },
 };

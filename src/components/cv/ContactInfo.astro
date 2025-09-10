@@ -25,15 +25,13 @@ import { contactInfo } from "@/content/cv/info.ts";
 
 <style>
     address {
-        font-style: normal;
-
         display: grid;
+        column-gap: 1em;
+        font-style: normal;
 
         @media (width > 40em) {
             grid-template-columns: repeat(2, 1fr);
         }
-
-        column-gap: 1em;
     }
 
     .important {
@@ -41,16 +39,15 @@ import { contactInfo } from "@/content/cv/info.ts";
     }
 
     .title {
-        color: var(--secondary-color);
-
         display: inline-flex;
         align-items: baseline;
+        color: var(--secondary-color);
         column-gap: 0.5em;
     }
 
     [data-icon] {
-        font-size: 1.2em;
         align-self: center;
+        font-size: 1.2em;
     }
 
     .value {

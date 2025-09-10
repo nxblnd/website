@@ -41,7 +41,7 @@ const jobs = await Promise.all(
 </ul>
 
 <style>
-    @import "places.css";
+    @import url("places.css");
 
     header {
         display: flex;
@@ -51,13 +51,14 @@ const jobs = await Promise.all(
 
     ul {
         ul {
-            list-style: disc;
             padding-left: 2em;
+            list-style: disc;
 
             ul {
+                padding-left: 1em;
+
                 /* TODO: Find another way to set spacing for this bullet */
                 list-style: "-  ";
-                padding-left: 1em;
             }
         }
 

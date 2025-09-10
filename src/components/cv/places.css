@@ -3,10 +3,10 @@ h3 {
   font-size: 1em;
 
   @media screen {
+    font-feature-settings: "kern";
     font-variant: small-caps;
     letter-spacing: 0.04em;
-    font-feature-settings: "kern";
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizelegibility;
   }
 
   @media print {
@@ -23,8 +23,8 @@ h3 {
 }
 
 ul {
-  list-style: none;
   padding: 0;
+  list-style: none;
 }
 
 li {

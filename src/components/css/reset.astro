@@ -22,7 +22,9 @@
 
     body {
         /* 4. Add accessible line-height */
+
         /* Moved to layout file */
+
         /* 5. Improve text rendering */
         -webkit-font-smoothing: antialiased;
     }
@@ -60,6 +62,7 @@
     p {
         text-wrap: pretty;
     }
+
     h1,
     h2,
     h3,
@@ -69,11 +72,8 @@
         text-wrap: balance;
     }
 
-    /*
-  10. Create a root stacking context
-*/
-    #root,
-    #__next {
+    /* 10. Create a root stacking context */
+    #root {
         isolation: isolate;
     }
 </style>

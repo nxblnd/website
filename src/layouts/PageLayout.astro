@@ -24,10 +24,9 @@ const props = Astro.props;
 <style>
     main {
         display: grid;
+        column-gap: var(--grid-column-gap);
         grid-auto-rows: min-content;
         grid-template-columns: var(--grid-template-columns);
-        column-gap: var(--grid-column-gap);
-
         margin-block: var(--main-content-block-margin);
         scroll-margin-top: var(--main-content-block-margin);
     }

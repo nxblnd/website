@@ -13,23 +13,18 @@ import Controls from "./Controls.astro";
 
 <style>
     header {
-        width: var(--header-footer-size);
-
-        padding: 1rem;
-
         position: sticky;
         top: 0;
-
-        font-size: 1.3em;
-
         display: flex;
-        gap: 1em;
+        width: var(--header-footer-size);
         flex-wrap: wrap;
-
+        padding: 1rem;
+        border-bottom: 3px solid transparent;
         background:
             linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
             var(--lingradient) border-box;
-        border-bottom: 3px solid transparent;
+        font-size: 1.3em;
+        gap: 1em;
     }
 
     @media (width < 30rem) {
@@ -44,19 +39,16 @@ import Controls from "./Controls.astro";
         position: fixed;
         top: 0;
         left: 0;
-
         padding: var(--skip-link-padding);
-
-        color: var(--primary-color);
+        border-radius: 0 0 0.25em;
+        border-right: var(--border-style);
+        border-bottom: var(--border-style);
         background-color: var(--bg-color);
+        color: var(--primary-color);
+        transform: translateY(0);
 
         --border-width: 1px;
         --border-style: var(--border-width) solid var(--primary-color);
-        border-right: var(--border-style);
-        border-bottom: var(--border-style);
-        border-radius: 0 0 0.25em 0;
-
-        transform: translateY(0);
 
         @media (prefers-reduced-motion: no-preference) {
             transition: transform 250ms;

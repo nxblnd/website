@@ -37,7 +37,7 @@ const educationCollection = (await getCollection("education")).sort(
 </ul>
 
 <style>
-    @import "places.css";
+    @import url("places.css");
 
     header {
         flex: 0 0 100%;
@@ -45,7 +45,7 @@ const educationCollection = (await getCollection("education")).sort(
 
     li {
         display: flex;
-        column-gap: 0.5em;
         flex-wrap: wrap;
+        column-gap: 0.5em;
     }
 </style>

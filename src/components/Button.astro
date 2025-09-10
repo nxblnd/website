@@ -21,22 +21,18 @@ const { class: className, secondary, wide, small, large, icon, ...rest } = Astro
 
 <style>
     button {
-        color: var(--button-text-color);
-        background-color: var(--button-color);
-
-        padding-inline: 0.5em;
-
-        border: none;
-        border-radius: 0.25em;
-
-        cursor: pointer;
-
         display: flex;
-        flex: 1;
         min-width: fit-content;
+        flex: 1;
         align-items: center;
         justify-content: center;
+        border: none;
+        border-radius: 0.25em;
+        background-color: var(--button-color);
+        color: var(--button-text-color);
+        cursor: pointer;
         gap: 0.25em;
+        padding-inline: 0.5em;
     }
 
     button:hover,
@@ -49,18 +45,16 @@ const { class: className, secondary, wide, small, large, icon, ...rest } = Astro
     }
 
     button[disabled] {
-        color: oklch(from var(--button-text-color) calc(l * 0.9) c h);
         background-color: oklch(from var(--button-color) calc(l * 0.8) c h);
-
+        color: oklch(from var(--button-text-color) calc(l * 0.9) c h);
         cursor: not-allowed;
     }
 
     @media print {
         button {
-            color: var(--primary-color) !important;
-            background-color: var(--bg-color) !important;
-
             border: 1px solid var(--primary-color);
+            background-color: var(--bg-color) !important;
+            color: var(--primary-color) !important;
         }
     }
 
@@ -82,8 +76,8 @@ const { class: className, secondary, wide, small, large, icon, ...rest } = Astro
     }
 
     .secondary {
-        color: var(--button-secondary-text-color);
         background-color: var(--button-secondary-color);
+        color: var(--button-secondary-text-color);
     }
 
     .secondary:hover,
@@ -96,7 +90,7 @@ const { class: className, secondary, wide, small, large, icon, ...rest } = Astro
     }
 
     .secondary[disabled] {
-        color: oklch(from var(--button-secondary-text-color) calc(l * 0.7) c h);
         background-color: oklch(from var(--button-secondary-color) calc(l * 0.9) c h);
+        color: oklch(from var(--button-secondary-text-color) calc(l * 0.7) c h);
     }
 </style>
