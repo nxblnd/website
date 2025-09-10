@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "prepare": "husky",
-    "check": "npm run astro:check && npm run prettier:check",
     "dev": "npm run astro:dev",
+    "check": "npm run astro:check && npm run prettier:check && npm run eslint:check",
     "test": "echo 'no tests'",
     "build": "npm run check && npm run test && npm run astro:build",
     "astro": "astro",
@@ -13,6 +13,8 @@
     "astro:build": "astro build",
     "astro:preview": "astro preview",
     "astro:check": "astro check",
+    "eslint:check": "eslint .",
+    "eslint:fix": "eslint . --fix",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "playwright:pdfgen": "playwright test pdfGen.spec.ts"
@@ -26,12 +28,17 @@
     "astro-icon": "^1.1.5",
     "autoprefixer": "^10.4.21",
     "cssnano": "^7.1.1",
+    "eslint": "^9.35.0",
+    "eslint-plugin-astro": "^1.3.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.4",
     "husky": "^9.1.7",
     "postcss-preset-env": "^10.3.1",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "type-fest": "^4.41.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.43.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.2",
