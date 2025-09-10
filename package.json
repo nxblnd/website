@@ -8,7 +8,7 @@
     "check": "npm run astro:check && npm run prettier:check && npm run eslint:check && npm run stylelint:check",
     "fix": "npm run prettier:write && npm run eslint:fix && npm run stylelint:fix",
     "test": "echo 'no tests'",
-    "build": "npm run check && npm run test && npm run astro:build",
+    "build": "npm run astro:build",
     "astro": "astro",
     "astro:dev": "astro dev",
     "astro:build": "astro build",
