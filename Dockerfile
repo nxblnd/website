@@ -26,7 +26,7 @@ RUN npx -y playwright install --with-deps
 COPY --from=icon-builder /site/public public/
 COPY . .
 RUN npm run build
-RUN npm run pdfgen
+RUN npm run playwright:pdfgen
 
 FROM caddy:2-alpine
 

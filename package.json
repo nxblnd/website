@@ -3,14 +3,19 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "pdfgen": "playwright test pdfGen.spec.ts",
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
+    "prepare": "husky",
+    "check": "npm run astro:check && npm run prettier:check",
+    "dev": "npm run astro:dev",
+    "test": "echo 'no tests'",
+    "build": "npm run check && npm run test && npm run astro:build",
     "astro": "astro",
-    "check": "astro check",
-    "prettier": "prettier --write .",
-    "prepare": "husky"
+    "astro:dev": "astro dev",
+    "astro:build": "astro build",
+    "astro:preview": "astro preview",
+    "astro:check": "astro check",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "playwright:pdfgen": "playwright test pdfGen.spec.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
