@@ -1,2 +1,2 @@
-npm run prettier:write && npm run eslint:check
+npx lint-staged
 
