@@ -1,27 +1,8 @@
 ---
-const faviconSizes = [16, 32, 48, 64, 76, 96, 120, 128, 144, 152, 180, 196];
+// https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs
 ---
 
 <link rel="icon" type="image/ico" href="/favicon.ico" sizes="32x32" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-
-{
-    faviconSizes.map((size) => (
-        <>
-            <link
-                rel="icon"
-                type="image/png"
-                href={`/favicon/${size}.png`}
-                sizes={`${size}x${size}`}
-            />
-            <link
-                rel="apple-touch-icon"
-                type="image/png"
-                href={`/favicon/${size}.png`}
-                sizes={`${size}x${size}`}
-            />
-        </>
-    ))
-}
+<link rel="icon" type="image/png" href="/favicon/192.png" sizes="192x192" />

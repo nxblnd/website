@@ -3,7 +3,7 @@
 cd public/ || exit
 mkdir -p favicon
 
-size_list="16 32 48 64 76 96 120 128 144 152 180 196"
+size_list="16 32 48 64 180 192"
 
 for size in ${size_list}
 do
