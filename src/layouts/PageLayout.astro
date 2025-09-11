@@ -8,9 +8,15 @@ interface Props {
     title: string;
     description: string;
     openGraph?: OpenGraphProps;
+    frontmatter?: Record<string, never>;
 }
 
 const props = Astro.props;
+
+if (props.frontmatter) {
+    props.title = props.frontmatter.title;
+    props.description = props.frontmatter.description;
+}
 ---
 
 <BaseLayout {...props}>
