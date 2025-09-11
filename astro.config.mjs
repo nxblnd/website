@@ -2,11 +2,12 @@
 import { defineConfig, fontProviders } from "astro/config";
 import icon from "astro-icon";
 import compressor from "astro-compressor";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
     site: "https://example.com",
-    integrations: [icon(), compressor()],
+    integrations: [icon(), sitemap(), compressor()],
     experimental: {
         fonts: [
             {
