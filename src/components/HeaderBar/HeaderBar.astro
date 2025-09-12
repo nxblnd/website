@@ -23,13 +23,14 @@ import Controls from "./Controls.astro";
         background:
             linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
             var(--lingradient) border-box;
+        column-gap: 1em;
         font-size: 1.3em;
-        gap: 1em;
     }
 
     @media (width < 30rem) {
         header {
             position: initial;
+            row-gap: 0.5em;
         }
     }
 
