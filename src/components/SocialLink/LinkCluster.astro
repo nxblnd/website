@@ -3,15 +3,17 @@ import BaseLink from "./BaseLink.astro";
 import { meta } from "@/content/meta.ts";
 ---
 
-<ul>
-    {
-        meta.social.map((social) => (
-            <li>
-                <BaseLink icon={social.icon} url={social.link} label={social.label} />
-            </li>
-        ))
-    }
-</ul>
+<nav aria-label="Social links">
+    <ul>
+        {
+            meta.social.map((social) => (
+                <li>
+                    <BaseLink icon={social.icon} url={social.link} label={social.label} />
+                </li>
+            ))
+        }
+    </ul>
+</nav>
 
 <style>
     ul {
