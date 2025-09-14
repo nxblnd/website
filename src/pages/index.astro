@@ -1,7 +1,55 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
+import { Icon } from "astro-icon/components";
+
+const catSize = "10em";
 ---
 
-<PageLayout title="Главная" description="my site">
-    <div>my site</div>
+<PageLayout title="Главная" description="Главная страница моего сайта">
+    <div class="greeter">
+        <div class="greeter-text">
+            <h1>Добро пожаловать</h1>
+            <p>
+                Еще один персональный сайт на просторах интернета. Сейчас тут довольно пусто, пока
+                что можно почитать больше <a href="/about">обо мне (для людей)</a> или <a href="/cv"
+                    >мое резюме (для hr'ов)</a
+                >.
+            </p>
+        </div>
+        <div class="greeter-img">
+            <Icon name="noto-v1:cat" aria-hidden="true" />
+        </div>
+    </div>
+    <p>
+        У меня есть несколько идей для текстов (надеюсь, я доберусь до этого). И надо будет доделать
+        некоторые технические моменты, например, добавить перевод на английский. Так что можно
+        сказать, сайт пока в <em>раннем доступе</em>.
+    </p>
 </PageLayout>
+
+<script></script>
+
+<style define:vars={{ "cat-size": catSize }}>
+    .greeter {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .greeter-text {
+        min-width: 20em;
+        flex: 1;
+        align-items: center;
+        margin-block: auto;
+    }
+
+    .greeter-img {
+        min-width: var(--cat-size);
+        flex: 0;
+        align-content: center;
+        margin: 2em auto;
+    }
+
+    [data-icon] {
+        font-size: var(--cat-size);
+    }
+</style>
