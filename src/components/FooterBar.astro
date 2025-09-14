@@ -21,7 +21,7 @@ const lastCommitTimestamp = new Date(gitlog.at(0)?.split(" ")[0].toString() ?? 0
             }}
         />&emsp;<span>
             {gitlog.at(0)?.split(" ")[1]}
-        </span>
+        </span>&emsp;<span><a href="/licensed-content">Licensed content</a></span>
     </p>
     <p class="roman">
         {toRoman(firstCommitTimestamp.getFullYear())}
