@@ -20,7 +20,7 @@ export interface Meta {
 }
 
 export const meta: Meta = {
-    title: "title?",
+    title: "Pavel Egorov",
     author: "Pavel Egorov",
     menu: [
         {
