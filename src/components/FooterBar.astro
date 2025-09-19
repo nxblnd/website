@@ -5,7 +5,7 @@ import { toRoman } from "@/utils/roman.ts";
 import { getCollection } from "astro:content";
 
 const gitlog = (await getCollection("gitlog")).sort(
-    (a, b) => b.data.commit_by_date - a.data.commit_by_date,
+    (a, b) => b.data.commitDate - a.data.commitDate,
 );
 const firstCommit = gitlog.at(-1);
 const lastCommit = gitlog.at(0);
@@ -15,18 +15,18 @@ const lastCommit = gitlog.at(0);
     <LinkCluster />
     <p>
         <span> Pavel Egorov </span>&emsp;<DateSpan
-            start={firstCommit.data.commit_by_date}
-            end={lastCommit.data.commit_by_date}
+            start={firstCommit.data.commitDate}
+            end={lastCommit.data.commitDate}
             locale="ru-RU"
             dateOptions={{
                 year: "numeric",
             }}
         />&emsp;<span>
-            <a href="/changelog">{lastCommit.data.commit.slice(0, 7)}</a>
+            <a href="/changelog">{lastCommit.data.hash.slice(0, 7)}</a>
         </span>&emsp;<span><a href="/licensed-content">Licensed content</a></span>
     </p>
     <p class="roman">
-        {toRoman(new Date(firstCommit.data.commit_by_date).getFullYear())}
+        {toRoman(new Date(firstCommit.data.commitDate).getFullYear())}
     </p>
 </footer>
 

@@ -23,16 +23,17 @@ const education = defineCollection({
 });
 
 const gitlog = defineCollection({
-    loader: file("./src/assets/gitlog.json"),
+    loader: file("./src/assets/generated/gitlog.json"),
     schema: z.object({
-        commit: z.string(),
+        hash: z.string(),
         author: z.string(),
-        author_email: z.string(),
-        date: z.string(),
-        commit_by: z.string(),
-        commit_by_email: z.string(),
-        commit_by_date: z.string(),
-        message: z.string(),
+        authorEmail: z.string(),
+        authorDate: z.coerce.date(),
+        commitAuthor: z.string(),
+        commitEmail: z.string(),
+        commitDate: z.coerce.date(),
+        title: z.string(),
+        body: z.string().nullable(),
     }),
 });
 

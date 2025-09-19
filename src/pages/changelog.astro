@@ -6,18 +6,8 @@ import DateSpan from "@/components/DateSpan.astro";
 const title = "Changelog";
 
 const gitlog = (await getCollection("gitlog")).sort(
-    (a, b) => b.data.commit_by_date - a.data.commit_by_date,
+    (a, b) => b.data.commitDate - a.data.commitDate,
 );
-
-function splitCommitMessage(commitMessage: string): [string, string | null] {
-    const commitHeadEnd = commitMessage.indexOf("\n\n");
-    if (commitHeadEnd > 0) {
-        const commitHead = commitMessage.slice(0, commitHeadEnd);
-        const commitBody = commitMessage.slice(commitHeadEnd + 2);
-        return [commitHead, commitBody];
-    }
-    return [commitMessage, null];
-}
 ---
 
 <PageLayout title={title} description="Changelog generated from git">
@@ -26,20 +16,19 @@ function splitCommitMessage(commitMessage: string): [string, string | null] {
         <tbody>
             {
                 gitlog.map((commit) => {
-                    const [commitHead, commitBody] = splitCommitMessage(commit.data.message);
-                    const githubUrl = `https://github.com/nxblnd/website/commit/${commit.data.commit}`;
+                    const githubUrl = `https://github.com/nxblnd/website/commit/${commit.data.hash}`;
                     return (
                         <tr>
                             <td>
-                                <a href={githubUrl}>{commit.data.commit.slice(0, 7)}</a>
+                                <a href={githubUrl}>{commit.data.hash.slice(0, 7)}</a>
                             </td>
                             <td class="message">
-                                <p class="commit-head">{commitHead}</p>
-                                {commitBody && <p class="commit-body">{commitBody}</p>}
+                                <p class="commit-title">{commit.data.title}</p>
+                                {commit.data.body && <p class="commit-body">{commit.data.body}</p>}
                             </td>
                             <td class="commit-date">
                                 <DateSpan
-                                    start={commit.data.commit_by_date}
+                                    start={commit.data.commitDate}
                                     locale="ru-RU"
                                     numeralType="tabular-nums"
                                 />
