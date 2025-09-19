@@ -18,6 +18,19 @@ export default defineConfig({
                 subsets: ["latin", "cyrillic", "greek"],
             },
             {
+                provider: "local",
+                name: "Alegreya Romans",
+                cssVariable: "--font-serif-roman",
+                variants: [
+                    {
+                        weight: 400,
+                        style: "normal",
+                        src: ["./src/assets/Alegreya-roman.woff2"],
+                    },
+                ],
+                fallbacks: ["Alegreya", "Palatino", "Cambria", "serif"],
+            },
+            {
                 provider: fontProviders.fontsource(),
                 name: "Alegreya Sans",
                 cssVariable: "--font-sans-serif",
