@@ -4,6 +4,16 @@ interface Props {
     end?: Date | string;
     locale?: string;
     dateOptions?: Intl.DateTimeFormatOptions;
+    numeralType?:
+        | "normal"
+        | "ordinal"
+        | "slashed-zero"
+        | "lining-nums"
+        | "oldstyle-nums"
+        | "proportional-nums"
+        | "tabular-nums"
+        | "diagonal-fractions"
+        | "stacked-fractions";
 }
 
 const defaultDateOptions: Intl.DateTimeFormatOptions = {
@@ -12,7 +22,7 @@ const defaultDateOptions: Intl.DateTimeFormatOptions = {
     day: "numeric",
 };
 
-let { start, end, locale, dateOptions = defaultDateOptions } = Astro.props;
+let { start, end, locale, dateOptions = defaultDateOptions, numeralType = "normal" } = Astro.props;
 
 if (!(start instanceof Date)) {
     start = new Date(start);
@@ -36,3 +46,9 @@ const endDateString = end.toLocaleDateString(locale, dateOptions).replace(/ г\.
         </>
     )
 }
+
+<style define:vars={{ "numeral-type": numeralType }}>
+    time {
+        font-variant-numeric: var(--numeral-type);
+    }
+</style>
