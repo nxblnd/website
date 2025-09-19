@@ -7,15 +7,21 @@ RUN apk add \
     pngcrush \
     fontforge \
     py3-fontforge \
+    git \
+    jc
 
-COPY src/utils/favicon.sh src/utils/fontforgeRomans.py ./
-RUN chmod +x favicon.sh fontforgeRomans.py
+RUN mkdir -p ./generated
+COPY src/utils/build-time/ ./
+RUN chmod +x ./*
 
 COPY public/favicon.svg ./favicon/
 RUN ./favicon.sh ./favicon
 
 COPY src/assets/Alegreya-Regular.otf ./
-RUN ./fontforgeRomans.py Alegreya-Regular.otf Alegreya-RomanNumerals.woff2
+RUN ./fontforgeRomans.py ./Alegreya-Regular.otf ./generated/Alegreya-RomanNumerals.woff2
+
+COPY .git/ ./.git/
+RUN ./gitlogToJson.py ./generated/gitlog.json
 
 FROM node:24 AS site-builder
 WORKDIR /site
@@ -27,10 +33,9 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY --from=assets-builder /build/favicon/ ./public/
-COPY --from=assets-builder /build/Alegreya-RomanNumerals.woff2 ./src/assets/generated/Alegreya-RomanNumerals.woff2
+COPY --from=assets-builder /build/generated/ ./src/assets/generated/
 COPY public/ ./public/
 COPY src/ ./src/
-COPY .git/ ./.git/
 COPY astro.config.mjs tsconfig.json ./
 RUN npm run build
 
