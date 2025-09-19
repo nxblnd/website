@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { glob } from "astro/loaders";
+import { glob, file } from "astro/loaders";
 
 const jobs = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./src/content/cv/jobs" }),
@@ -22,7 +22,22 @@ const education = defineCollection({
     }),
 });
 
+const gitlog = defineCollection({
+    loader: file("./src/assets/gitlog.json"),
+    schema: z.object({
+        commit: z.string(),
+        author: z.string(),
+        author_email: z.string(),
+        date: z.string(),
+        commit_by: z.string(),
+        commit_by_email: z.string(),
+        commit_by_date: z.string(),
+        message: z.string(),
+    }),
+});
+
 export const collections = {
     jobs,
     education,
+    gitlog,
 };

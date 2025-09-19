@@ -1,0 +1,68 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@/layouts/PageLayout.astro";
+import DateSpan from "@/components/DateSpan.astro";
+
+const title = "Changelog";
+
+const gitlog = (await getCollection("gitlog")).sort(
+    (a, b) => b.data.commit_by_date - a.data.commit_by_date,
+);
+
+function splitCommitMessage(commitMessage: string): [string, string | null] {
+    const commitHeadEnd = commitMessage.indexOf("\n\n");
+    if (commitHeadEnd > 0) {
+        const commitHead = commitMessage.slice(0, commitHeadEnd);
+        const commitBody = commitMessage.slice(commitHeadEnd + 2);
+        return [commitHead, commitBody];
+    }
+    return [commitMessage, null];
+}
+---
+
+<PageLayout title={title} description="Changelog generated from git">
+    <h1>{title}</h1>
+    <table class="striped">
+        <tbody>
+            {
+                gitlog.map((commit) => {
+                    const [commitHead, commitBody] = splitCommitMessage(commit.data.message);
+                    const githubUrl = `https://github.com/nxblnd/website/commit/${commit.data.commit}`;
+                    return (
+                        <tr>
+                            <td>
+                                <a href={githubUrl}>{commit.data.commit.slice(0, 7)}</a>
+                            </td>
+                            <td class="message">
+                                <p class="commit-head">{commitHead}</p>
+                                {commitBody && <p class="commit-body">{commitBody}</p>}
+                            </td>
+                            <td class="commit-date">
+                                <DateSpan
+                                    start={commit.data.commit_by_date}
+                                    locale="ru-RU"
+                                    numeralType="tabular-nums"
+                                />
+                            </td>
+                        </tr>
+                    );
+                })
+            }
+        </tbody>
+    </table>
+</PageLayout>
+
+<style>
+    a {
+        font-family: var(--font-monospace);
+        font-size: small;
+    }
+
+    .commit-body {
+        color: var(--secondary-color);
+    }
+
+    .commit-date {
+        color: var(--secondary-color);
+    }
+</style>
