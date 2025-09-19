@@ -1,15 +1,21 @@
-FROM alpine:3 AS icon-builder
-WORKDIR /site
+FROM alpine:3 AS assets-builder
+WORKDIR /build
 
 RUN apk add \
     rsvg-convert \
     imagemagick \
-    pngcrush
+    pngcrush \
+    fontforge \
+    py3-fontforge \
 
-COPY public/favicon.svg ./public/
-COPY favicon.sh ./
-RUN chmod +x favicon.sh
-RUN ./favicon.sh
+COPY src/utils/favicon.sh src/utils/fontforgeRomans.py ./
+RUN chmod +x favicon.sh fontforgeRomans.py
+
+COPY public/favicon.svg ./favicon/
+RUN ./favicon.sh ./favicon
+
+COPY src/assets/Alegreya-Regular.otf ./
+RUN ./fontforgeRomans.py Alegreya-Regular.otf Alegreya-RomanNumerals.woff2
 
 FROM node:24 AS site-builder
 WORKDIR /site
@@ -20,7 +26,8 @@ RUN apt-get update && apt-get install git
 COPY package.json package-lock.json ./
 RUN npm ci
 
-COPY --from=icon-builder /site/public public/
+COPY --from=assets-builder /build/favicon/ ./public/
+COPY --from=assets-builder /build/Alegreya-RomanNumerals.woff2 ./src/assets/generated/Alegreya-RomanNumerals.woff2
 COPY public/ ./public/
 COPY src/ ./src/
 COPY .git/ ./.git/

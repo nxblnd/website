@@ -25,7 +25,7 @@ export default defineConfig({
                     {
                         weight: 400,
                         style: "normal",
-                        src: ["./src/assets/Alegreya-roman.woff2"],
+                        src: ["./src/assets/generated/Alegreya-RomanNumerals.woff2"],
                     },
                 ],
                 fallbacks: ["Alegreya", "Palatino", "Cambria", "serif"],

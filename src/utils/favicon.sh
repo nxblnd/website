@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-cd public/ || exit
+cd "$1" || exit
 mkdir -p favicon
 
 size_list="16 32 48 64 180 192"
