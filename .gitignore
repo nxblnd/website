@@ -3,6 +3,7 @@ dist/
 
 # Files that should be in output and are generated at build-time not by Astro
 public/generated/
+src/assets/generated/
 
 # Favicons should be generated from SVG using favicon.sh script
 public/favicon
@@ -38,3 +39,6 @@ pnpm-debug.log*
 
 # webhint
 hint-report/
+
+# Python stuff
+__pychache__/
