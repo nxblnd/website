@@ -1,10 +1,12 @@
 type Theme = "auto" | "dark" | "light";
 
+const THEME: Readonly<string> = "theme";
+
 const root = document.documentElement;
 const preferDarkTheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 export function getCurrentTheme(): Theme {
-    return (localStorage.getItem("theme") as Theme) ?? "auto";
+    return (localStorage.getItem(THEME) as Theme) ?? "auto";
 }
 
 function getPreferredColorScheme(): Theme {
@@ -12,7 +14,7 @@ function getPreferredColorScheme(): Theme {
 }
 
 export function setTheme(theme: Theme) {
-    localStorage.setItem("theme", theme);
+    localStorage.setItem(THEME, theme);
     root.setAttribute("data-theme", theme);
 }
 
