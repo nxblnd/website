@@ -50,7 +50,7 @@ COPY tests/ ./tests/
 COPY --from=site-builder /site/dist ./dist/
 RUN npm run playwright:pdfgen
 
-FROM caddy:2-alpine
+FROM caddy:2.9-alpine
 
 COPY Caddyfile /etc/caddy/Caddyfile
 COPY --from=site-builder /site/dist /srv
