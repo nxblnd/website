@@ -1,4 +1,4 @@
-FROM alpine:3 AS assets-builder
+FROM alpine:3.22 AS assets-builder
 WORKDIR /build
 
 RUN apk add \
