@@ -1,0 +1,64 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    iconName: string;
+    iconSize?: string;
+}
+
+const { iconSize = "10em", iconName } = Astro.props;
+---
+
+<button id="cat-button">
+    <Icon id="cat-image" name={iconName} desc="Stylized image of a cat" />
+</button>
+
+<script>
+    import { throttle } from "@/utils/throttle.ts";
+
+    function getRandomMeow(): string {
+        const randInt = Math.floor(Math.random() * 3);
+        return `/meow/${randInt + 1}.ogg`;
+    }
+
+    function sayMeow() {
+        const meow = new Audio(getRandomMeow());
+        meow.play();
+    }
+
+    function runAnimation() {
+        const keyframes = [
+            { transform: "scale(1)" },
+            { transform: "scale(1.2)" },
+            { transform: "scale(1)" },
+        ];
+        const options = {
+            duration: 400,
+            easing: "linear(0, 0.056 9.8%, 0.116 17.4%, 0.187 23.9%, 0.278 29.9%, 0.513 40.7%, 0.999 57.7%, 0.89 62.3%, 0.819 66.2%, 0.778 69.9%, 0.765 73.6%, 0.774 76.6%, 0.8 79.8%, 0.973 93.1%, 0.994 96.4%, 1)",
+        };
+
+        document.querySelector("#cat-image")?.animate(keyframes, options);
+    }
+
+    document.querySelector("#cat-button")?.addEventListener(
+        "click",
+        throttle(() => {
+            runAnimation();
+            sayMeow();
+        }, 1000),
+    );
+</script>
+
+<style define:vars={{ "icon-size": iconSize }}>
+    [data-icon] {
+        font-size: var(--icon-size);
+    }
+
+    button {
+        min-width: var(--icon-size);
+        min-height: var(--icon-size);
+        border: none;
+        background-color: inherit;
+        cursor: pointer;
+    }
+</style>

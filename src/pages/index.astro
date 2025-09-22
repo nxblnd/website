@@ -1,8 +1,6 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
-import { Icon } from "astro-icon/components";
-
-const catSize = "10em";
+import CatButton from "@/components/CatButton.astro";
 ---
 
 <PageLayout title="Главная" description="Главная страница моего сайта">
@@ -17,7 +15,7 @@ const catSize = "10em";
             </p>
         </div>
         <div class="greeter-img">
-            <Icon name="noto-v1:cat" aria-hidden="true" />
+            <CatButton iconName="noto-v1:cat" />
         </div>
     </div>
     <p>
@@ -27,9 +25,7 @@ const catSize = "10em";
     </p>
 </PageLayout>
 
-<script></script>
-
-<style define:vars={{ "cat-size": catSize }}>
+<style>
     .greeter {
         display: flex;
         flex-wrap: wrap;
@@ -47,9 +43,5 @@ const catSize = "10em";
         flex: 0;
         align-content: center;
         margin: 2em auto;
-    }
-
-    [data-icon] {
-        font-size: var(--cat-size);
     }
 </style>
