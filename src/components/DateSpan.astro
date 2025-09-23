@@ -38,11 +38,11 @@ const endDateString = end.toLocaleDateString(locale, dateOptions).replace(/ г\.
 
 {
     startDateString === endDateString ? (
-        <time datetime={startDateString}>{startDateString}</time>
+        <time datetime={start.toISOString()}>{startDateString}</time>
     ) : (
         // prettier-ignore
         <>
-            <time datetime={startDateString}>{startDateString}</time>&hairsp;&ndash;&hairsp;<time datetime={endDateString}>{endDateString}</time>
+            <time datetime={start.toISOString()}>{startDateString}</time>&hairsp;&ndash;&hairsp;<time datetime={end.toISOString()}>{endDateString}</time>
         </>
     )
 }
