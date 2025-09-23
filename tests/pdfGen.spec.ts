@@ -5,6 +5,7 @@ import { test } from "@playwright/test";
 test.use({ browserName: "chromium" });
 
 test("Generate CV PDF", async ({ page }) => {
+    await page.route("**/api/send", (route) => route.abort()); // Drop analytics request
     await page.goto("/cv");
     await page.pdf({
         path: "public/generated/cv.pdf",
