@@ -26,7 +26,7 @@ import { contactInfo } from "@/content/cv/info.ts";
 <style>
     address {
         display: grid;
-        column-gap: 1em;
+        column-gap: var(--space-md);
         font-style: normal;
 
         @media (width > 40em) {
@@ -42,7 +42,7 @@ import { contactInfo } from "@/content/cv/info.ts";
         display: inline-flex;
         align-items: baseline;
         color: var(--secondary-color);
-        column-gap: 0.5em;
+        column-gap: var(--space-sm);
     }
 
     [data-icon] {

@@ -32,7 +32,7 @@ const { class: className, secondary, wide, small, large, icon, ...rest } = Astro
         color: var(--button-text-color);
         cursor: pointer;
         gap: 0.25em;
-        padding-inline: 0.5em;
+        padding-inline: var(--space-sm);
     }
 
     button:hover,
@@ -68,7 +68,7 @@ const { class: className, secondary, wide, small, large, icon, ...rest } = Astro
 
     .large {
         font-size: 1.2em;
-        padding-block: 0.5em;
+        padding-block: var(--space-sm);
 
         [data-icon] {
             font-size: 2em;

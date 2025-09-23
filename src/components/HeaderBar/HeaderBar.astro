@@ -31,12 +31,12 @@ import Controls from "./Controls.astro";
     @media (width < 30rem) {
         header {
             position: initial;
-            row-gap: 0.5em;
+            row-gap: var(--space-sm);
         }
     }
 
     .skip-to-content {
-        --skip-link-padding: 0.5em;
+        --skip-link-padding: var(--space-sm);
 
         position: fixed;
         top: 0;

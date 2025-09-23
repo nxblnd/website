@@ -46,7 +46,7 @@ const jobs = await Promise.all(
     header {
         display: flex;
         flex-wrap: wrap;
-        column-gap: 0.5em;
+        column-gap: var(--space-sm);
     }
 
     ul {
@@ -55,7 +55,7 @@ const jobs = await Promise.all(
             list-style: disc;
 
             ul {
-                padding-left: 1em;
+                padding-left: var(--space-md);
 
                 /* TODO: Find another way to set spacing for this bullet */
                 list-style: "-  ";
