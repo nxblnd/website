@@ -38,7 +38,7 @@ def main():
 def get_json() -> list[dict]:
     gitlog_output = subprocess.check_output(['git', 'log',
                                              '--format=fuller',
-                                             '--date=iso-strict'],
+                                             '--date=iso8601-strict'],
                                             text=True)
     return jc.get_parser('git-log').parse(gitlog_output)
 
