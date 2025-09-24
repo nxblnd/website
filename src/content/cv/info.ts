@@ -21,13 +21,6 @@ interface ContactEntry {
 
 type ContactInfo = Array<ContactEntry>;
 
-interface CvShareInfo {
-    url?: string;
-    title?: string;
-    text?: string;
-    files?: Array<File>;
-}
-
 export const personalInfo: PersonalInfo = {
     name: {
         firstName: "Павел",
@@ -105,12 +98,8 @@ export const contactInfo: ContactInfo = [
     },
 ];
 
-import cv from "public/generated/cv.pdf?raw";
-
-export const cvShareInfo: CvShareInfo = {
+export const cvShareInfo: ShareData = {
     title: "Резюме",
-    text: `${personalInfo.name.lastName} ${personalInfo.name.firstName}, ${personalInfo.position}. https://pavelegorov.xyz/cv`,
-    files: [
-        new File([cv], "Резюме Frontend разработчик П. Егоров.pdf", { type: "application/pdf" }),
-    ],
+    text: `${personalInfo.name.lastName} ${personalInfo.name.firstName}, ${personalInfo.position}`,
+    url: "https://pavelegorov.xyz/cv",
 };
