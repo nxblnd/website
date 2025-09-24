@@ -105,7 +105,12 @@ export const contactInfo: ContactInfo = [
     },
 ];
 
+import cv from "public/generated/cv.pdf?raw";
+
 export const cvShareInfo: CvShareInfo = {
     title: "Резюме",
-    text: `${personalInfo.name.lastName} ${personalInfo.name.firstName}, ${personalInfo.position}`,
+    text: `${personalInfo.name.lastName} ${personalInfo.name.firstName}, ${personalInfo.position}. https://pavelegorov.xyz/cv`,
+    files: [
+        new File([cv], "Резюме Frontend разработчик П. Егоров.pdf", { type: "application/pdf" }),
+    ],
 };
