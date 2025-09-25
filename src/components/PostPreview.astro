@@ -1,0 +1,17 @@
+---
+interface Props {
+    link: string;
+    title: string;
+    description?: string;
+    tags?: Array<string>;
+}
+
+const { link, title, description, tags } = Astro.props;
+---
+
+<div>
+    <p class="post-title"><a href={link}>{title}</a></p>
+    <div class="tags">{tags}</div>
+    <p class="post-dates"></p>
+    <p class="post-description">{description}</p>
+</div>

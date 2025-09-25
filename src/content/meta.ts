@@ -24,6 +24,11 @@ export const meta: Meta = {
     author: "Pavel Egorov",
     menu: [
         {
+            name: "posts",
+            value: "Посты",
+            path: "/posts",
+        },
+        {
             name: "cv",
             value: "Резюме",
             path: "/cv",
