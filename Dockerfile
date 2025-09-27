@@ -30,7 +30,7 @@ RUN ./scripts/gitlogToJson.py ./src/assets/generated/gitlog.json
 
 COPY public/ ./public/
 COPY src/ ./src/
-COPY astro.config.mjs tsconfig.json ./
+COPY astro.config.ts tsconfig.json ./
 RUN npm run build
 
 FROM mcr.microsoft.com/playwright:v1.55.0 AS playwright
