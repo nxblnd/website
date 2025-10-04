@@ -2,14 +2,14 @@ import { defineConfig, fontProviders } from "astro/config";
 import icon from "astro-icon";
 import compressor from "astro-compressor";
 import sitemap from "@astrojs/sitemap";
-import { setFrontmatterDescription } from "./src/utils/remarkPlugins.ts";
+import { setFrontmatterTitle, setFrontmatterDescription } from "./src/utils/remarkPlugins.ts";
 
 // https://astro.build/config
 export default defineConfig({
     site: "https://pavelegorov.xyz",
     integrations: [icon(), sitemap(), compressor()],
     markdown: {
-        remarkPlugins: [setFrontmatterDescription],
+        remarkPlugins: [setFrontmatterTitle, setFrontmatterDescription],
     },
     experimental: {
         fonts: [
