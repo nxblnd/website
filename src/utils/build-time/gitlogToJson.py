@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 
 import subprocess
-import sys
+import argparse
+import pathlib
 import json
 import jc
+
+
+def parse_arguments() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--file', help='Get git log for provided file')
+    parser.add_argument('output_file', help='Set output json path')
+    return parser.parse_args()
 
 
 def split_message(message: str) -> tuple[str, str | None]:
@@ -30,16 +38,25 @@ def transformCommit(commit: dict) -> dict:
 
 
 def main():
-    transformed_data = list(map(transformCommit, get_json()))
-    with open(sys.argv[1], 'w') as output:
+    args = parse_arguments()
+    transformed_data = list(map(transformCommit, get_json(args.file)))
+
+    output_path = pathlib.Path(args.output_file)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with output_path.open('w') as output:
         json.dump(transformed_data, output)
 
 
-def get_json() -> list[dict]:
-    gitlog_output = subprocess.check_output(['git', 'log',
-                                             '--format=fuller',
-                                             '--date=iso8601-strict'],
-                                            text=True)
+def get_json(path: str | None = None) -> list[dict]:
+    main_git_command = ['git', 'log',
+                        '--format=fuller',
+                        '--date=iso8601-strict']
+    git_file_path = ['--', path] if path else []
+
+    gitlog_output = subprocess.check_output(
+        main_git_command + git_file_path,
+        text=True)
     return jc.get_parser('git-log').parse(gitlog_output)
 
 
