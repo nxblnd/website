@@ -9,7 +9,7 @@ interface Props {
 const { iconSize = "10em", iconName } = Astro.props;
 ---
 
-<button id="cat-button">
+<button id="cat-button" data-umami-event="Cat button">
     <Icon id="cat-image" name={iconName} desc="Stylized image of a cat" />
 </button>
 
