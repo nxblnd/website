@@ -6,14 +6,14 @@ import json
 import jc
 
 
-def split_message(message: str) -> (str, str | None):
+def split_message(message: str) -> tuple[str, str | None]:
     titleEnd = message.find('\n\n')
     if titleEnd > 0:
         return message[:titleEnd], message[titleEnd + 2:]
     return message, None
 
 
-def transformCommit(commit: list[dict]) -> list[dict]:
+def transformCommit(commit: dict) -> dict:
     title, body = split_message(commit['message'])
     return {
         'id': commit['commit'],
