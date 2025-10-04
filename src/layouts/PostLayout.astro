@@ -1,8 +1,14 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const { title, description = "" } = Astro.props;
 ---
 
-<PageLayout>
-    <p>asdfasfasdf</p>
+<PageLayout {title} {description}>
     <slot />
 </PageLayout>

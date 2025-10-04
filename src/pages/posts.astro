@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import PageLayout from "@/layouts/PageLayout.astro";
 import PostPreview from "@/components/PostPreview.astro";
 
@@ -7,13 +7,19 @@ const title = "Список постов";
 const description = "aaaaaaaaaaaaaaaa";
 
 const posts = await getCollection("posts");
+const renderedPosts = await Promise.all(
+    posts.map(async (post) => {
+        const { remarkPluginFrontmatter } = await render(post);
+        return { ...post, data: { ...post.data, ...remarkPluginFrontmatter } };
+    }),
+);
 ---
 
 <PageLayout {title} {description}>
     <h1>Список постов</h1>
     <ul>
         {
-            posts.map((post) => (
+            renderedPosts.map((post) => (
                 <li>
                     <PostPreview
                         title={post.data.title}
