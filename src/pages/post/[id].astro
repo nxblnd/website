@@ -16,5 +16,7 @@ post.data = { ...post.data, ...remarkPluginFrontmatter };
 ---
 
 <PostLayout title={post.data.title} description={post.data.description}>
+    {post.data.createdDate && <p>Created {post.data.createdDate}</p>}
+    {post.data.updatedDate && <p>Updated {post.data.updatedDate}</p>}
     <Content />
 </PostLayout>

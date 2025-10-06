@@ -22,21 +22,23 @@ const education = defineCollection({
     }),
 });
 
+const gitlogSchema = z.array(
+    z.object({
+        hash: z.string(),
+        author: z.string(),
+        authorEmail: z.string(),
+        authorDate: z.string().datetime({ offset: true }),
+        commitAuthor: z.string(),
+        commitEmail: z.string(),
+        commitDate: z.string().datetime({ offset: true }),
+        title: z.string(),
+        body: z.string().nullable(),
+    }),
+);
+
 const gitlog = defineCollection({
     loader: glob({ pattern: "**/*.json", base: "./src/assets/generated/gitlog" }),
-    schema: z.array(
-        z.object({
-            hash: z.string(),
-            author: z.string(),
-            authorEmail: z.string(),
-            authorDate: z.string().datetime({ offset: true }),
-            commitAuthor: z.string(),
-            commitEmail: z.string(),
-            commitDate: z.string().datetime({ offset: true }),
-            title: z.string(),
-            body: z.string().nullable(),
-        }),
-    ),
+    schema: gitlogSchema,
 });
 
 const posts = defineCollection({
@@ -45,6 +47,9 @@ const posts = defineCollection({
         title: z.string().default("No title"),
         description: z.string().optional(),
         tags: z.array(z.string()).optional(),
+        gitlog: gitlogSchema.default([]),
+        createdDate: z.date().optional(),
+        updatedDate: z.date().optional(),
     }),
 });
 
