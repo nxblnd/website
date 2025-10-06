@@ -21,8 +21,10 @@
         --header-footer-max-size: calc(var(--content-width) + var(--content-width-diff) * 2);
         --header-footer-size: min(100%, var(--header-footer-max-size));
         --header-footer-padding: 1em;
-        --space-sm: 0.5em;
+        --space-xs: calc(var(--space-sm) / 2);
+        --space-sm: calc(var(--space-md) / 2);
         --space-md: 1em;
+        --space-lg: calc(var(--space-md) * 2);
     }
 
     @media print {

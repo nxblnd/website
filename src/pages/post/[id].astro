@@ -1,6 +1,7 @@
 ---
 import PostLayout from "@/layouts/PostLayout.astro";
 import { getCollection, render } from "astro:content";
+import DateTime from "@/components/DateTime.astro";
 
 export async function getStaticPaths() {
     const posts = await getCollection("posts");
@@ -16,7 +17,39 @@ post.data = { ...post.data, ...remarkPluginFrontmatter };
 ---
 
 <PostLayout title={post.data.title} description={post.data.description}>
-    {post.data.createdDate && <p>Created {post.data.createdDate}</p>}
-    {post.data.updatedDate && <p>Updated {post.data.updatedDate}</p>}
+    <div class="metadata">
+        <div class="dates">
+            {
+                post.data.createdDate && (
+                    <p>
+                        Опубликовано <DateTime timestamp={post.data.createdDate} locale="ru-RU" />
+                    </p>
+                )
+            }
+            {
+                post.data.updatedDate && (
+                    <p>
+                        Изменено <DateTime timestamp={post.data.updatedDate} locale="ru-RU" />
+                    </p>
+                )
+            }
+        </div>
+    </div>
     <Content />
 </PostLayout>
+
+<style>
+    .metadata {
+        margin-bottom: var(--space-lg);
+        color: var(--secondary-color);
+        font-size: smaller;
+
+        .dates {
+            text-align: right;
+        }
+
+        p:not(:first-child) {
+            margin-top: var(--space-xs);
+        }
+    }
+</style>
