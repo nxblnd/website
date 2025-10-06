@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import subprocess
+import sys
 import argparse
 import pathlib
 import json
@@ -8,9 +9,12 @@ import jc
 
 
 def parse_arguments() -> argparse.Namespace:
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--file', help='Get git log for provided file')
-    parser.add_argument('output_file', help='Set output json path')
+    parser = argparse.ArgumentParser(description='''
+        Dumps git log into json.
+        Can dump all git log or for specified file.
+        If no output file is specified, dump into stdout''')
+    parser.add_argument('-f', '--file', help='Get git log for provided file')
+    parser.add_argument('-o', '--output', help='Set output json file path')
     return parser.parse_args()
 
 
@@ -41,11 +45,14 @@ def main():
     args = parse_arguments()
     transformed_data = list(map(transformCommit, get_json(args.file)))
 
-    output_path = pathlib.Path(args.output_file)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+    if args.output:
+        output_path = pathlib.Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    with output_path.open('w') as output:
-        json.dump(transformed_data, output)
+        with output_path.open('w') as output:
+            json.dump(transformed_data, output)
+    else:
+        json.dump(transformed_data, sys.stdout)
 
 
 def get_json(path: str | None = None) -> list[dict]:
