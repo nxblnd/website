@@ -1,4 +1,6 @@
 ---
+import DateTime from "@/components/DateTime.astro";
+
 interface Props {
     start: Date | string;
     end?: Date | string;
@@ -22,33 +24,37 @@ const defaultDateOptions: Intl.DateTimeFormatOptions = {
     day: "numeric",
 };
 
-let { start, end, locale, dateOptions = defaultDateOptions, numeralType = "normal" } = Astro.props;
+const {
+    start,
+    end,
+    locale,
+    dateOptions = defaultDateOptions,
+    numeralType = "normal",
+} = Astro.props;
 
-if (!(start instanceof Date)) {
-    start = new Date(start);
+function isDateSame(start: string | Date, end: string | Date): boolean {
+    const startDate = new Date(start).toLocaleDateString(locale, dateOptions).replace(/ г\./, "");
+    const endDate = new Date(end).toLocaleDateString(locale, dateOptions).replace(/ г\./, "");
+    return startDate === endDate;
 }
-
-if (!(end instanceof Date)) {
-    end = new Date(end ?? start);
-}
-
-const startDateString = start.toLocaleDateString(locale, dateOptions).replace(/ г\./, "");
-const endDateString = end.toLocaleDateString(locale, dateOptions).replace(/ г\./, "");
 ---
 
-{
-    startDateString === endDateString ? (
-        <time datetime={start.toISOString()}>{startDateString}</time>
-    ) : (
-        // prettier-ignore
-        <>
-            <time datetime={start.toISOString()}>{startDateString}</time>&hairsp;&ndash;&hairsp;<time datetime={end.toISOString()}>{endDateString}</time>
-        </>
-    )
-}
+<span>
+    {
+        !end || isDateSame(start, end) ? (
+            <DateTime timestamp={start} {locale} {dateOptions} {numeralType} />
+        ) : (
+            <>
+                <DateTime timestamp={start} {locale} {dateOptions} {numeralType} />
+                &hairsp;&ndash;&hairsp;
+                <DateTime timestamp={end} {locale} {dateOptions} {numeralType} />
+            </>
+        )
+    }
+</span>
 
-<style define:vars={{ "numeral-type": numeralType }}>
-    time {
-        font-variant-numeric: var(--numeral-type);
+<style>
+    span {
+        display: inline-flex;
     }
 </style>
