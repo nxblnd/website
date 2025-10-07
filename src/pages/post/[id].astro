@@ -1,7 +1,6 @@
 ---
 import PostLayout from "@/layouts/PostLayout.astro";
 import { getCollection, render } from "astro:content";
-import DateTime from "@/components/DateTime.astro";
 
 export async function getStaticPaths() {
     const posts = await getCollection("posts");
@@ -20,39 +19,5 @@ const updatedDate = post.data.updatedDate && new Date(post.data.updatedDate);
 ---
 
 <PostLayout title={post.data.title} description={post.data.description} {createdDate} {updatedDate}>
-    <div class="metadata">
-        <div class="dates">
-            {
-                createdDate && (
-                    <p>
-                        Опубликовано <DateTime timestamp={createdDate} locale="ru-RU" />
-                    </p>
-                )
-            }
-            {
-                updatedDate && (
-                    <p>
-                        Изменено <DateTime timestamp={updatedDate} locale="ru-RU" />
-                    </p>
-                )
-            }
-        </div>
-    </div>
     <Content />
 </PostLayout>
-
-<style>
-    .metadata {
-        margin-bottom: var(--space-lg);
-        color: var(--secondary-color);
-        font-size: smaller;
-
-        .dates {
-            text-align: right;
-        }
-
-        p:not(:first-child) {
-            margin-top: var(--space-xs);
-        }
-    }
-</style>
