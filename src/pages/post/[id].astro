@@ -14,7 +14,7 @@ const { post } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(post);
 post.data = { ...post.data, ...remarkPluginFrontmatter };
 
-const createdDate = new Date(post.data.createdDate);
+const createdDate = post.data.createdDate && new Date(post.data.createdDate);
 const updatedDate = post.data.updatedDate && new Date(post.data.updatedDate);
 ---
 
