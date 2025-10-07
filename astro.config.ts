@@ -1,13 +1,16 @@
-// @ts-check
 import { defineConfig, fontProviders } from "astro/config";
 import icon from "astro-icon";
 import compressor from "astro-compressor";
 import sitemap from "@astrojs/sitemap";
+import { remarkPlugins } from "./src/utils/remarkPlugins.ts";
 
 // https://astro.build/config
 export default defineConfig({
     site: "https://pavelegorov.xyz",
     integrations: [icon(), sitemap(), compressor()],
+    markdown: {
+        remarkPlugins: [...remarkPlugins],
+    },
     experimental: {
         fonts: [
             {

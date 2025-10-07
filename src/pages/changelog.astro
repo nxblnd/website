@@ -1,13 +1,10 @@
 ---
-import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
 import PageLayout from "@/layouts/PageLayout.astro";
 import DateSpan from "@/components/DateSpan.astro";
 
 const title = "Changelog";
-
-const gitlog = (await getCollection("gitlog")).sort(
-    (a, b) => b.data.commitDate - a.data.commitDate,
-);
+const gitlog = (await getEntry("gitlog", "__all")).data.sort((a, b) => b.commitDate - a.commitDate);
 ---
 
 <PageLayout title={title} description="Changelog generated from git">
@@ -16,19 +13,19 @@ const gitlog = (await getCollection("gitlog")).sort(
         <tbody>
             {
                 gitlog.map((commit) => {
-                    const githubUrl = `https://github.com/nxblnd/website/commit/${commit.data.hash}`;
+                    const githubUrl = `https://github.com/nxblnd/website/commit/${commit.hash}`;
                     return (
                         <tr>
                             <td>
-                                <a href={githubUrl}>{commit.data.hash.slice(0, 7)}</a>
+                                <a href={githubUrl}>{commit.hash.slice(0, 7)}</a>
                             </td>
                             <td class="message">
-                                <p class="commit-title">{commit.data.title}</p>
-                                {commit.data.body && <p class="commit-body">{commit.data.body}</p>}
+                                <p class="commit-title">{commit.title}</p>
+                                {commit.body && <p class="commit-body">{commit.body}</p>}
                             </td>
                             <td class="commit-date">
                                 <DateSpan
-                                    start={commit.data.commitDate}
+                                    start={commit.commitDate}
                                     locale="ru-RU"
                                     numeralType="tabular-nums"
                                 />

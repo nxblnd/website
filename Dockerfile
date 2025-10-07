@@ -25,12 +25,13 @@ RUN ./scripts/favicon.sh ./public
 COPY src/assets/Alegreya-Regular.otf ./
 RUN ./scripts/fontforgeRomans.py ./Alegreya-Regular.otf ./src/assets/generated/Alegreya-RomanNumerals.woff2
 
-COPY .git/ ./.git/
-RUN ./scripts/gitlogToJson.py ./src/assets/generated/gitlog.json
-
 COPY public/ ./public/
 COPY src/ ./src/
-COPY astro.config.mjs tsconfig.json ./
+COPY .git/ ./.git/
+COPY astro.config.ts tsconfig.json ./
+
+RUN ./scripts/gitlog.sh ./scripts/gitlogToJson.py src/content/posts src/assets/generated
+
 RUN npm run build
 
 FROM mcr.microsoft.com/playwright:v1.55.0 AS playwright

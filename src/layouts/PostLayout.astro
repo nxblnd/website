@@ -1,0 +1,62 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import type { Props as OpenGraphProps } from "@/components/seo/OpenGraph.astro";
+import DateTime from "@/components/DateTime.astro";
+import { meta } from "@/content/meta.ts";
+
+interface Props {
+    title: string;
+    description?: string;
+    createdDate?: Date;
+    updatedDate?: Date;
+}
+
+const { title, description = "", createdDate, updatedDate } = Astro.props;
+
+const openGraph: OpenGraphProps = {
+    type: "article",
+    locale: "ru_RU",
+    publishedTime: createdDate?.toISOString(),
+    modifiedTime: updatedDate?.toISOString(),
+    author: meta.author,
+};
+---
+
+<PageLayout {title} {description} {openGraph}>
+    <div class="metadata">
+        <div class="dates">
+            {
+                createdDate && (
+                    <p>
+                        Опубликовано <DateTime timestamp={createdDate} locale="ru-RU" />
+                    </p>
+                )
+            }
+            {
+                updatedDate && (
+                    <p>
+                        Изменено <DateTime timestamp={updatedDate} locale="ru-RU" />
+                    </p>
+                )
+            }
+        </div>
+    </div>
+
+    <slot />
+</PageLayout>
+
+<style>
+    .metadata {
+        margin-bottom: var(--space-lg);
+        color: var(--secondary-color);
+        font-size: smaller;
+
+        .dates {
+            text-align: right;
+        }
+
+        p:not(:first-child) {
+            margin-top: var(--space-xs);
+        }
+    }
+</style>

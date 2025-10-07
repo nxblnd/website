@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from "astro:content";
+import PageLayout from "@/layouts/PageLayout.astro";
+import PostPreview from "@/components/PostPreview.astro";
+
+const title = "Список постов";
+const description = "Посты за все время";
+
+const posts = await getCollection("posts");
+const renderedPosts = await Promise.all(
+    posts.map(async (post) => {
+        const { remarkPluginFrontmatter } = await render(post);
+        return { ...post, data: { ...post.data, ...remarkPluginFrontmatter } };
+    }),
+);
+---
+
+<PageLayout {title} {description}>
+    <h1>Список постов</h1>
+    <ul>
+        {
+            renderedPosts.map((post) => (
+                <li>
+                    <PostPreview
+                        title={post.data.title}
+                        description={post.data.description}
+                        link={`/post/${post.id}`}
+                        lastChangeDate={post.data.updatedDate ?? post.data.createdDate}
+                    />
+                </li>
+            ))
+        }
+    </ul>
+</PageLayout>
+
+<style>
+    ul {
+        padding: 0;
+        list-style-type: none;
+    }
+
+    /* li:not(:last-of-type) { */
+    li {
+        /* border-block: 1px solid var(--secondary-color); */
+    }
+</style>

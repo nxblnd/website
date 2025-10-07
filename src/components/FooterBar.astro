@@ -2,11 +2,9 @@
 import LinkCluster from "@/components/SocialLink/LinkCluster.astro";
 import DateSpan from "@/components/DateSpan.astro";
 import { toRoman } from "@/utils/roman.ts";
-import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
 
-const gitlog = (await getCollection("gitlog")).sort(
-    (a, b) => b.data.commitDate - a.data.commitDate,
-);
+const gitlog = (await getEntry("gitlog", "__all")).data.sort((a, b) => b.commitDate - a.commitDate);
 const firstCommit = gitlog.at(-1);
 const lastCommit = gitlog.at(0);
 ---
@@ -15,18 +13,18 @@ const lastCommit = gitlog.at(0);
     <LinkCluster />
     <p>
         <span> Pavel Egorov </span>&emsp;<DateSpan
-            start={firstCommit.data.commitDate}
-            end={lastCommit.data.commitDate}
+            start={firstCommit.commitDate}
+            end={lastCommit.commitDate}
             locale="ru-RU"
             dateOptions={{
                 year: "numeric",
             }}
         />&emsp;<span>
-            <a href="/changelog">{lastCommit.data.hash.slice(0, 7)}</a>
+            <a href="/changelog">{lastCommit.hash.slice(0, 7)}</a>
         </span>&emsp;<span><a href="/licensed-content">Licensed content</a></span>
     </p>
     <p class="roman">
-        {toRoman(new Date(firstCommit.data.commitDate).getFullYear())}
+        {toRoman(new Date(firstCommit.commitDate).getFullYear())}
     </p>
 </footer>
 

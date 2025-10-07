@@ -1,0 +1,41 @@
+---
+interface Props {
+    timestamp: Date | string;
+    locale?: string;
+    dateOptions?: Intl.DateTimeFormatOptions;
+    numeralType?:
+        | "normal"
+        | "ordinal"
+        | "slashed-zero"
+        | "lining-nums"
+        | "oldstyle-nums"
+        | "proportional-nums"
+        | "tabular-nums"
+        | "diagonal-fractions"
+        | "stacked-fractions";
+}
+
+const defaultDateOptions: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+};
+
+const { timestamp, locale, dateOptions = defaultDateOptions, numeralType = "normal" } = Astro.props;
+
+const convertedTimestamp = new Date(timestamp);
+
+const timestampString = convertedTimestamp
+    .toLocaleDateString(locale, dateOptions)
+    .replace(/ г\./, "");
+---
+
+<time datetime={convertedTimestamp.toISOString()}>
+    {timestampString}
+</time>
+
+<style define:vars={{ "numeral-type": numeralType }}>
+    time {
+        font-variant-numeric: var(--numeral-type);
+    }
+</style>
