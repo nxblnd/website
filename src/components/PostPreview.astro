@@ -1,17 +1,36 @@
 ---
+import DateTime from "@/components/DateTime.astro";
+
 interface Props {
     link: string;
     title: string;
     description?: string;
     tags?: Array<string>;
+    lastChangeDate?: Date | string;
 }
 
-const { link, title, description, tags } = Astro.props;
+const { link, title, description, lastChangeDate } = Astro.props;
 ---
 
-<div>
-    <p class="post-title"><a href={link}>{title}</a></p>
-    <div class="tags">{tags}</div>
-    <p class="post-dates"></p>
+<section>
+    <h2 class="post-title"><a href={link}>{title}</a></h2>
+    <!-- <div class="tags">{tags}</div> -->
+    {
+        lastChangeDate && (
+            <p class="post-dates">
+                <DateTime timestamp={lastChangeDate} locale="ru-RU" />
+            </p>
+        )
+    }
     <p class="post-description">{description}</p>
-</div>
+</section>
+
+<style>
+    section {
+        padding-bottom: var(--space-sm);
+    }
+
+    .post-dates {
+        color: var(--secondary-color);
+    }
+</style>
