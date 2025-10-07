@@ -24,9 +24,20 @@ const openGraphProperties: Record<keyof OpenGraph, string> = {
     author: "article:author",
 };
 
+type openGraphMusicType = "music.song" | "music.album" | "music.playlist" | "music.radio_station";
+type openGraphVideoType = "video.movie" | "video.episode" | "video.tv_show" | "video.other";
+type openGraphObjectType =
+    | "website"
+    | openGraphMusicType
+    | openGraphVideoType
+    | "article"
+    | "book"
+    | "payment.link"
+    | "profile";
+
 interface OpenGraph {
     title: string;
-    type: string;
+    type: openGraphObjectType;
     image: string;
 
     imageAlt: string;
@@ -51,8 +62,9 @@ interface OpenGraph {
 export interface Props extends Partial<OpenGraph> {}
 
 const props = Astro.props;
+props.type = props.type ?? "website";
 
-const propsEntries = Object.entries(props) as Entries<Props>;
+const propsEntries = (Object.entries(props) as Entries<Props>).filter(([, value]) => value);
 ---
 
 {

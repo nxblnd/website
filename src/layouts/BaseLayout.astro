@@ -13,10 +13,17 @@ interface Props {
 }
 
 const props = Astro.props;
+
+const openGraphNamespaces = [
+    "og: https://ogp.me/ns#",
+    "website: https://ogp.me/ns/website#",
+    "article: https://ogp.me/ns/article#",
+    "profile: http://ogp.me/ns/profile#",
+].join(" ");
 ---
 
 <!doctype html>
-<html lang="ru" dir="ltr" data-theme="auto" prefix="og: https://ogp.me/ns#">
+<html lang="ru" dir="ltr" data-theme="auto" prefix={openGraphNamespaces}>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
