@@ -1,14 +1,26 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
+import type { Props as OpenGraphProps } from "@/components/seo/OpenGraph.astro";
+import { meta } from "@/content/meta.ts";
 
 interface Props {
     title: string;
     description?: string;
+    createdDate?: Date;
+    updatedDate?: Date;
 }
 
-const { title, description = "" } = Astro.props;
+const { title, description = "", createdDate, updatedDate } = Astro.props;
+
+const openGraph: OpenGraphProps = {
+    type: "article",
+    locale: "ru_RU",
+    publishedTime: createdDate?.toISOString(),
+    modifiedTime: updatedDate?.toISOString(),
+    author: meta.author,
+};
 ---
 
-<PageLayout {title} {description}>
+<PageLayout {title} {description} {openGraph}>
     <slot />
 </PageLayout>

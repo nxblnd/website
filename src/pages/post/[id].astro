@@ -14,22 +14,25 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(post);
 post.data = { ...post.data, ...remarkPluginFrontmatter };
+
+const createdDate = new Date(post.data.createdDate);
+const updatedDate = post.data.updatedDate && new Date(post.data.updatedDate);
 ---
 
-<PostLayout title={post.data.title} description={post.data.description}>
+<PostLayout title={post.data.title} description={post.data.description} {createdDate} {updatedDate}>
     <div class="metadata">
         <div class="dates">
             {
-                post.data.createdDate && (
+                createdDate && (
                     <p>
-                        Опубликовано <DateTime timestamp={post.data.createdDate} locale="ru-RU" />
+                        Опубликовано <DateTime timestamp={createdDate} locale="ru-RU" />
                     </p>
                 )
             }
             {
-                post.data.updatedDate && (
+                updatedDate && (
                     <p>
-                        Изменено <DateTime timestamp={post.data.updatedDate} locale="ru-RU" />
+                        Изменено <DateTime timestamp={updatedDate} locale="ru-RU" />
                     </p>
                 )
             }
