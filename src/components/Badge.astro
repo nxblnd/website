@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    icon?: string;
+    color?: string;
+}
+
+const { icon, color } = Astro.props;
+---
+
+<div class="badge">
+    {icon && <Icon name={icon} />}
+    <div class="content">
+        <slot />
+    </div>
+</div>
+
+<style define:vars={{ color }}>
+    .badge {
+        display: flex;
+        align-items: center;
+        padding: var(--space-xs) var(--space-sm);
+        border-radius: 2em;
+        background-color: var(--color);
+    }
+
+    .content {
+        padding-inline: var(--space-xs);
+    }
+
+    [data-icon] {
+        font-size: x-large;
+    }
+</style>
