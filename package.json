@@ -23,6 +23,7 @@
     "playwright:pdfgen": "playwright test pdfGen.spec.ts"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.7",
     "@astrojs/sitemap": "^3.5.1",
     "@iconify-json/devicon": "^1.2.45",
     "@iconify-json/logos": "^1.2.9",

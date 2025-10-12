@@ -2,7 +2,7 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 const jobs = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/content/cv/jobs" }),
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/cv/jobs" }),
     schema: z.object({
         place: z.string(),
         position: z.string(),
@@ -12,7 +12,7 @@ const jobs = defineCollection({
 });
 
 const education = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/content/cv/education" }),
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/cv/education" }),
     schema: z.object({
         place: z.string(),
         specialization: z.string(),
@@ -42,7 +42,7 @@ const gitlog = defineCollection({
 });
 
 const posts = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/content/posts" }),
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),
     schema: z.object({
         title: z.string().default("No title"),
         description: z.string().optional(),
