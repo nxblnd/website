@@ -1,0 +1,40 @@
+---
+import Badge from "@/components/Badge.astro";
+import techList from "@/content/techBadge.ts";
+import type { Tech } from "@/content/techBadge.ts";
+
+interface Props {
+    name: string;
+    coloredIcons: boolean;
+}
+
+const { name: techName, coloredIcons = false } = Astro.props;
+
+const {
+    label,
+    color: rawIconColor,
+    fontColor: iconFontColor,
+    link,
+    icon: rawIcon,
+}: Tech = techList.find((techObject) => techObject.name.includes(techName));
+
+const icon = coloredIcons
+    ? rawIcon.devicon
+        ? `devicon:${rawIcon.devicon}`
+        : `logos:${rawIcon.logos}`
+    : `simple-icons:${rawIcon["simple-icons"]}`;
+
+const iconColor = coloredIcons ? "" : rawIconColor;
+---
+
+<a href={link} target="_blank">
+    <Badge {icon} {iconColor} {iconFontColor} color="rgb(0 0 0 / 0.1)">
+        {label}
+    </Badge>
+</a>
+
+<style>
+    a {
+        color: var(--primary-color);
+    }
+</style>
