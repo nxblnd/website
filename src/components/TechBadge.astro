@@ -25,12 +25,19 @@ const icon = coloredIcons
     : `simple-icons:${rawIcon["simple-icons"]}`;
 
 const iconColor = coloredIcons ? "" : rawIconColor;
+const iconEnabled = icon.split(":")[1] !== "undefined";
 ---
 
 <a href={link} target="_blank">
-    <Badge {icon} {iconColor} {iconFontColor} color="rgb(0 0 0 / 0.1)">
-        {label}
-    </Badge>
+    {
+        iconEnabled ? (
+            <Badge {icon} {iconColor} {iconFontColor} color="rgb(0 0 0 / 0.1)">
+                {label}
+            </Badge>
+        ) : (
+            <Badge color="rgb(0 0 0 / 0.1)">{label}</Badge>
+        )
+    }
 </a>
 
 <style>
