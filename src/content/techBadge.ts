@@ -1,4 +1,6 @@
-export type IconSource = "simple-icons" | "devicon" | "logos";
+export type SingleColorIconSource = "simple-icons" | "mdi";
+export type MultiColorIconSource = "devicon" | "logos";
+export type IconSource = SingleColorIconSource | MultiColorIconSource;
 
 export interface Tech {
     icon?: {
@@ -19,6 +21,7 @@ export default <Array<Tech>>[
         fontColor: "#000000",
         icon: {
             "simple-icons": "javascript",
+            mdi: "language-javascript",
             devicon: "javascript",
             logos: "javascript",
         },
@@ -31,6 +34,7 @@ export default <Array<Tech>>[
         link: "https://www.typescriptlang.org/",
         icon: {
             "simple-icons": "typescript",
+            mdi: "language-typescript",
             devicon: "typescript",
             logos: "typescript-icon",
         },
@@ -43,6 +47,7 @@ export default <Array<Tech>>[
         link: "https://vuejs.org/",
         icon: {
             "simple-icons": "vuedotjs",
+            mdi: "vuejs",
             devicon: "vuejs",
             logos: "vue",
         },
@@ -77,6 +82,7 @@ export default <Array<Tech>>[
         link: "https://webpack.js.org/",
         icon: {
             "simple-icons": "webpack",
+            mdi: "mdi",
             devicon: "webpack",
             logos: "webpack",
         },
@@ -101,6 +107,7 @@ export default <Array<Tech>>[
         link: "https://getbootstrap.com/",
         icon: {
             "simple-icons": "bootstrap",
+            mdi: "bootstrap",
             devicon: "bootstrap",
             logos: "bootstrap",
         },
@@ -113,6 +120,7 @@ export default <Array<Tech>>[
         link: "https://nodejs.org/",
         icon: {
             "simple-icons": "nodedotjs",
+            mdi: "nodejs",
             devicon: "nodejs",
             logos: "nodejs-icon",
         },
@@ -125,6 +133,7 @@ export default <Array<Tech>>[
         link: "https://www.python.org/",
         icon: {
             "simple-icons": "python",
+            mdi: "language-python",
             devicon: "python",
             logos: "python",
         },
@@ -137,6 +146,7 @@ export default <Array<Tech>>[
         link: "https://git-scm.com/",
         icon: {
             "simple-icons": "git",
+            mdi: "git",
             devicon: "git",
             logos: "git-icon",
         },
@@ -148,6 +158,7 @@ export default <Array<Tech>>[
         fontColor: "#ffffff",
         icon: {
             "simple-icons": "html5",
+            mdi: "language-html5",
             devicon: "html5",
             logos: "html-5",
         },
@@ -159,6 +170,7 @@ export default <Array<Tech>>[
         fontColor: "#ffffff",
         icon: {
             "simple-icons": "css3",
+            mdi: "language-css3",
             devicon: "css3",
             logos: "css-3",
         },
@@ -171,6 +183,7 @@ export default <Array<Tech>>[
         link: "https://sass-lang.com/",
         icon: {
             "simple-icons": "sass",
+            mdi: "sass",
             devicon: "sass",
             logos: "sass",
         },
@@ -183,6 +196,7 @@ export default <Array<Tech>>[
         link: "https://react.dev/",
         icon: {
             "simple-icons": "react",
+            mdi: "react",
             devicon: "react",
             logos: "react",
         },
@@ -195,6 +209,7 @@ export default <Array<Tech>>[
         link: "https://eslint.org/",
         icon: {
             "simple-icons": "eslint",
+            mdi: "eslint",
             devicon: "eslint",
             logos: "eslint",
         },
@@ -207,6 +222,7 @@ export default <Array<Tech>>[
         link: "https://www.docker.com/",
         icon: {
             "simple-icons": "docker",
+            mdi: "docker",
             devicon: "docker",
             logos: "docker-icon",
         },
@@ -231,6 +247,7 @@ export default <Array<Tech>>[
         link: "https://go.dev/",
         icon: {
             "simple-icons": "go",
+            mdi: "language-go",
             devicon: "go-wordmark",
             logos: "go",
         },
@@ -254,6 +271,7 @@ export default <Array<Tech>>[
         fontColor: "#ffffff",
         icon: {
             "simple-icons": "ansible",
+            mdi: "ansible",
             devicon: "ansible",
         },
     },
@@ -286,6 +304,7 @@ export default <Array<Tech>>[
         fontColor: "#ffffff",
         link: "#5283a3",
         icon: {
+            mdi: "language-java",
             devicon: "java",
             logos: "java",
         },
