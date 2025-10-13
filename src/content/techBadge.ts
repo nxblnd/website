@@ -1,6 +1,6 @@
-export type SingleColorIconSource = "simple-icons" | "mdi";
-export type MultiColorIconSource = "devicon" | "logos";
-export type IconSource = SingleColorIconSource | MultiColorIconSource;
+export const singleColorIconSource = ["simple-icons", "mdi"] as const;
+export const multiColorIconSource = ["devicon", "logos"] as const;
+export type IconSource = typeof singleColorIconSource | typeof multiColorIconSource;
 
 export interface Tech {
     icon?: {
@@ -13,7 +13,7 @@ export interface Tech {
     link?: string;
 }
 
-export default <Array<Tech>>[
+export const techList = <Array<Tech>>[
     {
         name: ["js", "javascript"],
         label: "JavaScript",
@@ -300,9 +300,8 @@ export default <Array<Tech>>[
     {
         name: ["java"],
         label: "Java",
-        color: "red",
+        color: "#5283a3",
         fontColor: "#ffffff",
-        link: "#5283a3",
         icon: {
             mdi: "language-java",
             devicon: "java",
