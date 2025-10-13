@@ -12,9 +12,13 @@ const { icon, color, iconColor, iconFontColor } = Astro.props;
 ---
 
 <div class="badge">
-    <div class="icon">
-        {icon && <Icon name={icon} />}
-    </div>
+    {
+        icon && (
+            <div class="icon">
+                <Icon name={icon} />
+            </div>
+        )
+    }
     <div class="content">
         <slot />
     </div>
