@@ -269,4 +269,25 @@ export default <Array<Tech>>[
             logos: "astro-icon",
         },
     },
+    {
+        name: ["caddy"],
+        label: "Caddy",
+        color: "#22b638",
+        fontColor: "#ffffff",
+        link: "https://caddyserver.com/",
+        icon: {
+            "simple-icons": "caddy",
+        },
+    },
+    {
+        name: ["java"],
+        label: "Java",
+        color: "red",
+        fontColor: "#ffffff",
+        link: "#5283a3",
+        icon: {
+            devicon: "java",
+            logos: "java",
+        },
+    },
 ];
