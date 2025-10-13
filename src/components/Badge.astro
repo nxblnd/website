@@ -49,7 +49,11 @@ const { icon, color, iconColor, iconFontColor } = Astro.props;
         }
     }
 
-    .content {
+    .content:first-child {
+        padding-inline: var(--space-sm);
+    }
+
+    .content:not(:first-child) {
         padding-inline: var(--space-xs) var(--space-sm);
     }
 </style>
