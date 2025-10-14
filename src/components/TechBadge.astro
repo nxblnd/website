@@ -5,7 +5,7 @@ import { techList, singleColorIconSource, multiColorIconSource } from "@/content
 
 interface Props {
     name: string;
-    coloredIcons: boolean;
+    coloredIcons?: boolean;
 }
 
 const { name: techName, coloredIcons = false } = Astro.props;
