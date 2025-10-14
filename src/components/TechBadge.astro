@@ -1,7 +1,7 @@
 ---
 import Badge from "@/components/Badge.astro";
-import techList from "@/content/techBadge.ts";
-import type { Tech } from "@/content/techBadge.ts";
+import type { Tech, IconSource } from "@/content/techBadge.ts";
+import { techList, singleColorIconSource, multiColorIconSource } from "@/content/techBadge.ts";
 
 interface Props {
     name: string;
@@ -16,21 +16,35 @@ const {
     fontColor: iconFontColor,
     link,
     icon: rawIcon,
-}: Tech = techList.find((techObject) => techObject.name.includes(techName));
+}: Tech = techList.find((techObject) => techObject.name.includes(techName)) ?? {
+    name: ["error"],
+    label: "Error",
+    color: "#ff0000",
+};
 
-const icon = coloredIcons
-    ? rawIcon.devicon
-        ? `devicon:${rawIcon.devicon}`
-        : `logos:${rawIcon.logos}`
-    : `simple-icons:${rawIcon["simple-icons"]}`;
+function getIconName(sourceList: Readonly<Array<IconSource>>): string | undefined {
+    if (rawIcon === undefined) {
+        return undefined;
+    }
+    for (const source of sourceList) {
+        if (rawIcon[source]) {
+            return `${source}:${rawIcon[source]}`;
+        }
+    }
+    return undefined;
+}
 
+// with fallback to other type of icon
+const singleColorIcon = getIconName(singleColorIconSource) ?? getIconName(multiColorIconSource);
+const multiColorIcon = getIconName(multiColorIconSource) ?? getIconName(singleColorIconSource);
+
+const icon = coloredIcons ? multiColorIcon : singleColorIcon;
 const iconColor = coloredIcons ? "" : rawIconColor;
-const iconEnabled = icon.split(":")[1] !== "undefined";
 ---
 
 <a href={link} target="_blank">
     {
-        iconEnabled ? (
+        icon ? (
             <Badge {icon} {iconColor} {iconFontColor} color="rgb(0 0 0 / 0.1)">
                 {label}
             </Badge>

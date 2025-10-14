@@ -1,6 +1,6 @@
 export const singleColorIconSource = ["simple-icons", "mdi"] as const;
 export const multiColorIconSource = ["devicon", "logos"] as const;
-export type IconSource = typeof singleColorIconSource | typeof multiColorIconSource;
+export type IconSource = (typeof singleColorIconSource | typeof multiColorIconSource)[number];
 
 export interface Tech {
     icon?: {
