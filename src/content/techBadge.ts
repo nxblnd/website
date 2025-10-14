@@ -269,6 +269,7 @@ export const techList = <Array<Tech>>[
         label: "Ansible",
         color: "#000000",
         fontColor: "#ffffff",
+        link: "https://ansible.com/",
         icon: {
             "simple-icons": "ansible",
             mdi: "ansible",
@@ -302,6 +303,7 @@ export const techList = <Array<Tech>>[
         label: "Java",
         color: "#5283a3",
         fontColor: "#ffffff",
+        link: "https://www.java.com/",
         icon: {
             mdi: "language-java",
             devicon: "java",
