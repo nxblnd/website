@@ -42,7 +42,7 @@ const icon = coloredIcons ? multiColorIcon : singleColorIcon;
 const iconColor = coloredIcons ? "" : rawIconColor;
 ---
 
-<a href={link} target="_blank">
+<a class="primary-link" href={link} target="_blank">
     {
         icon ? (
             <Badge {icon} {iconColor} {iconFontColor} color="rgb(0 0 0 / 0.1)">
@@ -55,7 +55,9 @@ const iconColor = coloredIcons ? "" : rawIconColor;
 </a>
 
 <style>
-    a {
-        color: var(--primary-color);
+    @media print {
+        a::after {
+            content: "" !important;
+        }
     }
 </style>

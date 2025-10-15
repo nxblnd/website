@@ -36,6 +36,11 @@ const { icon, color, iconColor, iconFontColor } = Astro.props;
         align-items: center;
         border-radius: 1lh;
         background-color: var(--color);
+
+        @media print {
+            border: 1px solid var(--secondary-color);
+            background-color: inherit;
+        }
     }
 
     .icon {
@@ -46,6 +51,15 @@ const { icon, color, iconColor, iconFontColor } = Astro.props;
 
         [data-icon] {
             color: var(--icon-font-color);
+        }
+
+        @media print {
+            padding: 0 var(--space-xs);
+            background-color: inherit;
+
+            [data-icon] {
+                color: var(--primary-color);
+            }
         }
     }
 
