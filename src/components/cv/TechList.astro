@@ -20,7 +20,7 @@ const { value: techList } = Astro.props;
         ) : (
             <>
                 <p>{entry.name}</p>
-                <div>
+                <div class="tech-list">
                     {entry.techList.map((subentry) => (
                         <TechBadge name={subentry} />
                     ))}
@@ -29,3 +29,9 @@ const { value: techList } = Astro.props;
         ),
     )
 }
+
+<style>
+    .tech-list {
+        word-spacing: var(--space-xs);
+    }
+</style>
