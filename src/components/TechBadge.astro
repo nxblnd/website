@@ -6,9 +6,10 @@ import { techList, singleColorIconSource, multiColorIconSource } from "@/content
 interface Props {
     name: string;
     coloredIcons?: boolean;
+    simple?: boolean;
 }
 
-const { name: techName, coloredIcons = false } = Astro.props;
+const { name: techName, coloredIcons = false, simple = false } = Astro.props;
 
 const {
     label,
@@ -42,17 +43,34 @@ const icon = coloredIcons ? multiColorIcon : singleColorIcon;
 const iconColor = coloredIcons ? "" : rawIconColor;
 ---
 
-<a class="primary-link" href={link} target="_blank">
-    {
-        icon ? (
-            <Badge {icon} {iconColor} {iconFontColor} color="rgb(0 0 0 / 0.1)">
+{
+    !simple && (
+        <a class="primary-link" href={link} target="_blank">
+            {icon ? (
+                <Badge {icon} {iconColor} {iconFontColor} color="rgb(0 0 0 / 0.1)">
+                    {label}
+                </Badge>
+            ) : (
+                <Badge color="rgb(0 0 0 / 0.1)">{label}</Badge>
+            )}
+        </a>
+    )
+}
+
+{
+    simple && (
+        <a class="primary-link" href={link} target="_blank">
+            <Badge
+                icon={singleColorIcon}
+                iconColor="rgb(0 0 0 / 0.2)"
+                iconFontColor="--primary-color"
+                border
+            >
                 {label}
             </Badge>
-        ) : (
-            <Badge color="rgb(0 0 0 / 0.1)">{label}</Badge>
-        )
-    }
-</a>
+        </a>
+    )
+}
 
 <style>
     @media print {

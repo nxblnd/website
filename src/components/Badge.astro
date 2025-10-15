@@ -6,12 +6,13 @@ interface Props {
     icon?: string;
     iconColor?: string;
     iconFontColor?: string;
+    border?: boolean;
 }
 
-const { icon, color, iconColor, iconFontColor } = Astro.props;
+const { icon, color, iconColor, iconFontColor, border = false } = Astro.props;
 ---
 
-<div class="badge">
+<div class:list={["badge", { border }]}>
     {
         icon && (
             <div class="icon">
@@ -31,6 +32,10 @@ const { icon, color, iconColor, iconFontColor } = Astro.props;
         "icon-font-color": iconFontColor,
     }}
 >
+    .border {
+        border: 1px solid var(--secondary-color);
+    }
+
     .badge {
         display: inline-flex;
         align-items: center;
