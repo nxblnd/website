@@ -4,6 +4,7 @@
         --dark-bg-color: oklch(28% 0.01 285deg);
         --dark-primary-color: oklch(95% 0 0deg);
         --dark-secondary-color: oklch(from var(--dark-primary-color) 70% c h);
+        --dark-tertiary-color: oklch(from var(--dark-bg-color) calc(l * 0.7) c h);
         --dark-accent-color: oklch(70% 0.1337 285deg);
         --dark-link-color: oklch(80% 0.095 230deg);
         --dark-link-visited-color: oklch(from var(--dark-link-color) 80% c calc(h + 50));
@@ -35,6 +36,7 @@
         --light-bg-color: oklch(95% 0.01 285deg);
         --light-primary-color: oklch(15% 0 0deg);
         --light-secondary-color: oklch(from var(--light-primary-color) 50% c h);
+        --light-tertiary-color: oklch(from var(--light-bg-color) calc(l * 0.7) c h);
         --light-accent-color: oklch(from var(--dark-accent-color) calc(l - 0.1) 0.2 h);
         --light-link-color: oklch(52% 0.21 260deg);
         --light-link-visited-color: oklch(from var(--light-link-color) l c calc(h + 50));
@@ -61,6 +63,7 @@
         --bg-color: var(--dark-bg-color);
         --primary-color: var(--dark-primary-color);
         --secondary-color: var(--dark-secondary-color);
+        --tertiary-color: var(--dark-tertiary-color);
         --accent-color: var(--dark-accent-color);
         --link-color: var(--dark-link-color);
         --link-visited-color: var(--dark-link-visited-color);
@@ -82,6 +85,7 @@
         --bg-color: var(--light-bg-color);
         --primary-color: var(--light-primary-color);
         --secondary-color: var(--light-secondary-color);
+        --tertiary-color: var(--light-tertiary-color);
         --accent-color: var(--light-accent-color);
         --link-color: var(--light-link-color);
         --link-visited-color: var(--light-link-visited-color);
