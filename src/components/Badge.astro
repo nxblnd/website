@@ -7,15 +7,16 @@ interface Props {
     iconColor?: string;
     iconFontColor?: string;
     border?: boolean;
+    dense?: boolean;
 }
 
-const { icon, color, iconColor, iconFontColor, border = false } = Astro.props;
+const { icon, color, iconColor, iconFontColor, border = false, dense = false } = Astro.props;
 ---
 
 <div class:list={["badge", { border }]}>
     {
         icon && (
-            <div class="icon">
+            <div class:list={["icon", { dense }]}>
                 <Icon name={icon} />
             </div>
         )
@@ -36,6 +37,10 @@ const { icon, color, iconColor, iconFontColor, border = false } = Astro.props;
         border: 1px solid var(--tertiary-color);
     }
 
+    .icon.dense {
+        padding: 0 var(--space-xs);
+    }
+
     .badge {
         display: inline-flex;
         align-items: center;
@@ -49,7 +54,6 @@ const { icon, color, iconColor, iconFontColor, border = false } = Astro.props;
     }
 
     .icon {
-        padding: 0.25em;
         padding: var(--space-sm);
         border-radius: 1lh;
         background-color: var(--icon-color);

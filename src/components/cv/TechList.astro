@@ -9,21 +9,22 @@ interface TechSection {
 interface Props {
     value: Array<string | TechSection>;
     simple?: boolean;
+    dense?: boolean;
 }
 
-const { value: techList, simple = false } = Astro.props;
+const { value: techList, simple = false, dense = false } = Astro.props;
 ---
 
 {
     techList.map((entry) =>
         typeof entry === "string" ? (
-            <TechBadge name={entry} {simple} />
+            <TechBadge name={entry} {simple} {dense} />
         ) : (
             <>
                 <p>{entry.name}</p>
                 <div class="tech-list">
                     {entry.techList.map((subentry) => (
-                        <TechBadge name={subentry} {simple} />
+                        <TechBadge name={subentry} {simple} {dense} />
                     ))}
                 </div>
             </>

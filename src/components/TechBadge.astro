@@ -7,9 +7,10 @@ interface Props {
     name: string;
     coloredIcons?: boolean;
     simple?: boolean;
+    dense?: boolean;
 }
 
-const { name: techName, coloredIcons = false, simple = false } = Astro.props;
+const { name: techName, coloredIcons = false, simple = false, dense = false } = Astro.props;
 
 const {
     label,
@@ -47,11 +48,13 @@ const iconColor = coloredIcons ? "" : rawIconColor;
     !simple && (
         <a class="primary-link" href={link} target="_blank">
             {icon ? (
-                <Badge {icon} {iconColor} {iconFontColor} color="rgb(0 0 0 / 0.1)">
+                <Badge {icon} {iconColor} {iconFontColor} {dense} color="--tertiary-color">
                     {label}
                 </Badge>
             ) : (
-                <Badge color="rgb(0 0 0 / 0.1)">{label}</Badge>
+                <Badge color="--tertiary-color" {dense}>
+                    {label}
+                </Badge>
             )}
         </a>
     )
@@ -65,6 +68,7 @@ const iconColor = coloredIcons ? "" : rawIconColor;
                 iconColor="--tertiary-color"
                 iconFontColor="--primary-color"
                 border
+                {dense}
             >
                 {label}
             </Badge>
