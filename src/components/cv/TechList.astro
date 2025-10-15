@@ -1,0 +1,31 @@
+---
+import TechBadge from "@/components/TechBadge.astro";
+
+interface TechSection {
+    name: string;
+    techList: Array<string>;
+}
+
+interface Props {
+    value: Array<string | TechSection>;
+}
+
+const { value: techList } = Astro.props;
+---
+
+{
+    techList.map((entry) =>
+        typeof entry === "string" ? (
+            <TechBadge name={entry} />
+        ) : (
+            <>
+                <p>{entry.name}</p>
+                <div>
+                    {entry.techList.map((subentry) => (
+                        <TechBadge name={subentry} />
+                    ))}
+                </div>
+            </>
+        ),
+    )
+}
