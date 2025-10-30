@@ -1,0 +1,12 @@
+---
+when:
+  - event: push
+    branch: main
+
+steps:
+  build:
+    image: woodpeckerci/plugin-docker-buildx:6.0.3
+    settings:
+      auto_tag: true
+      tags: latest
+      dry_run: true
