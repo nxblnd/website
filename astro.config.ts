@@ -10,6 +10,13 @@ export default defineConfig({
     integrations: [icon(), sitemap(), compressor()],
     markdown: {
         remarkPlugins: [...remarkPlugins],
+        smartypants: {
+            dashes: "oldschool",
+            quotes: true,
+            openingQuotes: { double: "«", single: "‹" },
+            closingQuotes: { double: "»", single: "›" },
+            ellipses: "unspaced",
+        },
     },
     fonts: [
         {
